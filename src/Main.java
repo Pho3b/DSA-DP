@@ -1,7 +1,9 @@
+import algorithms.sorting.SelectionSort;
 import decorator_implementation.HawaiianSalad;
 import decorator_implementation.RomanianSalad;
 import decorator_implementation.Salad;
 import design_patterns.decorator.salad_decorators.Ananas;
+import design_patterns.decorator.salad_decorators.CheesePieces;
 import design_patterns.decorator.salad_decorators.MeatPieces;
 import design_patterns.decorator.salad_decorators.Oil;
 import observer_implementation.Foul;
@@ -15,7 +17,7 @@ public class Main {
 
     public static void main(String[] args) {
         Main main = new Main();
-        main.testDecoratorPattern();
+        main.testSelectionSort();
     }
 
 
@@ -24,7 +26,7 @@ public class Main {
         hawaiianSalad.printDetails();
 
         // Adding double Ananas and Oil
-        hawaiianSalad = new Ananas(new Ananas(new Oil(hawaiianSalad)));
+        hawaiianSalad = new Ananas(new Ananas(new Oil(new CheesePieces(hawaiianSalad))));
         hawaiianSalad.printDetails();
 
         Salad romanianSalad = new RomanianSalad();
@@ -72,6 +74,17 @@ public class Main {
         BubbleSort bs = new BubbleSort();
         System.out.println("ArrayList Before : " + testInput);
         System.out.println("ArrayList Sorted : " + bs.sort(testInput));
+    }
+
+    public void testSelectionSort() {
+        ArrayList<Integer> testInput = new ArrayList<>(10);
+        testInput.add(127);
+        testInput.add(12);
+        testInput.add(-43);
+
+        SelectionSort selectionSort = new SelectionSort();
+        System.out.println("ArrayList Before : " + testInput);
+        System.out.println("ArrayList Sorted : " + selectionSort.sort(testInput));
     }
 
 }
