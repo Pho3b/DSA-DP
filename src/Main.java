@@ -1,3 +1,4 @@
+import algorithms.searching.BinarySearch;
 import algorithms.sorting.SelectionSort;
 import decorator_implementation.HawaiianSalad;
 import decorator_implementation.RomanianSalad;
@@ -17,7 +18,14 @@ public class Main {
 
     public static void main(String[] args) {
         Main main = new Main();
-        main.testSelectionSort();
+        main.testBinarySearch();
+    }
+
+    public void testBinarySearch() {
+        BinarySearch binarySearch = new BinarySearch();
+        int[] test = new int[] {-21, -1, 1, 3, 4 ,5 ,6 ,10, 11};
+        int[] res = binarySearch.search(test, 10);
+        System.out.println("Found value : " + res[0] + " at index " + res[1]);
     }
 
 
