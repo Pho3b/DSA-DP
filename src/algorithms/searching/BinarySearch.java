@@ -10,12 +10,10 @@ public class BinarySearch {
         int min = 0;
         int mid = top / 2;
 
-
-
         while (min <= top) {
             if (toSearch == inputArr[mid]) {
                 return new int[]{inputArr[mid], mid};
-            }else if (toSearch < inputArr[mid]) {
+            } else if (toSearch < inputArr[mid]) {
                 top = mid - 1;
             } else {
                 min = mid + 1;
