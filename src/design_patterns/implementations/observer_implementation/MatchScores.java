@@ -1,4 +1,4 @@
-package observer_implementation;
+package design_patterns.implementations.observer_implementation;
 
 import design_patterns.observer.Observable;
 import design_patterns.observer.Observer;

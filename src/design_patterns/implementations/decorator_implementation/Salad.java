@@ -1,4 +1,4 @@
-package decorator_implementation;
+package design_patterns.implementations.decorator_implementation;
 
 public abstract class Salad {
     protected String description;

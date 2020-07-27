@@ -1,14 +1,14 @@
-package observer_implementation;
+package design_patterns.implementations.observer_implementation;
 
 import design_patterns.observer.Observable;
 import design_patterns.observer.Observer;
 
-public class Goal implements Observer {
-    private int currentGoalsNumber;
+public class Foul implements Observer {
+    private int currentFoulsNumber;
     private Observable observable;
 
 
-    public Goal(Observable observable) {
+    public Foul(Observable observable) {
         this.observable = observable;
         this.observable.registerObserver(this);
     }
@@ -17,12 +17,12 @@ public class Goal implements Observer {
     public void update(Observable observable, Object obj) {
         if (obj instanceof MatchScoresObservablePayload) {
             MatchScoresObservablePayload payload = (MatchScoresObservablePayload) obj;
-            this.currentGoalsNumber = payload.goals;
+            this.currentFoulsNumber = payload.fouls;
             this.displayData();
         }
     }
 
     private void displayData() {
-        System.out.println(this.getClass().getSimpleName() + " : " + this.currentGoalsNumber);
+        System.out.println(this.getClass().getSimpleName() + " : " + this.currentFoulsNumber + "\n");
     }
 }

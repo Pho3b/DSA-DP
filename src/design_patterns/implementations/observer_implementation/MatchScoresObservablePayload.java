@@ -1,4 +1,4 @@
-package observer_implementation;
+package design_patterns.implementations.observer_implementation;
 
 public class MatchScoresObservablePayload {
     public int goals = 0;

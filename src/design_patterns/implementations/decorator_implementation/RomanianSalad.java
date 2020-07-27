@@ -1,4 +1,4 @@
-package decorator_implementation;
+package design_patterns.implementations.decorator_implementation;
 
 public class RomanianSalad extends Salad {
 

@@ -1,6 +1,6 @@
 package design_patterns.decorator.salad_decorators;
 
-import decorator_implementation.Salad;
+import design_patterns.implementations.decorator_implementation.Salad;
 
 public class MeatPieces extends CondimentDecorator {
 

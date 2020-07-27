@@ -1,16 +1,19 @@
 import algorithms.searching.BinarySearch;
 import algorithms.sorting.SelectionSort;
-import decorator_implementation.HawaiianSalad;
-import decorator_implementation.RomanianSalad;
-import decorator_implementation.Salad;
+import design_patterns.implementations.decorator_implementation.HawaiianSalad;
+import design_patterns.implementations.decorator_implementation.RomanianSalad;
+import design_patterns.implementations.decorator_implementation.Salad;
 import design_patterns.decorator.salad_decorators.Ananas;
 import design_patterns.decorator.salad_decorators.CheesePieces;
 import design_patterns.decorator.salad_decorators.MeatPieces;
 import design_patterns.decorator.salad_decorators.Oil;
-import observer_implementation.Foul;
-import observer_implementation.Goal;
-import observer_implementation.MatchScores;
+import design_patterns.implementations.observer_implementation.Foul;
+import design_patterns.implementations.observer_implementation.Goal;
+import design_patterns.implementations.observer_implementation.MatchScores;
 import algorithms.sorting.BubbleSort;
+import design_patterns.implementations.strategy_implementation.UserCharacter;
+import design_patterns.strategy.auto_attack_concrete_implementations.MeleeAutoAttack;
+import design_patterns.strategy.auto_attack_concrete_implementations.RangedAutoAttack;
 
 import java.util.ArrayList;
 
@@ -18,7 +21,7 @@ public class Main {
 
     public static void main(String[] args) {
         Main main = new Main();
-        main.testBinarySearch();
+        main.testStrategyPattern();
     }
 
     public void testBinarySearch() {
@@ -26,6 +29,21 @@ public class Main {
         int[] test = new int[]{-21, -1, 1, 3, 4, 5, 6, 10, 11};
         int[] res = binarySearch.search(test, 11);
         System.out.println("Found value : " + res[0] + " at index " + res[1]);
+    }
+
+    public void testStrategyPattern() {
+        UserCharacter userCharacter = new UserCharacter();
+
+        // The user auto attacks as a magician by default.
+        userCharacter.autoAttack();
+
+        // Changing his auto attack style to ranged.
+        userCharacter.setAutoAttackStrategy(new RangedAutoAttack());
+        userCharacter.autoAttack();
+
+        // For the sake of completeness we set his auto attack style as melee too.
+        userCharacter.setAutoAttackStrategy(new MeleeAutoAttack());
+        userCharacter.autoAttack();
     }
 
 
