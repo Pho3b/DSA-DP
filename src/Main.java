@@ -1,4 +1,5 @@
 import algorithms.searching.BinarySearch;
+import algorithms.searching.JumpSearch;
 import algorithms.searching.LinearSearch;
 import algorithms.sorting.SelectionSort;
 import design_patterns.implementations.decorator_implementation.HawaiianSalad;
@@ -22,7 +23,7 @@ public class Main {
 
     public static void main(String[] args) {
         Main main = new Main();
-        main.testLinearSearch();
+        main.testJumpSearch();
     }
 
     public void testBinarySearch() {
@@ -118,6 +119,12 @@ public class Main {
         int[] test = new int[]{-21, -1, 1, 3, 4, 5, 6, 10, 11};
         LinearSearch linearSearch = new LinearSearch();
         System.out.println(linearSearch.search(test, 150));
+    }
+
+    public void testJumpSearch() {
+        int[] test = new int[]{-21, -1, 1, 3, 4, 5, 6, 10, 11, 150, 154, 155, 189, 190, 210, 211, 212, 301, 390, 400};
+        JumpSearch jumpSearch = new JumpSearch();
+        System.out.println(jumpSearch.search(test, 301));
     }
 
 }
