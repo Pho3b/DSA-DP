@@ -1,4 +1,5 @@
 import algorithms.searching.BinarySearch;
+import algorithms.searching.LinearSearch;
 import algorithms.sorting.SelectionSort;
 import design_patterns.implementations.decorator_implementation.HawaiianSalad;
 import design_patterns.implementations.decorator_implementation.RomanianSalad;
@@ -21,7 +22,7 @@ public class Main {
 
     public static void main(String[] args) {
         Main main = new Main();
-        main.testStrategyPattern();
+        main.testLinearSearch();
     }
 
     public void testBinarySearch() {
@@ -111,6 +112,12 @@ public class Main {
         SelectionSort selectionSort = new SelectionSort();
         System.out.println("ArrayList Before : " + testInput);
         System.out.println("ArrayList Sorted : " + selectionSort.sort(testInput));
+    }
+
+    public void testLinearSearch() {
+        int[] test = new int[]{-21, -1, 1, 3, 4, 5, 6, 10, 11};
+        LinearSearch linearSearch = new LinearSearch();
+        System.out.println(linearSearch.search(test, 150));
     }
 
 }
