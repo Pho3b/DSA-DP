@@ -120,7 +120,7 @@ public class App {
     public void testLinearSearch() {
         int[] test = new int[]{-21, -1, 1, 3, 4, 5, 6, 10, 11};
         LinearSearch linearSearch = new LinearSearch();
-        System.out.println(linearSearch.search(test, 6));
+        System.out.println(linearSearch.search(test, 11));
     }
 
     public void testJumpSearch() {
