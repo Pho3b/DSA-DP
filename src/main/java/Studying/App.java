@@ -25,7 +25,7 @@ public class App {
 
     public static void main(String[] args) {
         App main = new App();
-        main.testLinearSearch();
+        main.testJumpSearch();
     }
 
     public void testBinarySearch() {
@@ -124,9 +124,9 @@ public class App {
     }
 
     public void testJumpSearch() {
-        int[] test = new int[]{-21, -1, 1, 3, 4, 5, 6, 10, 11, 150, 154, 155, 189, 190, 210, 211, 212, 301, 390, 400};
+        int[] test = new int[]{-21, -1, 1, 3, 4, 5, 6, 10, 11, 123, 1000, 1002};
         JumpSearch jumpSearch = new JumpSearch();
-        System.out.println(jumpSearch.search(test, -1));
+        System.out.println(jumpSearch.search(test, 100));
     }
 
 }
