@@ -11,7 +11,7 @@ public class BubbleSort {
             swapped = false;
 
             for (int i = 0; i < inputArr.size(); i++) {
-                if ( i != inputArr.size() - 1 && inputArr.get(i) > inputArr.get(i + 1)) {
+                if (i != inputArr.size() - 1 && inputArr.get(i) > inputArr.get(i + 1)) {
                     swap(i, inputArr);
                     swapped = true;
                 }
