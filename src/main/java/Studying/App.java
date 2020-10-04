@@ -23,7 +23,7 @@ import java.util.ArrayList;
 public class App {
 
     public static void main(String[] args) {
-        System.out.print("Nothin in main");
+        System.out.print("Nothing in main");
     }
 
     public void testStrategyPattern() {
