@@ -1,7 +1,5 @@
 package Studying;
 
-import Studying.algorithms.searching.JumpSearch;
-import Studying.algorithms.searching.LinearSearch;
 import Studying.algorithms.sorting.SelectionSort;
 import Studying.design_patterns.implementations.decorator_implementation.HawaiianSalad;
 import Studying.design_patterns.implementations.decorator_implementation.RomanianSalad;
