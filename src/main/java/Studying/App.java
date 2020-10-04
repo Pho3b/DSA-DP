@@ -1,6 +1,5 @@
 package Studying;
 
-import Studying.algorithms.searching.BinarySearch;
 import Studying.algorithms.searching.JumpSearch;
 import Studying.algorithms.searching.LinearSearch;
 import Studying.algorithms.sorting.SelectionSort;
@@ -24,8 +23,7 @@ import java.util.ArrayList;
 public class App {
 
     public static void main(String[] args) {
-        App main = new App();
-        main.testJumpSearch();
+        System.out.print("Nothin in main");
     }
 
     public void testStrategyPattern() {
@@ -108,18 +106,6 @@ public class App {
         SelectionSort selectionSort = new SelectionSort();
         System.out.println("ArrayList Before : " + testInput);
         System.out.println("ArrayList Sorted : " + selectionSort.sort(testInput));
-    }
-
-    public void testLinearSearch() {
-        int[] test = new int[]{-21, -1, 1, 3, 4, 5, 6, 10, 11};
-        LinearSearch linearSearch = new LinearSearch();
-        System.out.println(linearSearch.search(test, 11));
-    }
-
-    public void testJumpSearch() {
-        int[] test = new int[]{-21, -1, 1, 3, 4, 5, 6, 10, 11, 123, 1000, 1002};
-        JumpSearch jumpSearch = new JumpSearch();
-        System.out.println(jumpSearch.search(test, 100));
     }
 
 }
