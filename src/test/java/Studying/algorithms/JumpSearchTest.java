@@ -9,30 +9,30 @@ public class JumpSearchTest {
 
     @Test
     public void foundElementTest() {
-        org.junit.Assert.assertEquals(this.jumpSearch.search(UtilityClass.defaultIntegerOrderedTestArr, -21), 0);
+        org.junit.Assert.assertEquals(this.jumpSearch.search(UtilityClass.orderedIntegerTestArray, -21), 0);
     }
 
     @Test
     public void notFoundElementTest() {
-        org.junit.Assert.assertEquals(this.jumpSearch.search(UtilityClass.defaultIntegerOrderedTestArr, 100), -1);
+        org.junit.Assert.assertEquals(this.jumpSearch.search(UtilityClass.orderedIntegerTestArray, 100), -1);
     }
 
     @Test
     public void foundLastElementTest() {
-        org.junit.Assert.assertEquals(this.jumpSearch.search(UtilityClass.defaultIntegerOrderedTestArr,
+        org.junit.Assert.assertEquals(this.jumpSearch.search(UtilityClass.orderedIntegerTestArray,
                 1002),
-                (UtilityClass.defaultIntegerOrderedTestArr.length - 1));
+                (UtilityClass.orderedIntegerTestArray.length - 1));
     }
 
     @Test
     public void foundFirstElementTest() {
-        org.junit.Assert.assertEquals(this.jumpSearch.search(UtilityClass.defaultIntegerOrderedTestArr,
+        org.junit.Assert.assertEquals(this.jumpSearch.search(UtilityClass.orderedIntegerTestArray,
                 -21),
                 0);
     }
 
     @Test
     public void jumpSearchIncorrectTest() {
-        org.junit.Assert.assertNotEquals(this.jumpSearch.search(UtilityClass.defaultIntegerOrderedTestArr, 3), 11);
+        org.junit.Assert.assertNotEquals(this.jumpSearch.search(UtilityClass.orderedIntegerTestArray, 3), 11);
     }
 }

@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class BinarySearch {
 
-    public int[] search(int[] inputArr, int toSearch) {
+    public int search(int[] inputArr, int toSearch) {
         Arrays.sort(inputArr); // Binary works only on sorted arrays
         int top = inputArr.length - 1;
         int min = 0;
@@ -12,7 +12,7 @@ public class BinarySearch {
 
         while (min <= top) {
             if (toSearch == inputArr[mid]) {
-                return new int[]{inputArr[mid], mid};
+                return mid;
             } else if (toSearch < inputArr[mid]) {
                 top = mid - 1;
             } else {
@@ -22,6 +22,6 @@ public class BinarySearch {
             mid = (min + top) / 2;
         }
 
-        return new int[]{-1, -1};
+        return -1;
     }
 }

@@ -28,13 +28,6 @@ public class App {
         main.testJumpSearch();
     }
 
-    public void testBinarySearch() {
-        BinarySearch binarySearch = new BinarySearch();
-        int[] test = new int[]{-21, -1, 1, 3, 4, 5, 6, 10, 11};
-        int[] res = binarySearch.search(test, 11);
-        System.out.println("Found value : " + res[0] + " at index " + res[1]);
-    }
-
     public void testStrategyPattern() {
         UserCharacter userCharacter = new UserCharacter();
 
