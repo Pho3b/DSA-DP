@@ -12,6 +12,8 @@ import Studying.design_patterns.implementations.observer_implementation.Foul;
 import Studying.design_patterns.implementations.observer_implementation.Goal;
 import Studying.design_patterns.implementations.observer_implementation.MatchScores;
 import Studying.algorithms.sorting.BubbleSort;
+import Studying.design_patterns.implementations.singleton_implementation.SecondSingletonImplementation;
+import Studying.design_patterns.implementations.singleton_implementation.SingletonImplementation;
 import Studying.design_patterns.implementations.strategy_implementation.UserCharacter;
 import Studying.design_patterns.strategy.auto_attack_concrete_implementations.MeleeAutoAttack;
 import Studying.design_patterns.strategy.auto_attack_concrete_implementations.RangedAutoAttack;
@@ -21,7 +23,14 @@ import java.util.ArrayList;
 public class App {
 
     public static void main(String[] args) {
-        System.out.print("Nothing in main");
+        String osName = System.getProperty("os.name").toLowerCase();
+        System.out.println("This is your current operating system: " + osName);
+
+        SingletonImplementation singletonImplementation = new SingletonImplementation();
+        SecondSingletonImplementation secondSingletonImplementation = new SecondSingletonImplementation();
+        secondSingletonImplementation.start();
+        singletonImplementation.printSingletonData();
+
     }
 
     public void testStrategyPattern() {

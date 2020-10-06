@@ -5,7 +5,7 @@ package Studying.design_patterns.observer;
  */
 public interface Observable {
     /**
-     * This variable is useful when you need to need to regulate
+     * This variable is useful when you need to regulate
      * when to actually update the Observers
      */
     boolean isChanged = false;
