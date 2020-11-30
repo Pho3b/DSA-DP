@@ -23,6 +23,8 @@ public class App {
     public static void main(String[] args) {
         String osName = System.getProperty("os.name").toLowerCase();
         System.out.println("This is your current operating system: " + osName);
+
+
     }
 
     public void testStrategyPattern() {
