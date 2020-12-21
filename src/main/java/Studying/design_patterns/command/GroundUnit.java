@@ -23,6 +23,10 @@ public class GroundUnit {
         System.out.println("Moved to the target");
     }
 
+    public void turnBackFromTarget() {
+        System.out.println("Turning back from target...");
+    }
+
     public String getCurrentWeapon() {
         return this.weapons[currentWeapon];
     }

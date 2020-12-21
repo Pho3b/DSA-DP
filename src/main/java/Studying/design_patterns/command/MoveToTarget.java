@@ -15,6 +15,6 @@ public class MoveToTarget implements UnitCommand {
 
     @Override
     public void undo() {
-        System.out.println("Not implemented");
+        this.groundUnit.turnBackFromTarget();
     }
 }

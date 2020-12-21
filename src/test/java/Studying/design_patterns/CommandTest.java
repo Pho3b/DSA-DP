@@ -18,17 +18,18 @@ public class CommandTest {
         MoveToTarget moveToTarget = new MoveToTarget(groundUnit);
 
         // Adding commands the the player commands list
-        Player player = new Player();
-        player.takeUnitCommand(switchWeapon);
-        player.takeUnitCommand(switchWeapon);
-        player.takeUnitCommand(moveToTarget);
-        player.takeUnitCommand(switchWeapon);
+        switchWeapon.execute();
+        switchWeapon.execute();
+        switchWeapon.execute();
+        switchWeapon.undo();
+        moveToTarget.execute();
+        moveToTarget.undo();
+        switchWeapon.execute();
 
         // Executing them here.
-        player.executeGroundUnitCommands();
-        player.undoLastGroundUnitCommand();
+        // player.executeGroundUnitCommands();
 
-        org.junit.Assert.assertEquals(groundUnit.getCurrentWeapon(), "spear");
+        org.junit.Assert.assertEquals(groundUnit.getCurrentWeapon(), "sword");
     }
 
 }
