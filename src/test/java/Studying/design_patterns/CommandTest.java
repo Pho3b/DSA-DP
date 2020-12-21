@@ -2,7 +2,6 @@ package Studying.design_patterns;
 
 import Studying.design_patterns.command.GroundUnit;
 import Studying.design_patterns.command.MoveToTarget;
-import Studying.design_patterns.command.Player;
 import Studying.design_patterns.command.SwitchWeapon;
 import org.junit.jupiter.api.Test;
 
