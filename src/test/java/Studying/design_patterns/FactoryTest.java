@@ -5,10 +5,11 @@ import Studying.design_patterns.factory.fruits.Fruit;
 import org.junit.jupiter.api.Test;
 
 public class FactoryTest {
-    FruitFactory fruitFactory = new FruitFactory();
 
     @Test
     public void factoryGeneratedObjectNameTest() {
+        FruitFactory fruitFactory = new FruitFactory();
+
         Fruit fruit = fruitFactory.generateFruit("Cherry");
         org.junit.Assert.assertEquals(fruit.getVitaminsQuantity(), 10);
 
