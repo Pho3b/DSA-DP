@@ -3,7 +3,7 @@ package Studying.design_patterns.command;
 public class GroundUnit {
     private final String[] weapons = new String[]{"sword", "bow", "spear"};
     private int currentWeapon = 0;
-    private boolean logsEnabled = false;
+    private final boolean logsEnabled = false;
 
 
     public void switchWeapon() {
