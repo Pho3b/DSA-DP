@@ -17,7 +17,8 @@ public class JumpSearch {
             counter += jumpSpan;
         }
 
-        for (int i = (counter - (jumpSpan - 1)); i < inputArr.length; i++) { // We start the linear search of length (counter - 1)
+        // We start the linear search of length (counter - 1)
+        for (int i = (counter - (jumpSpan - 1)); i < inputArr.length; i++) {
             // System.out.println("linear searching: " + inputArr[i]);
             if (toSearch == inputArr[i]) {
                 return i;
