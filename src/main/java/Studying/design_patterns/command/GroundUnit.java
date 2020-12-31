@@ -1,9 +1,14 @@
 package Studying.design_patterns.command;
 
+/**
+ * This class will be the "RECEIVER"  in the context of the Command design pattern.
+ * Receiver contains actual method implementations.
+ */
 public class GroundUnit {
     private final String[] weapons = new String[]{"sword", "bow", "spear"};
     private int currentWeapon = 0;
     private final boolean logsEnabled = false;
+    //TODO: Implement a commands history
 
 
     public void switchWeapon() {

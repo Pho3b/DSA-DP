@@ -5,7 +5,10 @@ import Studying.design_patterns.command.MoveToTarget;
 import Studying.design_patterns.command.SwitchWeapon;
 import org.junit.jupiter.api.Test;
 
-
+/**
+ * Despite this being a test case this class  will be
+ * treated as the "SENDER" in the context of the Command Design pattern.
+ */
 public class CommandTest {
 
     @Test
