@@ -1,6 +1,7 @@
 package Studying.design_patterns.adapter;
 
 /**
+ * 'ADAPTER'
  * Here i want to make it possible to run a sony game on a NintendoConsoleEmulator.
  * Adapting all the needed SonyGame methods to make it run on a Nintendo Emulator :)
  */

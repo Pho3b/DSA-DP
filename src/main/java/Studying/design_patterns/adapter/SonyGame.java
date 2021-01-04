@@ -1,5 +1,8 @@
 package Studying.design_patterns.adapter;
 
+/**
+ * This is the 'ADAPTEE' in the scope of the Adapter design pattern.
+ */
 public class SonyGame {
     String name;
     String consoleVersion = "Sony";
