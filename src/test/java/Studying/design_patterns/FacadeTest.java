@@ -20,7 +20,6 @@ public class FacadeTest {
         heatedSwimmingPoolFacade.setRomanticAtmosphere();
         org.junit.Assert.assertEquals(hydroMassageEngine.getIntensityValue(), 5);
         org.junit.Assert.assertEquals(light.getLightColor(), "purple");
-
     }
 
     @Test
