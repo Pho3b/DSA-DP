@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class JumpSearch {
 
     public int search(int[] inputArr, int toSearch) {
-        Arrays.sort(inputArr);  // Works only with sorted arrays
+        Arrays.sort(inputArr);
         int jumpSpan = (int) Math.sqrt(inputArr.length);    // Best jump size.
         int counter = 0;
 

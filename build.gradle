@@ -24,6 +24,7 @@ dependencies {
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:29.0-jre'
     implementation 'org.junit.jupiter:junit-jupiter:5.4.2'
+    implementation 'org.jetbrains:annotations:19.0.0'
 
     // Use JUnit test framework
     testImplementation 'junit:junit:4.13'

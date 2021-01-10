@@ -1,5 +1,6 @@
 package Studying;
 
+import Studying.algorithms.sorting.InsertionSort;
 import Studying.algorithms.sorting.SelectionSort;
 import Studying.design_patterns.implementations.decorator_implementation.HawaiianSalad;
 import Studying.design_patterns.implementations.decorator_implementation.RomanianSalad;
@@ -11,7 +12,6 @@ import Studying.design_patterns.decorator.salad_decorators.Oil;
 import Studying.design_patterns.implementations.observer_implementation.Foul;
 import Studying.design_patterns.implementations.observer_implementation.Goal;
 import Studying.design_patterns.implementations.observer_implementation.MatchScores;
-import Studying.algorithms.sorting.BubbleSort;
 import Studying.design_patterns.implementations.strategy_implementation.UserCharacter;
 import Studying.design_patterns.strategy.auto_attack_concrete_implementations.MeleeAutoAttack;
 import Studying.design_patterns.strategy.auto_attack_concrete_implementations.RangedAutoAttack;
@@ -23,8 +23,6 @@ public class App {
     public static void main(String[] args) {
         String osName = System.getProperty("os.name").toLowerCase();
         System.out.println("This is your current operating system: " + osName);
-
-
     }
 
     public void testStrategyPattern() {
@@ -77,10 +75,7 @@ public class App {
         matchScores.notifyObservers();
     }
 
-    /**
-     * Bubble Sort algorithm demonstration
-     */
-    public void testBubbleSort() {
+    public void genericTest() {
         ArrayList<Integer> testInput = new ArrayList<>(10);
         testInput.add(127);
         testInput.add(12);
@@ -93,9 +88,9 @@ public class App {
         testInput.add(76);
         testInput.add(76);
 
-        BubbleSort bs = new BubbleSort();
+        InsertionSort insertionSort = new InsertionSort();
         System.out.println("ArrayList Before : " + testInput);
-        System.out.println("ArrayList Sorted : " + bs.sort(testInput));
+        System.out.println("ArrayList Sorted : " +  insertionSort.sort(testInput));
     }
 
     public void testSelectionSort() {
