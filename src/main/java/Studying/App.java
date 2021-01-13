@@ -92,16 +92,4 @@ public class App {
         System.out.println("ArrayList Before : " + testInput);
         System.out.println("ArrayList Sorted : " +  insertionSort.sort(testInput));
     }
-
-    public void testSelectionSort() {
-        ArrayList<Integer> testInput = new ArrayList<>(10);
-        testInput.add(127);
-        testInput.add(12);
-        testInput.add(-43);
-
-        SelectionSort selectionSort = new SelectionSort();
-        System.out.println("ArrayList Before : " + testInput);
-        System.out.println("ArrayList Sorted : " + selectionSort.sort(testInput));
-    }
-
 }
