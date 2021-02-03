@@ -1,7 +1,6 @@
 package Studying;
 
 import Studying.algorithms.sorting.InsertionSort;
-import Studying.algorithms.sorting.SelectionSort;
 import Studying.design_patterns.implementations.decorator_implementation.HawaiianSalad;
 import Studying.design_patterns.implementations.decorator_implementation.RomanianSalad;
 import Studying.design_patterns.implementations.decorator_implementation.Salad;
