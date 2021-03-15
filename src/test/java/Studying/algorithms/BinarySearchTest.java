@@ -25,9 +25,7 @@ public class BinarySearchTest {
 
     @Test
     public void foundFirstElementTest() {
-        org.junit.Assert.assertEquals(this.binarySearch.search(UtilityClass.orderedIntegerTestArray,
-                -21),
-                0);
+        org.junit.Assert.assertEquals(this.binarySearch.search(UtilityClass.orderedIntegerTestArray, -21),0);
     }
 
     @Test

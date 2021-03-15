@@ -1,7 +1,6 @@
 package Studying.design_patterns.iterator.iterators;
 
 import Studying.design_patterns.iterator.collections.BugItem;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.Arrays;
 
@@ -32,6 +31,6 @@ public class FlyingBugIterator implements Iterator {
 
     @Override
     public void remove() {
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException();
     }
 }

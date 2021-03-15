@@ -31,6 +31,6 @@ public class GroundedBugsIterator implements Iterator {
 
     @Override
     public void remove() {
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException();
     }
 }
