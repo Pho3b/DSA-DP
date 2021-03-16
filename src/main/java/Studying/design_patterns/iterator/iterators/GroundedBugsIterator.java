@@ -1,7 +1,6 @@
 package Studying.design_patterns.iterator.iterators;
 
 import Studying.design_patterns.iterator.collections.BugItem;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
 
