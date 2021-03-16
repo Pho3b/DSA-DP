@@ -4,6 +4,7 @@ import Studying.design_patterns.adapter.NintendoConsolesEmulator;
 import Studying.design_patterns.adapter.NintendoGame;
 import Studying.design_patterns.adapter.SonyGame;
 import Studying.design_patterns.adapter.SonyGameAdapter;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class AdapterTest {
@@ -13,8 +14,8 @@ public class AdapterTest {
         NintendoConsolesEmulator nintendoEmulator = new NintendoConsolesEmulator();
         NintendoGame pikminGame = new NintendoGame("Pikmin");
 
-        org.junit.Assert.assertTrue(nintendoEmulator.StartGame(pikminGame));
-        org.junit.Assert.assertTrue(nintendoEmulator.QuitGame(pikminGame));
+        Assertions.assertTrue(nintendoEmulator.StartGame(pikminGame));
+        Assertions.assertTrue(nintendoEmulator.QuitGame(pikminGame));
     }
 
     @Test
@@ -23,8 +24,8 @@ public class AdapterTest {
         SonyGame metalGearSolid = new SonyGame("Metal Gear solid");
         SonyGameAdapter metalGearSolidAdapter = new SonyGameAdapter(metalGearSolid);
 
-        org.junit.Assert.assertTrue(nintendoEmulator.StartGame(metalGearSolidAdapter));
-        org.junit.Assert.assertTrue(nintendoEmulator.PauseGame(metalGearSolidAdapter));
-        org.junit.Assert.assertTrue(nintendoEmulator.QuitGame(metalGearSolidAdapter));
+        Assertions.assertTrue(nintendoEmulator.StartGame(metalGearSolidAdapter));
+        Assertions.assertTrue(nintendoEmulator.PauseGame(metalGearSolidAdapter));
+        Assertions.assertTrue(nintendoEmulator.QuitGame(metalGearSolidAdapter));
     }
 }

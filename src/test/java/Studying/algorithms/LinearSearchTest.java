@@ -1,6 +1,7 @@
 package Studying.algorithms;
 
 import Studying.algorithms.searching.LinearSearch;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class LinearSearchTest {
@@ -9,16 +10,16 @@ public class LinearSearchTest {
 
     @Test
     public void linearSearchFoundElementTest() {
-        org.junit.Assert.assertEquals(this.linearSearch.search(testArr, -21), 0);
+        Assertions.assertEquals(this.linearSearch.search(testArr, -21), 0);
     }
 
     @Test
     public void linearSearchNotFoundElementTest() {
-        org.junit.Assert.assertEquals(this.linearSearch.search(testArr, 100), -1);
+        Assertions.assertEquals(this.linearSearch.search(testArr, 100), -1);
     }
 
     @Test
     public void linearSearchIncorrectTest() {
-        org.junit.Assert.assertNotEquals(this.linearSearch.search(testArr, 3), 11);
+        Assertions.assertNotEquals(this.linearSearch.search(testArr, 3), 11);
     }
 }

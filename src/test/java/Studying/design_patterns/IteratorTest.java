@@ -4,6 +4,7 @@ import Studying.design_patterns.iterator.Client;
 import Studying.design_patterns.iterator.collections.BugCollection;
 import Studying.design_patterns.iterator.collections.FlyingBugsCollection;
 import Studying.design_patterns.iterator.collections.GroundedBugsCollection;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class IteratorTest {
@@ -15,6 +16,6 @@ public class IteratorTest {
 
         client.printBugCollections();
 
-        org.junit.Assert.assertTrue(true);
+        Assertions.assertTrue(true);
     }
 }

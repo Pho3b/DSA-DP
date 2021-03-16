@@ -2,6 +2,7 @@ package Studying.algorithms;
 
 import Studying.UtilityClass;
 import Studying.algorithms.sorting.SelectionSort;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ public class SelectionSortTest {
         selectionSort.sort(temp);
 
         for (int i = 0; i < temp.size() - 1; i++) {
-            org.junit.Assert.assertTrue(temp.get(i) < temp.get(i + 1));
+            Assertions.assertTrue(temp.get(i) < temp.get(i + 1));
         }
     }
 }

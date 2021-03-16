@@ -3,6 +3,7 @@ package Studying.design_patterns;
 import Studying.design_patterns.command.GroundUnit;
 import Studying.design_patterns.command.MoveToTarget;
 import Studying.design_patterns.command.SwitchWeapon;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -31,7 +32,7 @@ public class CommandTest {
         // Executing them here.
         // player.executeGroundUnitCommands();
 
-        org.junit.Assert.assertEquals(groundUnit.getCurrentWeapon(), "sword");
+        Assertions.assertEquals(groundUnit.getCurrentWeapon(), "sword");
     }
 
 }

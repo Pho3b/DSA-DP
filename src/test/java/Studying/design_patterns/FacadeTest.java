@@ -4,6 +4,7 @@ import Studying.design_patterns.facade.HeatedSwimmingPoolFacade;
 import Studying.design_patterns.implementations.facade_implementation.HeatingEngine;
 import Studying.design_patterns.implementations.facade_implementation.HydroMassageEngine;
 import Studying.design_patterns.implementations.facade_implementation.Light;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class FacadeTest {
@@ -18,14 +19,14 @@ public class FacadeTest {
     @Test
     public void correctRomanticSettingsTest() {
         heatedSwimmingPoolFacade.setRomanticAtmosphere();
-        org.junit.Assert.assertEquals(hydroMassageEngine.getIntensityValue(), 5);
-        org.junit.Assert.assertEquals(light.getLightColor(), "purple");
+        Assertions.assertEquals(hydroMassageEngine.getIntensityValue(), 5);
+        Assertions.assertEquals(light.getLightColor(), "purple");
     }
 
     @Test
     public void correctMuscleReliefSettingsTest() {
         heatedSwimmingPoolFacade.activateMuscleReliefSetting();
-        org.junit.Assert.assertEquals(hydroMassageEngine.getIntensityValue(), 50);
-        org.junit.Assert.assertEquals(heatingEngine.getTemperature(), 20);
+        Assertions.assertEquals(hydroMassageEngine.getIntensityValue(), 50);
+        Assertions.assertEquals(heatingEngine.getTemperature(), 20);
     }
 }
