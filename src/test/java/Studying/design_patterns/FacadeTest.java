@@ -5,7 +5,7 @@ import Studying.design_patterns.implementations.facade_implementation.HeatingEng
 import Studying.design_patterns.implementations.facade_implementation.HydroMassageEngine;
 import Studying.design_patterns.implementations.facade_implementation.Light;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 public class FacadeTest {
     // Instantiating single components
