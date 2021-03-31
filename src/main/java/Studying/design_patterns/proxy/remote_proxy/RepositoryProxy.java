@@ -1,27 +1,30 @@
 package Studying.design_patterns.proxy.remote_proxy;
 
-import java.rmi.Naming;
-import java.rmi.RemoteException;
-
+/**
+ * Some of the most common Proxy patterns:
+ * - Remote Proxy
+ * - Caching Proxy
+ * - Security Proxy
+ */
 public class RepositoryProxy implements CompanyRepository {
+    CompanyRepository remoteRepo;
 
-    public static void main(String[] args) {
-        try {
-            CompanyRepository repoProxy = (CompanyRepository) Naming.lookup("rmi://localhost:5000/remoteRepo");
-            System.out.println(repoProxy.pullNewCode("RMI remote Repository"));
-            System.out.println(repoProxy.pushCode("My first commit"));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    /**
+     * The remoteRepo object could be a computationally expensive one to retrieve,
+     * or a very time consuming one either.
+     * This proxy object can accomplish various tasks depending on the situation.
+     */
+    public RepositoryProxy() {
+        this.remoteRepo = new RemoteRepository();
     }
 
     @Override
-    public String pullNewCode(String repoName) throws RemoteException {
-        return null;
+    public String pullNewCode(String repoName) {
+        return this.remoteRepo.pullNewCode(repoName);
     }
 
     @Override
-    public String pushCode(String commitName) throws RemoteException {
-        return null;
+    public String pushCode(String commitName) {
+        return this.remoteRepo.pushCode(commitName);
     }
 }
