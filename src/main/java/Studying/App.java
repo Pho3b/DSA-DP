@@ -24,10 +24,6 @@ public class App {
         System.out.println("This is your current operating system: " + osName);
     }
 
-    public void testProxyDesignPattern() {
-
-    }
-
     public void testStrategyPattern() {
         UserCharacter userCharacter = new UserCharacter();
 
