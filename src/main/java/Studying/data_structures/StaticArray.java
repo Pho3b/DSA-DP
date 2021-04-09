@@ -12,6 +12,8 @@ import java.lang.reflect.Array;
  * Appending - N/A
  * Deletion - N/A
  */
+@SuppressWarnings("unchecked")
+
 public class StaticArray {
     private final int[] staticIntegerArray = new int[]{12, 34, 54, 12, 67, 2};
     private final float[] staticFloatArray = new float[5];
@@ -33,7 +35,6 @@ public class StaticArray {
      *
      * @return T[]
      */
-    @SuppressWarnings("unchecked")
     public <T> T[] retrieveStaticArray() {
         switch (this.type.toLowerCase()) {
             case "integer":

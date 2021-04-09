@@ -1,6 +1,7 @@
 package Studying;
 
 import Studying.algorithms.sorting.InsertionSort;
+import Studying.data_structures.DynamicArray;
 import Studying.design_patterns.implementations.decorator_implementation.HawaiianSalad;
 import Studying.design_patterns.implementations.decorator_implementation.RomanianSalad;
 import Studying.design_patterns.implementations.decorator_implementation.Salad;
@@ -22,6 +23,17 @@ public class App {
     public static void main(String[] args) {
         String osName = System.getProperty("os.name").toLowerCase();
         System.out.println("This is your current operating system: " + osName);
+
+        DynamicArray<Integer> myArr = new DynamicArray<Integer>(2);
+        myArr.push(12);
+        myArr.push(13);
+        myArr.push(26);
+
+        myArr.print();
+
+        myArr.pop();
+
+        myArr.print();
     }
 
     public void testStrategyPattern() {
