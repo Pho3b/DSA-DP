@@ -1,4 +1,4 @@
-package Studying.data_structures;
+package Studying.data_structures.array;
 
 /*
  * Access - O(1)
@@ -101,8 +101,7 @@ public class DynamicArray<E> {
             sb.append(this.concreteArray[i]).append(",");
         }
 
-        sb.deleteCharAt(sb.length() - 1);
-        sb.append("]");
+        sb.deleteCharAt(sb.length() - 1).append("]");
         System.out.print(sb);
     }
 

@@ -1,4 +1,4 @@
-package Studying.data_structures;
+package Studying.data_structures.array;
 
 import java.lang.reflect.Array;
 

@@ -1,5 +1,6 @@
 package Studying.data_structures;
 
+import Studying.data_structures.array.DynamicArray;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
