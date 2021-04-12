@@ -1,16 +1,13 @@
 package Studying.data_structures.linked_list;
 
-public class SinglyLinkedList<T> {
-    Node head = null;
-    int size = 0;
-
+public class SinglyLinkedList<T> extends LinkedList<T> {
 
     /**
      * Node item class,only accessible from the LinkedListClass
      */
-    private class Node {
+    public class Node {
         public T data;
-        public Node next = null;
+        public Node next;
 
         public Node(T data) {
             this.data = data;
@@ -32,8 +29,7 @@ public class SinglyLinkedList<T> {
      */
     public boolean add(T data) {
         if (this.head == null) {
-            this.head = new Node(data);
-            this.size++;
+            this.addFirst(data);
             return true;
         }
 
@@ -137,43 +133,28 @@ public class SinglyLinkedList<T> {
     }
 
     /**
-     * Returns and also removes the object at the given index of the LinkedList.
+     * Removes the object at the given index of the LinkedList.
      *
      * @param index int
-     * @return T
      * @throws IndexOutOfBoundsException out of range index
      */
-    public T remove(int index) throws IndexOutOfBoundsException {
+    public void remove(int index) throws IndexOutOfBoundsException {
         Node currentNode = this.head;
+        Node prevNode = null;
 
         for (int i = 0; i < index; i++) {
             if (currentNode == null) {
                 throw new IndexOutOfBoundsException();
             }
 
+            prevNode = currentNode;
             currentNode = currentNode.next;
         }
 
-        T res = currentNode.data;
+        assert prevNode != null;
+
+        prevNode.next = currentNode.next;
         currentNode = null; // Unsetting the removed element
         this.size--;
-
-        return res;
-    }
-
-    /**
-     * Prints the LinkedList in a suitable format
-     */
-    public void print() {
-        Node node = this.head;
-        StringBuilder sb = new StringBuilder(this.size);
-        sb.append("[");
-
-        while (node.next != null) {
-            sb.append(node.data).append(",");
-        }
-
-        sb.deleteCharAt(sb.length() - 1).append("]");
-        System.out.print(sb);
     }
 }

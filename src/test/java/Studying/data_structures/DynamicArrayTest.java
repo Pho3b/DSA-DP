@@ -8,7 +8,7 @@ public class DynamicArrayTest {
 
     @Test
     public void correctBasicArrayActionsTest() {
-        DynamicArray<Integer> myArr = new DynamicArray<Integer>(2);
+        DynamicArray<Integer> myArr = new DynamicArray<>(2);
         myArr.push(12);
         myArr.push(13);
         myArr.push(26);
@@ -20,7 +20,7 @@ public class DynamicArrayTest {
 
     @Test
     public void incorrectSizeTest() {
-        DynamicArray<Integer> myArr = new DynamicArray<Integer>(5);
+        DynamicArray<Integer> myArr = new DynamicArray<>(5);
         myArr.push(100);
         myArr.push(22);
         myArr.push(16);
