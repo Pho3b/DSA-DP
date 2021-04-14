@@ -72,14 +72,11 @@ public class SinglyLinkedList<T> {
      * @param data  T
      */
     public void insert(int index, T data) throws IndexOutOfBoundsException {
+        checkIfIndexIsViable(index);
         Node currentNode = this.head;
         Node prevNode = null;
 
         for (int i = 0; i < index; i++) {
-            if (currentNode == null) {
-                throw new IndexOutOfBoundsException();
-            }
-
             prevNode = currentNode;
             currentNode = currentNode.next;
         }
@@ -102,13 +99,10 @@ public class SinglyLinkedList<T> {
      * @throws IndexOutOfBoundsException out of range index
      */
     public T get(int index) throws IndexOutOfBoundsException {
+        checkIfIndexIsViable(index);
         Node currentNode = this.head;
 
         for (int i = 0; i < index; i++) {
-            if (currentNode == null) {
-                throw new IndexOutOfBoundsException();
-            }
-
             currentNode = currentNode.next;
         }
 
@@ -122,13 +116,10 @@ public class SinglyLinkedList<T> {
      * @param data  T
      */
     public void set(int index, T data) throws IndexOutOfBoundsException {
+        checkIfIndexIsViable(index);
         Node currentNode = this.head;
 
         for (int i = 0; i < index; i++) {
-            if (currentNode == null) {
-                throw new IndexOutOfBoundsException();
-            }
-
             currentNode = currentNode.next;
         }
 
@@ -142,14 +133,11 @@ public class SinglyLinkedList<T> {
      * @throws IndexOutOfBoundsException out of range index
      */
     public void remove(int index) throws IndexOutOfBoundsException {
+        checkIfIndexIsViable(index);
         Node currentNode = this.head;
         Node prevNode = null;
 
         for (int i = 0; i < index; i++) {
-            if (currentNode == null) {
-                throw new IndexOutOfBoundsException();
-            }
-
             prevNode = currentNode;
             currentNode = currentNode.next;
         }
@@ -190,5 +178,14 @@ public class SinglyLinkedList<T> {
      */
     public int size() {
         return this.size;
+    }
+
+    /**
+     * Throws an IndexOutOfBoundsException if the given index is out of the list boundaries
+     *
+     * @param index int
+     */
+    private void checkIfIndexIsViable(int index) {
+        if (index > this.size - 1 || index < 0) throw new IndexOutOfBoundsException();
     }
 }

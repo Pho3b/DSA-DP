@@ -87,14 +87,11 @@ public class DoublyLInkedList<T> {
      * @param data  T
      */
     public void insert(int index, T data) throws IndexOutOfBoundsException {
+        this.checkIfIndexIsViable(index);
         Node nextNode = this.head;
         Node currentNode = null;
 
         for (int i = 0; i < index; i++) {
-            if (nextNode == null) {
-                throw new IndexOutOfBoundsException();
-            }
-
             currentNode = nextNode;
             nextNode = currentNode.next;
         }
@@ -120,8 +117,7 @@ public class DoublyLInkedList<T> {
      * @throws IndexOutOfBoundsException out of range index
      */
     public T get(int index) throws IndexOutOfBoundsException {
-        if (index > this.size - 1 || index < 0) throw new IndexOutOfBoundsException();
-
+        checkIfIndexIsViable(index);
         Node currentNode;
 
         if (index < this.size / 2) {
@@ -149,14 +145,11 @@ public class DoublyLInkedList<T> {
      * @throws IndexOutOfBoundsException out of range index
      */
     public void remove(int index) throws IndexOutOfBoundsException {
+        checkIfIndexIsViable(index);
         Node currentNode = this.head;
         Node prevNode = null;
 
         for (int i = 0; i < index; i++) {
-            if (currentNode == null) {
-                throw new IndexOutOfBoundsException();
-            }
-
             prevNode = currentNode;
             currentNode = currentNode.next;
         }
@@ -204,6 +197,15 @@ public class DoublyLInkedList<T> {
      */
     public int size() {
         return this.size;
+    }
+
+    /**
+     * Throws an IndexOutOfBoundsException if the given index is out of the list boundaries
+     *
+     * @param index int
+     */
+    private void checkIfIndexIsViable(int index) {
+        if (index > this.size - 1 || index < 0) throw new IndexOutOfBoundsException();
     }
 
     /**
