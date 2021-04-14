@@ -1,6 +1,6 @@
 package Studying;
 
-import Studying.data_structures.linked_list.SinglyLinkedList;
+import Studying.data_structures.linked_list.DoublyLInkedList;
 import Studying.design_patterns.implementations.decorator_implementation.HawaiianSalad;
 import Studying.design_patterns.implementations.decorator_implementation.RomanianSalad;
 import Studying.design_patterns.implementations.decorator_implementation.Salad;
@@ -25,18 +25,19 @@ public class App {
     }
 
     public static void genericTest() {
-        SinglyLinkedList<Integer> singlyLinkedList = new SinglyLinkedList<>();
-        singlyLinkedList.add(1);
-        singlyLinkedList.add(2);
-        singlyLinkedList.add(3);
-        singlyLinkedList.add(4);
-        singlyLinkedList.add(5);
-        singlyLinkedList.add(6);
+        DoublyLInkedList<Integer> doublyLinkedList = new DoublyLInkedList<>();
+        doublyLinkedList.addFirst(22);
+        doublyLinkedList.add(43);
+        doublyLinkedList.add(12);
+        doublyLinkedList.add(76);
+        doublyLinkedList.insert(3, 200);
 
-        singlyLinkedList.remove(4);
+        doublyLinkedList.print();
+        System.out.println("\nSize: " + doublyLinkedList.size());
 
-        singlyLinkedList.print();
-        System.out.println("\n" + singlyLinkedList.size());
+        for (int i = 0; i < doublyLinkedList.size(); i++) {
+            doublyLinkedList.get(i);
+        }
     }
 
     public void testStrategyPattern() {

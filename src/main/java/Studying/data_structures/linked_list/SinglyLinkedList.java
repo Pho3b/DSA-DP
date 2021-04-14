@@ -1,11 +1,14 @@
 package Studying.data_structures.linked_list;
 
-public class SinglyLinkedList<T> extends LinkedList<T> {
+public class SinglyLinkedList<T> {
+    Node head = null;
+    int size = 0;
+
 
     /**
-     * Node item class,only accessible from the LinkedListClass
+     * Node item class,only accessible from the singlyLinkedList class
      */
-    public class Node {
+    private class Node {
         public T data;
         public Node next;
 
@@ -156,5 +159,36 @@ public class SinglyLinkedList<T> extends LinkedList<T> {
         prevNode.next = currentNode.next;
         currentNode = null; // Unsetting the removed element
         this.size--;
+    }
+
+    /**
+     * Prints the LinkedList in a suitable format
+     * O(n)
+     */
+    public void print() {
+        if (this.size > 0) {
+            Node node = this.head;
+            StringBuilder sb = new StringBuilder(this.size);
+            sb.append("[");
+
+            while (node != null) {
+                sb.append(node.data).append(",");
+                node = node.next;
+            }
+
+            sb.deleteCharAt(sb.length() - 1).append("]");
+            System.out.println(sb);
+        } else {
+            System.out.println("[]");
+        }
+    }
+
+    /**
+     * Returns the current size of the LinkedList
+     *
+     * @return int
+     */
+    public int size() {
+        return this.size;
     }
 }
