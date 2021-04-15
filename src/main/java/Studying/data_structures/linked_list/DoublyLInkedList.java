@@ -134,7 +134,6 @@ public class DoublyLInkedList<T> {
             }
         }
 
-        debugPrintNode(currentNode);
         return currentNode.data;
     }
 
@@ -147,7 +146,7 @@ public class DoublyLInkedList<T> {
     public void remove(int index) throws IndexOutOfBoundsException {
         checkIfIndexIsViable(index);
         Node currentNode = this.head;
-        Node prevNode = null;
+        Node prevNode = currentNode;
 
         for (int i = 0; i < index; i++) {
             prevNode = currentNode;
@@ -163,8 +162,21 @@ public class DoublyLInkedList<T> {
             this.tail = prevNode;
         }
 
-        currentNode = null; // Unsetting the removed element. Faking to use the C language
+        currentNode = null; // Unsetting the removed element. Pretending to use the C language
         this.size--;
+    }
+
+    /**
+     * If the list is not empty, it removes and returns the last element of the list
+     *
+     * @return T
+     * @throws IndexOutOfBoundsException in bounds index
+     */
+    public T removeLast() throws IndexOutOfBoundsException {
+        T res = this.get(this.size - 1);
+        this.remove(this.size - 1);
+
+        return res;
     }
 
     /**
