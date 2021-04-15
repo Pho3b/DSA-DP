@@ -23,7 +23,7 @@ public class AbstractFactoryTest {
         // We could also delegate this piece of code to another object
         // that can return the correct factory based on some conditions.
         if (osName.equals("ubuntu")) {
-                guiFactory = new GnomeGuiFactory();
+            guiFactory = new GnomeGuiFactory();
         } else {
             guiFactory = new WindowsGuiFactory();
         }
