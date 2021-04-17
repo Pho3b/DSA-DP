@@ -147,9 +147,10 @@ public class DoublyLInkedList<T> {
         checkIfIndexIsViable(index);
 
         // Handling the head removing case
-        if (index == 0) {
+        if (index == 0 && this.head.next != null) {
             this.head = this.head.next;
             this.head.prev = null;
+            this.size--;
             return;
         }
 

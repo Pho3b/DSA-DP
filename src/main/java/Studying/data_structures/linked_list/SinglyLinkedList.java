@@ -138,6 +138,7 @@ public class SinglyLinkedList<T> {
         // Handling the head removing case
         if (index == 0) {
             this.head = this.head.next;
+            this.size--;
             return;
         }
 

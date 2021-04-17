@@ -4,7 +4,6 @@ import Studying.data_structures.linked_list.DoublyLInkedList;
 
 public class Stack<T> implements IStack<T> {
     private final DoublyLInkedList<T> list = new DoublyLInkedList<>();
-    private int size = 0;
 
 
     /**
@@ -14,7 +13,6 @@ public class Stack<T> implements IStack<T> {
      */
     public void push(T item) {
         this.list.add(item);
-        this.size++;
     }
 
     /**
@@ -23,7 +21,6 @@ public class Stack<T> implements IStack<T> {
      * @return T
      */
     public T pop() {
-        this.size--;
         return this.list.removeLast();
     }
 
@@ -53,7 +50,7 @@ public class Stack<T> implements IStack<T> {
      * @return boolean
      */
     public boolean isEmpty() {
-        return size <= 0;
+        return this.list.size() <= 0;
     }
 
     /**
@@ -63,7 +60,7 @@ public class Stack<T> implements IStack<T> {
      * @return int
      */
     public int size() {
-        return this.size;
+        return this.list.size();
     }
 
     /**
