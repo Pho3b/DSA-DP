@@ -134,15 +134,20 @@ public class SinglyLinkedList<T> {
      */
     public void remove(int index) throws IndexOutOfBoundsException {
         checkIfIndexIsViable(index);
+
+        // Handling the head removing case
+        if (index == 0) {
+            this.head = this.head.next;
+            return;
+        }
+
         Node currentNode = this.head;
-        Node prevNode = null;
+        Node prevNode = currentNode;
 
         for (int i = 0; i < index; i++) {
             prevNode = currentNode;
             currentNode = currentNode.next;
         }
-
-        assert prevNode != null;
 
         prevNode.next = currentNode.next;
         currentNode = null; // Unsetting the removed element

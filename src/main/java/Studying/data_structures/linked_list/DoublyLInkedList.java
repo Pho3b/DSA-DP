@@ -145,6 +145,14 @@ public class DoublyLInkedList<T> {
      */
     public void remove(int index) throws IndexOutOfBoundsException {
         checkIfIndexIsViable(index);
+
+        // Handling the head removing case
+        if (index == 0) {
+            this.head = this.head.next;
+            this.head.prev = null;
+            return;
+        }
+
         Node currentNode = this.head;
         Node prevNode = currentNode;
 
