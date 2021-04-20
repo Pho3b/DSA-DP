@@ -2,7 +2,7 @@ package Studying.data_structures.queue;
 
 import Studying.data_structures.linked_list.SinglyLinkedList;
 
-public class Queue<T> implements IQueue<T> {
+public class Queue<T> {
     private final SinglyLinkedList<T> list = new SinglyLinkedList<>();
     private int maxSize = -1;
 

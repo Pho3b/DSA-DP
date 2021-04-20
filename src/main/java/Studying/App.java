@@ -1,6 +1,6 @@
 package Studying;
 
-import Studying.data_structures.linked_list.DoublyLInkedList;
+import Studying.data_structures.heap.BinaryHeap;
 import Studying.design_patterns.implementations.decorator_implementation.HawaiianSalad;
 import Studying.design_patterns.implementations.decorator_implementation.RomanianSalad;
 import Studying.design_patterns.implementations.decorator_implementation.Salad;
@@ -25,19 +25,21 @@ public class App {
     }
 
     public static void genericTest() {
-        DoublyLInkedList<Integer> doublyLinkedList = new DoublyLInkedList<>();
-        doublyLinkedList.addFirst(22);
-        doublyLinkedList.add(43);
-        doublyLinkedList.add(12);
-        doublyLinkedList.add(76);
-        doublyLinkedList.insert(3, 200);
+        BinaryHeap<Integer> binaryHeap = new BinaryHeap<>(20);
+        binaryHeap.insert(1);
+        binaryHeap.insert(5);
+        binaryHeap.insert(12);
+        binaryHeap.insert(8);
+        binaryHeap.insert(6);
+        binaryHeap.insert(13);
+        binaryHeap.insert(19);
+        binaryHeap.insert(13);
+        binaryHeap.insert(12);
+        binaryHeap.insert(11);
+        binaryHeap.insert(7);
+        binaryHeap.insert(14);
 
-        doublyLinkedList.print();
-        System.out.println("\nSize: " + doublyLinkedList.size());
-
-        for (int i = 0; i < doublyLinkedList.size(); i++) {
-            doublyLinkedList.get(i);
-        }
+        binaryHeap.print();
     }
 
     public void testStrategyPattern() {
