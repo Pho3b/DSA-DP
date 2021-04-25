@@ -13,7 +13,7 @@ import java.util.Set;
 public class BinaryHeap<T extends Comparable<T>> {
     private static final int DEFAULT_SIZE = 10;
     private final List<T> heap;
-    private Hashtable<T, Set<Integer>> trackingTable;
+    private final Hashtable<T, Set<Integer>> trackingTable;
 
 
     /**
@@ -47,29 +47,71 @@ public class BinaryHeap<T extends Comparable<T>> {
         }
     }
 
+    /**
+     * Removes and returns the first element of the Heap
+     *
+     * @return T
+     */
     public T poll() {
-        return null;
+        T res = null;
+
+        if (heap.size() > 1) {
+            swap(0, heap.size() - 1);
+            res = heap.remove(heap.size() - 1);
+            bubbleDown(0);
+        }
+
+        return res;
+    }
+
+    /**
+     * Removes and returns the element at the given index
+     *
+     * @param index int
+     * @return T
+     * @throws IndexOutOfBoundsException exception
+     */
+    public T remove(int index) throws IndexOutOfBoundsException {
+        T res = null;
+        return res;
     }
 
     /**
      * Prints the binary minHeap in a suitable format
      */
     public void print() {
-        for (int i = 0; i <= heap.size() / 2; i++) {
+        for (int i = 0; i < heap.size(); i++) {
             System.out.println("PARENT: " + heap.get(i) + " LEFT_CHILD: " + getLeftChild(i) +
                     " RIGHT_CHILD: " + getRightChild(i));
         }
-
-        // System.out.println("\n" + heap);
     }
 
     /**
-     * 'Moves up' the element at the given index until the Heap satisfies the Heap Invariant rule.
+     * 'Moves up' the element at the given index until the Heap satisfies the Heap Invariant rule
      * O(log n)
      */
     private void bubbleUp(int index) {
         while (getParentNode(index).compareTo(heap.get(index)) > 0) {
             swap(index, (index - 1) / 2);
+            index = (index - 1) / 2;
+        }
+    }
+
+    /**
+     * 'Moves down' the element at the given index until the Heap satisfies the Heap Invariant rule
+     * O(log n)
+     */
+    private void bubbleDown(int index) {
+        int lowerIndex = getLowerValueChildIndex(index);
+
+        // Checking if the current index node actually has children or not
+        while (heap.get(lowerIndex).compareTo(heap.get(index)) < 0) {
+            swap(lowerIndex, index);
+            index = lowerIndex;
+
+            if (getLeftChild(index) != null) {
+                lowerIndex = getLowerValueChildIndex(index);
+            }
         }
     }
 
@@ -122,5 +164,15 @@ public class BinaryHeap<T extends Comparable<T>> {
         T temp = heap.get(index1);
         heap.set(index1, heap.get(index2));
         heap.set(index2, temp);
+    }
+
+    /**
+     * Takes a node index as input and returns the index of the child with the lower value
+     *
+     * @param i int
+     * @return int
+     */
+    private int getLowerValueChildIndex(int i) {
+        return getLeftChild(i).compareTo(getRightChild(i)) <= 0 ? (2 * i) + 1 : (2 * i) + 2;
     }
 }

@@ -28,16 +28,17 @@ public class App {
         BinaryHeap<Integer> binaryHeap = new BinaryHeap<>(20);
         binaryHeap.insert(1);
         binaryHeap.insert(5);
-        binaryHeap.insert(12);
+        binaryHeap.insert(2);
         binaryHeap.insert(8);
         binaryHeap.insert(6);
+        binaryHeap.insert(2);
+        binaryHeap.insert(2);
         binaryHeap.insert(13);
-        binaryHeap.insert(19);
-        binaryHeap.insert(13);
-        binaryHeap.insert(12);
+        binaryHeap.insert(15);
         binaryHeap.insert(11);
         binaryHeap.insert(7);
-        binaryHeap.insert(14);
+        binaryHeap.insert(10);
+        System.out.println("Polled element " + binaryHeap.poll());
 
         binaryHeap.print();
     }

@@ -5,7 +5,7 @@ import Studying.design_patterns.observer.Observer;
 
 public class Foul implements Observer {
     private int currentFoulsNumber;
-    private Observable observable;
+    private final Observable observable;
 
 
     public Foul(Observable observable) {
