@@ -59,11 +59,23 @@ public class BinaryHeap<T extends Comparable<T>> {
      * @return T
      */
     public T poll() {
+        return remove(heap.get(0));
+    }
+
+    /**
+     * Removes and returns the element at the given index
+     *
+     * @param value T
+     * @return T
+     * @throws IndexOutOfBoundsException exception
+     */
+    public T remove(T value) throws IndexOutOfBoundsException {
         T res = null;
+        Set<Integer> tempSet = trackingTable.get(value);
+        int index = !tempSet.isEmpty() ? tempSet.iterator().next() : -1;
 
         if (heap.size() > 1) {
-            swap(0, heap.size() - 1);
-
+            swap(index, heap.size() - 1);
             res = heap.remove(heap.size() - 1);
 
             // Synchronizing the index tracking table accordingly
@@ -73,21 +85,14 @@ public class BinaryHeap<T extends Comparable<T>> {
                 trackingTable.get(res).remove(heap.size() - 1);
             }
 
-            bubbleDown(0);
+            // Checking if we need to bubbleUp or Down after the removal
+            if (index == 0 || getParentNode(index).compareTo(heap.get(index)) < 0) {
+                bubbleDown(index);
+            } else if (getParentNode(index).compareTo(heap.get(index)) > 0) {
+                bubbleUp(index);
+            }
         }
 
-        return res;
-    }
-
-    /**
-     * Removes and returns the element at the given index
-     *
-     * @param index int
-     * @return T
-     * @throws IndexOutOfBoundsException exception
-     */
-    public T remove(int index) throws IndexOutOfBoundsException {
-        T res = null;
         return res;
     }
 
@@ -118,10 +123,10 @@ public class BinaryHeap<T extends Comparable<T>> {
      */
     private void bubbleDown(int index) {
         int lowerIndex = getLowerValueChildIndex(index);
+        if (lowerIndex == -1) return;
 
         // Checking if the current index node actually has children or not
         while (heap.get(lowerIndex).compareTo(heap.get(index)) < 0) {
-            System.out.println("bubbling down: " + index + " " + lowerIndex);
             swap(lowerIndex, index);
             index = lowerIndex;
 
@@ -177,29 +182,32 @@ public class BinaryHeap<T extends Comparable<T>> {
      * @param index2 int
      */
     private void swap(int index1, int index2) {
-        T tempValue = heap.get(index1);
-        heap.set(index1, heap.get(index2));
-        heap.set(index2, tempValue);
+        T tempValue1 = heap.get(index1);
+        T tempValue2 = heap.get(index2);
+        heap.set(index1, tempValue2);
+        heap.set(index2, tempValue1);
 
         // Switching the indexes in the tracking table accordingly
-        System.out.println(heap);
-        Set<Integer> tempSet = trackingTable.get(tempValue);
-        System.out.println("set1: " +  tempSet);
+        Set<Integer> tempSet = trackingTable.get(tempValue1);
         tempSet.remove(index1);
         tempSet.add(index2);
-        tempSet = trackingTable.get(heap.get(index2));
-        System.out.println("set2: " +  tempSet);
+        tempSet = trackingTable.get(tempValue2);
         tempSet.remove(index2);
         tempSet.add(index1);
     }
 
     /**
      * Takes a node index as input and returns the index of the child with the lower value
+     * Returns '-1' in case one of the children does not exist
      *
      * @param i int
      * @return int
      */
     private int getLowerValueChildIndex(int i) {
-        return getLeftChild(i).compareTo(getRightChild(i)) <= 0 ? (2 * i) + 1 : (2 * i) + 2;
+        try {
+            return getLeftChild(i).compareTo(getRightChild(i)) <= 0 ? (2 * i) + 1 : (2 * i) + 2;
+        } catch (Exception e) {
+            return -1;
+        }
     }
 }

@@ -27,20 +27,23 @@ public class App {
     public static void genericTest() {
         BinaryHeap<Integer> binaryHeap = new BinaryHeap<>(20);
         binaryHeap.insert(1);
-        binaryHeap.insert(5);
+        binaryHeap.insert(3);
         binaryHeap.insert(2);
-        binaryHeap.insert(8);
+        binaryHeap.insert(5);
         binaryHeap.insert(6);
         binaryHeap.insert(2);
         binaryHeap.insert(2);
         binaryHeap.insert(13);
-        binaryHeap.insert(15);
+        binaryHeap.insert(8);
         binaryHeap.insert(11);
         binaryHeap.insert(7);
         binaryHeap.insert(10);
-        System.out.println("Polled element " + binaryHeap.poll());
+        binaryHeap.insert(15);
+        binaryHeap.remove(3);
+        binaryHeap.poll();
+        binaryHeap.remove(6);
 
-        // binaryHeap.print();
+        binaryHeap.print();
         System.out.println(binaryHeap.trackingTable.toString());
     }
 
