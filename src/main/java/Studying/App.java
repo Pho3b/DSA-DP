@@ -40,7 +40,8 @@ public class App {
         binaryHeap.insert(10);
         System.out.println("Polled element " + binaryHeap.poll());
 
-        binaryHeap.print();
+        // binaryHeap.print();
+        System.out.println(binaryHeap.trackingTable.toString());
     }
 
     public void testStrategyPattern() {

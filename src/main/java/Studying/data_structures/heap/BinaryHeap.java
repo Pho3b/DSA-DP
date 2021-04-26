@@ -1,9 +1,6 @@
 package Studying.data_structures.heap;
 
-import java.util.ArrayList;
-import java.util.Hashtable;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Min Binary Heap Implementation
@@ -13,7 +10,7 @@ import java.util.Set;
 public class BinaryHeap<T extends Comparable<T>> {
     private static final int DEFAULT_SIZE = 10;
     private final List<T> heap;
-    private final Hashtable<T, Set<Integer>> trackingTable;
+    public final Hashtable<T, Set<Integer>> trackingTable;
 
 
     /**
@@ -42,6 +39,15 @@ public class BinaryHeap<T extends Comparable<T>> {
     public void insert(T data) {
         heap.add(data);
 
+        // Also inserting in the index tracking table accordingly
+        if (!trackingTable.containsKey(data)) {
+            HashSet<Integer> tempIndexes = new HashSet<>(10);
+            tempIndexes.add(heap.size() - 1);
+            trackingTable.put(data, tempIndexes);
+        } else {
+            trackingTable.get(data).add(heap.size() - 1);
+        }
+
         if (heap.size() > 1) {
             bubbleUp(heap.size() - 1);
         }
@@ -57,7 +63,16 @@ public class BinaryHeap<T extends Comparable<T>> {
 
         if (heap.size() > 1) {
             swap(0, heap.size() - 1);
+
             res = heap.remove(heap.size() - 1);
+
+            // Synchronizing the index tracking table accordingly
+            if (trackingTable.get(res).size() <= 1) {
+                trackingTable.remove(res);
+            } else {
+                trackingTable.get(res).remove(heap.size() - 1);
+            }
+
             bubbleDown(0);
         }
 
@@ -106,6 +121,7 @@ public class BinaryHeap<T extends Comparable<T>> {
 
         // Checking if the current index node actually has children or not
         while (heap.get(lowerIndex).compareTo(heap.get(index)) < 0) {
+            System.out.println("bubbling down: " + index + " " + lowerIndex);
             swap(lowerIndex, index);
             index = lowerIndex;
 
@@ -161,9 +177,20 @@ public class BinaryHeap<T extends Comparable<T>> {
      * @param index2 int
      */
     private void swap(int index1, int index2) {
-        T temp = heap.get(index1);
+        T tempValue = heap.get(index1);
         heap.set(index1, heap.get(index2));
-        heap.set(index2, temp);
+        heap.set(index2, tempValue);
+
+        // Switching the indexes in the tracking table accordingly
+        System.out.println(heap);
+        Set<Integer> tempSet = trackingTable.get(tempValue);
+        System.out.println("set1: " +  tempSet);
+        tempSet.remove(index1);
+        tempSet.add(index2);
+        tempSet = trackingTable.get(heap.get(index2));
+        System.out.println("set2: " +  tempSet);
+        tempSet.remove(index2);
+        tempSet.add(index1);
     }
 
     /**
