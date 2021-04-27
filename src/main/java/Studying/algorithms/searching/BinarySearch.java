@@ -2,6 +2,15 @@ package Studying.algorithms.searching;
 
 import java.util.Arrays;
 
+/**
+ * TIME COMPLEXITY
+ * Best: O(1)
+ * Average: O(log n)
+ * Worst: O(log n)
+ *
+ * SPACE COMPLEXITY:
+ * Worst: O(1)
+ */
 public class BinarySearch {
 
     public int search(int[] inputArr, int toSearch) {

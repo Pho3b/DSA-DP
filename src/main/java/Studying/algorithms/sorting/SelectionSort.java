@@ -2,6 +2,15 @@ package Studying.algorithms.sorting;
 
 import java.util.ArrayList;
 
+/**
+ * TIME COMPLEXITY
+ * Best: O(n^2)
+ * Average: O(n^2)
+ * Worst: O(n^2)
+ *
+ * SPACE COMPLEXITY:
+ * Worst: O(1)
+ */
 public class SelectionSort {
 
     public ArrayList<Integer> sort(ArrayList<Integer> inputArr) {
