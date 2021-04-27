@@ -41,9 +41,9 @@ public class App {
         binaryHeap.insert(15);
         binaryHeap.remove(3);
         binaryHeap.poll();
-        binaryHeap.remove(6);
+        binaryHeap.remove(100);
 
-        binaryHeap.print();
+        binaryHeap.linearPrint();
         System.out.println(binaryHeap.trackingTable.toString());
     }
 

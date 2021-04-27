@@ -64,6 +64,7 @@ public class BinaryHeap<T extends Comparable<T>> {
 
     /**
      * Removes and returns the element at the given index
+     * O(log n) time complexity thanks to the tracking table
      *
      * @param value T
      * @return T
@@ -72,9 +73,9 @@ public class BinaryHeap<T extends Comparable<T>> {
     public T remove(T value) throws IndexOutOfBoundsException {
         T res = null;
         Set<Integer> tempSet = trackingTable.get(value);
-        int index = !tempSet.isEmpty() ? tempSet.iterator().next() : -1;
 
-        if (heap.size() > 1) {
+        if (heap.size() > 1 && tempSet != null) {
+            int index = !tempSet.isEmpty() ? tempSet.iterator().next() : -1;
             swap(index, heap.size() - 1);
             res = heap.remove(heap.size() - 1);
 
@@ -85,15 +86,39 @@ public class BinaryHeap<T extends Comparable<T>> {
                 trackingTable.get(res).remove(heap.size() - 1);
             }
 
-            // Checking if we need to bubbleUp or Down after the removal
-            if (index == 0 || getParentNode(index).compareTo(heap.get(index)) < 0) {
-                bubbleDown(index);
-            } else if (getParentNode(index).compareTo(heap.get(index)) > 0) {
-                bubbleUp(index);
+            // If the given index is not a leaf node
+            // We check if we need to bubbleUp or Down after the removal
+            if (getLeftChild(index) != null) {
+                if (index == 0 || getParentNode(index).compareTo(heap.get(index)) < 0) {
+                    bubbleDown(index);
+                } else if (getParentNode(index).compareTo(heap.get(index)) > 0) {
+                    bubbleUp(index);
+                }
             }
         }
 
         return res;
+    }
+
+    /**
+     * Returns whether the heap contains the given value or not
+     * It performs the task with a time complexity of O(1) instead of O(n) thanks
+     * to the tracking table
+     *
+     * @param data T
+     * @return boolean
+     */
+    public boolean contains(T data) {
+        return trackingTable.containsKey(data);
+    }
+
+    /**
+     * Retrieves, but does not remove, the first element of the Heap
+     *
+     * @return T
+     */
+    public T peek() {
+        return heap.size() > 0 ? heap.get(0) : null;
     }
 
     /**
@@ -104,6 +129,13 @@ public class BinaryHeap<T extends Comparable<T>> {
             System.out.println("PARENT: " + heap.get(i) + " LEFT_CHILD: " + getLeftChild(i) +
                     " RIGHT_CHILD: " + getRightChild(i));
         }
+    }
+
+    /**
+     * Prints the array used as binary heap in a linear format
+     */
+    public void linearPrint() {
+        System.out.println(Arrays.toString(heap.toArray()));
     }
 
     /**
@@ -123,7 +155,7 @@ public class BinaryHeap<T extends Comparable<T>> {
      */
     private void bubbleDown(int index) {
         int lowerIndex = getLowerValueChildIndex(index);
-        if (lowerIndex == -1) return;
+        if (lowerIndex == -1) return; // Early return if there are problems retrieving children indexes
 
         // Checking if the current index node actually has children or not
         while (heap.get(lowerIndex).compareTo(heap.get(index)) < 0) {
