@@ -1,12 +1,15 @@
 package Studying;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 public class UtilityClass {
 
     public final static int[] orderedIntegerTestArray = new int[]{-21, -1, 1, 3, 4, 5, 6, 10, 11, 123, 1000, 1002};
-    public final static int[] unorderedIntegerTestArray = new int[]{100, 13 , 4, 12, 7, 6, 21, 900, 14, 76, 42, 90, 1, -10, -2};
-    public final static ArrayList<Integer> unorderedIntegerTestArrayList() {
+
+    public final static int[] unorderedIntegerTestArray = new int[]{100, 13, 4, 12, 7, 6, 21, 900, 14, 76, 42, 90, 1, -10, -2};
+
+    public static ArrayList<Integer> unorderedIntegerTestArrayList() {
         ArrayList<Integer> res = new ArrayList<>(15);
         res.add(100);
         res.add(13);
@@ -25,6 +28,28 @@ public class UtilityClass {
         res.add(-10);
 
         return res;
+    }
+
+    public static Hashtable<Character, Integer> generateRandomCharsBijectionTable() {
+        Hashtable<Character, Integer> bijectionTable = new Hashtable<>();
+        char[] charsArr = new char[]{'E', 'F', 'I', 'D', 'C', 'A', 'J', 'L', 'G', 'K', 'B', 'H'};
+
+        for (int i = 0; i < charsArr.length; i++) {
+            bijectionTable.put(charsArr[i], i);
+        }
+
+        return bijectionTable;
+    }
+
+    public static Hashtable<String, Integer> generateStringsBijectionTable() {
+        Hashtable<String, Integer> bijectionTable = new Hashtable<>();
+        String[] peopleArr = new String[]{"Simona", "Federica", "Marco", "Giovanni", "Andrea", "Matteo", "Alessandra"};
+
+        for (int i = 0; i < peopleArr.length; i++) {
+            bijectionTable.put(peopleArr[i], i);
+        }
+
+        return bijectionTable;
     }
 
 }

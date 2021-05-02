@@ -1,6 +1,6 @@
 package Studying;
 
-import Studying.data_structures.heap.BinaryHeap;
+import Studying.data_structures.disjoint_set.DisjointSet;
 import Studying.design_patterns.implementations.decorator_implementation.HawaiianSalad;
 import Studying.design_patterns.implementations.decorator_implementation.RomanianSalad;
 import Studying.design_patterns.implementations.decorator_implementation.Salad;
@@ -15,6 +15,8 @@ import Studying.design_patterns.implementations.strategy_implementation.UserChar
 import Studying.design_patterns.strategy.auto_attack_concrete_implementations.MeleeAutoAttack;
 import Studying.design_patterns.strategy.auto_attack_concrete_implementations.RangedAutoAttack;
 
+import java.util.Hashtable;
+
 public class App {
 
     public static void main(String[] args) {
@@ -25,26 +27,36 @@ public class App {
     }
 
     public static void genericTest() {
-        BinaryHeap<Integer> binaryHeap = new BinaryHeap<>(20);
-        binaryHeap.insert(1);
-        binaryHeap.insert(3);
-        binaryHeap.insert(2);
-        binaryHeap.insert(5);
-        binaryHeap.insert(6);
-        binaryHeap.insert(2);
-        binaryHeap.insert(2);
-        binaryHeap.insert(13);
-        binaryHeap.insert(8);
-        binaryHeap.insert(11);
-        binaryHeap.insert(7);
-        binaryHeap.insert(10);
-        binaryHeap.insert(15);
-        binaryHeap.remove(3);
-        binaryHeap.poll();
-        binaryHeap.remove(100);
+        // Generating the bijection table
+        Hashtable<Character, Integer> bijectionTable = new Hashtable<>();
+        bijectionTable.put('E', 0);
+        bijectionTable.put('F', 1);
+        bijectionTable.put('I', 2);
+        bijectionTable.put('D', 3);
+        bijectionTable.put('C', 4);
+        bijectionTable.put('A', 5);
+        bijectionTable.put('J', 6);
+        bijectionTable.put('L', 7);
+        bijectionTable.put('G', 8);
+        bijectionTable.put('K', 9);
+        bijectionTable.put('B', 10);
+        bijectionTable.put('H', 11);
 
-        binaryHeap.linearPrint();
-        System.out.println(binaryHeap.trackingTable.toString());
+        // Generating the disjoint set
+        DisjointSet disjointSet = new DisjointSet(12);
+        disjointSet.union(bijectionTable.get('C'), bijectionTable.get('K'));
+        disjointSet.union(bijectionTable.get('F'), bijectionTable.get('E'));
+        disjointSet.union(bijectionTable.get('A'), bijectionTable.get('J'));
+        disjointSet.union(bijectionTable.get('A'), bijectionTable.get('B'));
+        disjointSet.union(bijectionTable.get('C'), bijectionTable.get('D'));
+        disjointSet.union(bijectionTable.get('D'), bijectionTable.get('I'));
+        disjointSet.union(bijectionTable.get('L'), bijectionTable.get('F'));
+        disjointSet.union(bijectionTable.get('C'), bijectionTable.get('A'));
+        disjointSet.union(bijectionTable.get('A'), bijectionTable.get('B'));
+        disjointSet.union(bijectionTable.get('H'), bijectionTable.get('G'));
+        disjointSet.union(bijectionTable.get('H'), bijectionTable.get('F'));
+        disjointSet.union(bijectionTable.get('H'), bijectionTable.get('B'));
+        disjointSet.print();
     }
 
     public void testStrategyPattern() {
