@@ -28,34 +28,36 @@ public class App {
 
     public static void genericTest() {
         // Generating the bijection table
-        Hashtable<Character, Integer> bijectionTable = new Hashtable<>();
-        bijectionTable.put('E', 0);
-        bijectionTable.put('F', 1);
-        bijectionTable.put('I', 2);
-        bijectionTable.put('D', 3);
-        bijectionTable.put('C', 4);
-        bijectionTable.put('A', 5);
-        bijectionTable.put('J', 6);
-        bijectionTable.put('L', 7);
-        bijectionTable.put('G', 8);
-        bijectionTable.put('K', 9);
-        bijectionTable.put('B', 10);
-        bijectionTable.put('H', 11);
+        Hashtable<Character, Integer> bt = new Hashtable<>();
+        bt.put('E', 0);
+        bt.put('F', 1);
+        bt.put('I', 2);
+        bt.put('D', 3);
+        bt.put('C', 4);
+        bt.put('A', 5);
+        bt.put('J', 6);
+        bt.put('L', 7);
+        bt.put('G', 8);
+        bt.put('K', 9);
+        bt.put('B', 10);
+        bt.put('H', 11);
 
         // Generating the disjoint set
         DisjointSet disjointSet = new DisjointSet(12);
-        disjointSet.union(bijectionTable.get('C'), bijectionTable.get('K'));
-        disjointSet.union(bijectionTable.get('F'), bijectionTable.get('E'));
-        disjointSet.union(bijectionTable.get('A'), bijectionTable.get('J'));
-        disjointSet.union(bijectionTable.get('A'), bijectionTable.get('B'));
-        disjointSet.union(bijectionTable.get('C'), bijectionTable.get('D'));
-        disjointSet.union(bijectionTable.get('D'), bijectionTable.get('I'));
-        disjointSet.union(bijectionTable.get('L'), bijectionTable.get('F'));
-        disjointSet.union(bijectionTable.get('C'), bijectionTable.get('A'));
-        disjointSet.union(bijectionTable.get('A'), bijectionTable.get('B'));
-        disjointSet.union(bijectionTable.get('H'), bijectionTable.get('G'));
-        disjointSet.union(bijectionTable.get('H'), bijectionTable.get('F'));
-        disjointSet.union(bijectionTable.get('H'), bijectionTable.get('B'));
+        disjointSet.union(bt.get('C'), bt.get('K'));
+        disjointSet.union(bt.get('F'), bt.get('E'));
+        disjointSet.union(bt.get('A'), bt.get('J'));
+        disjointSet.union(bt.get('A'), bt.get('B'));
+        disjointSet.union(bt.get('C'), bt.get('D'));
+        disjointSet.union(bt.get('D'), bt.get('I'));
+        disjointSet.union(bt.get('L'), bt.get('F'));
+        disjointSet.union(bt.get('C'), bt.get('A'));
+        disjointSet.union(bt.get('A'), bt.get('B'));
+        disjointSet.union(bt.get('H'), bt.get('G'));
+        disjointSet.union(bt.get('H'), bt.get('F'));
+        disjointSet.union(bt.get('H'), bt.get('B'));
+        disjointSet.find(bt.get('E'));
+        disjointSet.find(bt.get('H'));
         disjointSet.print();
     }
 
