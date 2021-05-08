@@ -47,7 +47,7 @@ public class DisjointSet {
 
     /**
      * Unifies the two given elements/sets into the same component/set
-     * If the elements already belong to a component, the smaller component will be inserted
+     * If the elements already belongs to a component, the smaller component will be inserted
      * into the bigger one
      * If they have the same size, the second component will be inserted into the first one
      *
