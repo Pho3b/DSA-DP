@@ -1,6 +1,6 @@
 package studying;
 
-import studying.data_structures.disjoint_set.DisjointSet;
+import studying.data_structures.tree.BinarySearchTree;
 import studying.design_patterns.implementations.decorator_implementation.HawaiianSalad;
 import studying.design_patterns.implementations.decorator_implementation.RomanianSalad;
 import studying.design_patterns.implementations.decorator_implementation.Salad;
@@ -15,7 +15,6 @@ import studying.design_patterns.implementations.strategy_implementation.UserChar
 import studying.design_patterns.strategy.auto_attack_concrete_implementations.MeleeAutoAttack;
 import studying.design_patterns.strategy.auto_attack_concrete_implementations.RangedAutoAttack;
 
-import java.util.Hashtable;
 
 public class App {
 
@@ -27,38 +26,20 @@ public class App {
     }
 
     public static void genericTest() {
-        // Generating the bijection table
-        Hashtable<Character, Integer> bt = new Hashtable<>();
-        bt.put('E', 0);
-        bt.put('F', 1);
-        bt.put('I', 2);
-        bt.put('D', 3);
-        bt.put('C', 4);
-        bt.put('A', 5);
-        bt.put('J', 6);
-        bt.put('L', 7);
-        bt.put('G', 8);
-        bt.put('K', 9);
-        bt.put('B', 10);
-        bt.put('H', 11);
+        BinarySearchTree<Integer> bst = new BinarySearchTree<>(11);
+        bst.insert(6);
+        bst.insert(3);
+        bst.insert(8);
+        bst.insert(1);
+        bst.insert(5);
+        bst.insert(15);
+        bst.insert(13);
+        bst.insert(17);
+        bst.insert(12);
+        bst.insert(14);
+        bst.insert(19);
 
-        // Generating the disjoint set
-        DisjointSet disjointSet = new DisjointSet(12);
-        disjointSet.union(bt.get('C'), bt.get('K'));
-        disjointSet.union(bt.get('F'), bt.get('E'));
-        disjointSet.union(bt.get('A'), bt.get('J'));
-        disjointSet.union(bt.get('A'), bt.get('B'));
-        disjointSet.union(bt.get('C'), bt.get('D'));
-        disjointSet.union(bt.get('D'), bt.get('I'));
-        disjointSet.union(bt.get('L'), bt.get('F'));
-        disjointSet.union(bt.get('C'), bt.get('A'));
-        disjointSet.union(bt.get('A'), bt.get('B'));
-        disjointSet.union(bt.get('H'), bt.get('G'));
-        disjointSet.union(bt.get('H'), bt.get('F'));
-        disjointSet.union(bt.get('H'), bt.get('B'));
-        disjointSet.find(bt.get('E'));
-        disjointSet.find(bt.get('H'));
-        disjointSet.print();
+        bst.print();
     }
 
     public void testStrategyPattern() {
