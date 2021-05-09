@@ -1,8 +1,8 @@
 package Studying.design_patterns;
 
-import Studying.design_patterns.proxy.remote_proxy.CompanyRepository;
+import studying.design_patterns.proxy.remote_proxy.CompanyRepository;
 
-import Studying.design_patterns.proxy.remote_proxy.RepositoryProxy;
+import studying.design_patterns.proxy.remote_proxy.RepositoryProxy;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

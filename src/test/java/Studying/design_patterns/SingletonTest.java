@@ -1,7 +1,7 @@
 package Studying.design_patterns;
 
-import Studying.design_patterns.implementations.singleton_implementation.SecondThreadSingletonImplementation;
-import Studying.design_patterns.implementations.singleton_implementation.SingletonImplementation;
+import studying.design_patterns.implementations.singleton_implementation.SecondThreadSingletonImplementation;
+import studying.design_patterns.implementations.singleton_implementation.SingletonImplementation;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

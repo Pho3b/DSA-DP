@@ -1,6 +1,6 @@
 package Studying.design_patterns;
 
-import Studying.design_patterns.state.EchoStudio;
+import studying.design_patterns.state.EchoStudio;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

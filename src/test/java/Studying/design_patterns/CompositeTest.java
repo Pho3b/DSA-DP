@@ -1,6 +1,6 @@
 package Studying.design_patterns;
 
-import Studying.design_patterns.composite.Client;
+import studying.design_patterns.composite.Client;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

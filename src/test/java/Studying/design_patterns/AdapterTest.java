@@ -1,9 +1,9 @@
 package Studying.design_patterns;
 
-import Studying.design_patterns.adapter.NintendoConsolesEmulator;
-import Studying.design_patterns.adapter.NintendoGame;
-import Studying.design_patterns.adapter.SonyGame;
-import Studying.design_patterns.adapter.SonyGameAdapter;
+import studying.design_patterns.adapter.NintendoConsolesEmulator;
+import studying.design_patterns.adapter.NintendoGame;
+import studying.design_patterns.adapter.SonyGame;
+import studying.design_patterns.adapter.SonyGameAdapter;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

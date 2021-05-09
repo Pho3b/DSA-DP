@@ -1,7 +1,7 @@
 package Studying.algorithms;
 
 import Studying.UtilityClass;
-import Studying.algorithms.sorting.SelectionSort;
+import studying.algorithms.sorting.SelectionSort;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

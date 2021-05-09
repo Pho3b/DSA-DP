@@ -1,8 +1,8 @@
 package Studying.design_patterns;
 
-import Studying.design_patterns.command.GroundUnit;
-import Studying.design_patterns.command.MoveToTarget;
-import Studying.design_patterns.command.SwitchWeapon;
+import studying.design_patterns.command.GroundUnit;
+import studying.design_patterns.command.MoveToTarget;
+import studying.design_patterns.command.SwitchWeapon;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

@@ -1,7 +1,7 @@
 package Studying.design_patterns;
 
-import Studying.design_patterns.template.Doctor;
-import Studying.design_patterns.template.SoftwareDeveloper;
+import studying.design_patterns.template.Doctor;
+import studying.design_patterns.template.SoftwareDeveloper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

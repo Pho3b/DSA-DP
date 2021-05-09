@@ -1,6 +1,6 @@
 package Studying.data_structures;
 
-import Studying.data_structures.linked_list.DoublyLInkedList;
+import studying.data_structures.linked_list.DoublyLInkedList;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

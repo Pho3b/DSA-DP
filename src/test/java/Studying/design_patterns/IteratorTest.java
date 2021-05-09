@@ -1,9 +1,9 @@
 package Studying.design_patterns;
 
-import Studying.design_patterns.iterator.Client;
-import Studying.design_patterns.iterator.collections.BugCollection;
-import Studying.design_patterns.iterator.collections.FlyingBugsCollection;
-import Studying.design_patterns.iterator.collections.GroundedBugsCollection;
+import studying.design_patterns.iterator.Client;
+import studying.design_patterns.iterator.collections.BugCollection;
+import studying.design_patterns.iterator.collections.FlyingBugsCollection;
+import studying.design_patterns.iterator.collections.GroundedBugsCollection;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

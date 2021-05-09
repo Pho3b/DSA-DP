@@ -1,10 +1,10 @@
 package Studying.design_patterns;
 
-import Studying.design_patterns.abstract_factory.factories.GnomeGuiFactory;
-import Studying.design_patterns.abstract_factory.factories.GuiFactory;
-import Studying.design_patterns.abstract_factory.factories.WindowsGuiFactory;
-import Studying.design_patterns.abstract_factory.slider.Slider;
-import Studying.design_patterns.abstract_factory.toggle.Toggle;
+import studying.design_patterns.abstract_factory.factories.GnomeGuiFactory;
+import studying.design_patterns.abstract_factory.factories.GuiFactory;
+import studying.design_patterns.abstract_factory.factories.WindowsGuiFactory;
+import studying.design_patterns.abstract_factory.slider.Slider;
+import studying.design_patterns.abstract_factory.toggle.Toggle;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

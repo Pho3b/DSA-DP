@@ -1,7 +1,7 @@
 package Studying.design_patterns;
 
-import Studying.design_patterns.factory.FruitFactory;
-import Studying.design_patterns.factory.fruits.Fruit;
+import studying.design_patterns.factory.FruitFactory;
+import studying.design_patterns.factory.fruits.Fruit;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

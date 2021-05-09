@@ -1,7 +1,7 @@
 package Studying.algorithms;
 
 import Studying.UtilityClass;
-import Studying.algorithms.searching.JumpSearch;
+import studying.algorithms.searching.JumpSearch;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

@@ -1,7 +1,7 @@
 package Studying.data_structures;
 
 import Studying.UtilityClass;
-import Studying.data_structures.disjoint_set.DisjointSet;
+import studying.data_structures.disjoint_set.DisjointSet;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

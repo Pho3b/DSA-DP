@@ -1,7 +1,7 @@
 package Studying.algorithms;
 
 import Studying.UtilityClass;
-import Studying.algorithms.searching.BinarySearch;
+import studying.algorithms.searching.BinarySearch;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

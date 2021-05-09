@@ -1,6 +1,6 @@
 package Studying.data_structures;
 
-import Studying.data_structures.stack.Stack;
+import studying.data_structures.stack.Stack;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

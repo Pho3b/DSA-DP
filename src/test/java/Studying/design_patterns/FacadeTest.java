@@ -1,9 +1,9 @@
 package Studying.design_patterns;
 
-import Studying.design_patterns.facade.HeatedSwimmingPoolFacade;
-import Studying.design_patterns.implementations.facade_implementation.HeatingEngine;
-import Studying.design_patterns.implementations.facade_implementation.HydroMassageEngine;
-import Studying.design_patterns.implementations.facade_implementation.Light;
+import studying.design_patterns.facade.HeatedSwimmingPoolFacade;
+import studying.design_patterns.implementations.facade_implementation.HeatingEngine;
+import studying.design_patterns.implementations.facade_implementation.HydroMassageEngine;
+import studying.design_patterns.implementations.facade_implementation.Light;
 import org.junit.jupiter.api.Assertions;
 import org.junit.Test;
 

@@ -1,6 +1,6 @@
 package Studying.data_structures;
 
-import Studying.data_structures.linked_list.SinglyLinkedList;
+import studying.data_structures.linked_list.SinglyLinkedList;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

@@ -1,6 +1,6 @@
 package Studying.algorithms;
 
-import Studying.algorithms.searching.LinearSearch;
+import studying.algorithms.searching.LinearSearch;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
