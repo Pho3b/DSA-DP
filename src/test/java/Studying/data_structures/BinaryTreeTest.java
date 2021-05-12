@@ -33,4 +33,27 @@ public class BinaryTreeTest {
         Assertions.assertFalse(bst.contains(11));
         Assertions.assertTrue(bst.contains(2000));
     }
+
+    @Test
+    public void correctDeleteTest() {
+        BinarySearchTree<Integer> bst = new BinarySearchTree<>(100);
+        bst.insert(1);
+        bst.insert(12);
+        bst.insert(3);
+        bst.insert(18);
+        bst.insert(897);
+
+        Assertions.assertEquals(6, bst.size());
+        Assertions.assertTrue(bst.delete(3));
+        Assertions.assertEquals(5, bst.size());
+    }
+
+    @Test
+    public void deleteOneNodeTreeTest() {
+        BinarySearchTree<Integer> bst = new BinarySearchTree<>(100);
+
+        Assertions.assertEquals(1, bst.size());
+        bst.delete(100);
+        Assertions.assertEquals(0, bst.size());
+    }
 }

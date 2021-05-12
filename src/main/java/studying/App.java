@@ -26,19 +26,35 @@ public class App {
     }
 
     public static void genericTest() {
-        BinarySearchTree<Integer> bst = new BinarySearchTree<>(11);
-        bst.insert(6);
-        bst.insert(3);
-        bst.insert(8);
-        bst.insert(1);
+        BinarySearchTree<Integer> bst = new BinarySearchTree<>(20);
+        bst.insert(10);
+        bst.insert(31);
         bst.insert(5);
         bst.insert(15);
-        bst.insert(13);
-        bst.insert(17);
+        bst.insert(25);
+        bst.insert(42);
+        bst.insert(2);
         bst.insert(12);
-        bst.insert(14);
         bst.insert(19);
+        bst.insert(35);
+        bst.insert(47);
+        bst.insert(11);
+        bst.insert(14);
+        bst.insert(33);
+        bst.insert(37);
+        bst.insert(36);
+        bst.insert(38);
 
+        bst.print();
+        bst.delete(5);
+        bst.print();
+        bst.delete(2);
+        bst.print();
+
+        bst.delete(35);
+        bst.print();
+
+        bst.delete(12);
         bst.print();
     }
 
