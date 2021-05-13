@@ -30,6 +30,17 @@ public class UtilityClass {
         return res;
     }
 
+    public static ArrayList<Integer> binaryTreeLevelOrderList() {
+        ArrayList<Integer> res = new ArrayList<>();
+        int[] intArr = new int[]{11, 6, 15, 3, 8, 13, 17, 1, 5, 12, 14, 19};
+
+        for (int i = 0; i < intArr.length; i++) {
+            res.add(intArr[i]);
+        }
+
+        return res;
+    }
+
     public static Hashtable<Character, Integer> generateRandomCharsBijectionTable() {
         Hashtable<Character, Integer> bijectionTable = new Hashtable<>();
         char[] charsArr = new char[]{'E', 'F', 'I', 'D', 'C', 'A', 'J', 'L', 'G', 'K', 'B', 'H'};

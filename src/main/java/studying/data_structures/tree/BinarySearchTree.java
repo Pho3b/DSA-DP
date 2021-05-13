@@ -1,9 +1,12 @@
 package studying.data_structures.tree;
 
+import studying.data_structures.queue.Queue;
 import studying.data_structures.tree.iterators.InOrderIterator;
 import studying.data_structures.tree.iterators.IterationType;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class BinarySearchTree<T extends Comparable<T>> {
     private Node<T> root = null;
@@ -112,15 +115,30 @@ public class BinarySearchTree<T extends Comparable<T>> {
     }
 
     /**
-     * Traverse and prints the nodes of the current BST in "IN_ORDER"
-     * Depth First Search
+     * Breadth First Search
+     * (We avoid keeping track of the already checked nodes here because BST cannot contain loops)
+     *
+     * @return List
      */
-    private void inorderTraversal(Node<T> node) {
-        if (node == null) return;
+    public List<T> levelOrderTraversal() {
+        ArrayList<T> res = new ArrayList<>(this.nodesNumber);
+        Queue<Node<T>> queue = new Queue<>(this.nodesNumber);
+        queue.enqueue(this.root);
 
-        inorderTraversal(node.leftChild);
-        System.out.print(node.value + " ");
-        inorderTraversal(node.rightChild);
+        while (!queue.isEmpty()) {
+            Node<T> currentNode = queue.dequeue();
+            res.add(currentNode.value);
+            System.out.print(currentNode.value + " ");
+
+            if (currentNode.leftChild != null)
+                queue.enqueue(currentNode.leftChild);
+
+            if (currentNode.rightChild != null)
+                queue.enqueue(currentNode.rightChild);
+        }
+
+        System.out.println();
+        return res;
     }
 
     /**
@@ -132,6 +150,18 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
         System.out.print(node.value + " - ");
         inorderTraversal(node.leftChild);
+        inorderTraversal(node.rightChild);
+    }
+
+    /**
+     * Traverse and prints the nodes of the current BST in "IN_ORDER"
+     * Depth First Search
+     */
+    private void inorderTraversal(Node<T> node) {
+        if (node == null) return;
+
+        inorderTraversal(node.leftChild);
+        System.out.print(node.value + " ");
         inorderTraversal(node.rightChild);
     }
 
@@ -191,6 +221,37 @@ public class BinarySearchTree<T extends Comparable<T>> {
         }
 
         return currentNode;
+    }
+
+    /**
+     * Returns the current height(Level of nodes) of the BST
+     * //TODO: implement it correctly
+     *
+     * @return int
+     */
+    public int height() {
+        if (this.root != null) {
+            int leftCount, rightCount;
+            leftCount = rightCount = 1;
+            Node<T> leftSubTree = this.root.leftChild;
+            Node<T> rightSubTree = this.root.rightChild;
+
+            while (leftSubTree != null || rightSubTree != null) {
+                if (leftSubTree != null) {
+                    leftSubTree = leftSubTree.leftChild;
+                    leftCount++;
+                }
+
+                if (rightSubTree != null) {
+                    rightSubTree = rightSubTree.rightChild;
+                    rightCount++;
+                }
+            }
+
+            return Math.max(rightCount, leftCount);
+        }
+
+        return 0;
     }
 
     /**
