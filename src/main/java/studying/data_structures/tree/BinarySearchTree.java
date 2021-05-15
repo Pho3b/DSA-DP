@@ -224,34 +224,65 @@ public class BinarySearchTree<T extends Comparable<T>> {
     }
 
     /**
-     * Returns the current height(Level of nodes) of the BST
-     * //TODO: implement it correctly
+     * Returns the current height(Level of nodes) of the BST, with an iterative calculation.
+     * We calculate it using a levelOrderTraversal style and keeping track of how many nodes we still
+     * need to parse in the current Tree level.
      *
      * @return int
      */
     public int height() {
-        if (this.root != null) {
-            int leftCount, rightCount;
-            leftCount = rightCount = 1;
-            Node<T> leftSubTree = this.root.leftChild;
-            Node<T> rightSubTree = this.root.rightChild;
+        if (this.root == null) return 0;
 
-            while (leftSubTree != null || rightSubTree != null) {
-                if (leftSubTree != null) {
-                    leftSubTree = leftSubTree.leftChild;
-                    leftCount++;
+        Queue<Node<T>> queue = new Queue<>(this.nodesNumber);
+        queue.enqueue(this.root);
+        int height = 0;
+        int levelSize;
+
+        while (!queue.isEmpty()) {
+            levelSize = queue.size();
+
+            while (levelSize > 0) {
+                Node<T> currentNode = queue.dequeue();
+
+                if (currentNode.leftChild != null) {
+                    queue.enqueue(currentNode.leftChild);
                 }
 
-                if (rightSubTree != null) {
-                    rightSubTree = rightSubTree.rightChild;
-                    rightCount++;
+                if (currentNode.rightChild != null) {
+                    queue.enqueue(currentNode.rightChild);
                 }
+
+                levelSize--;
             }
 
-            return Math.max(rightCount, leftCount);
+            height++;
         }
 
-        return 0;
+        return height;
+    }
+
+    /**
+     * Public method to let the client call the recursive method to calculate the depth of the current BST
+     *
+     * @return int
+     */
+    public int depth() {
+        return depth(this.root);
+    }
+
+    /**
+     * Calculates and returns the depth/height of the Binary Tree in a recursive way
+     *
+     * @param root Node
+     * @return int
+     */
+    private int depth(Node<T> root) {
+        if (root == null) return 0;
+
+        int left = depth(root.leftChild);
+        int right = depth(root.rightChild);
+
+        return Math.max(left, right) + 1;
     }
 
     /**

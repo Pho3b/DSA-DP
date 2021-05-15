@@ -59,7 +59,7 @@ public class BinaryTreeTest {
     }
 
     @Test
-    public void correctHeightTest() {
+    public void correctRecursiveDepthTest() {
         BinarySearchTree<Integer> bst = new BinarySearchTree<>(20);
         bst.insert(10);
         bst.insert(31);
@@ -79,7 +79,7 @@ public class BinaryTreeTest {
         bst.insert(36);
         bst.insert(38);
 
-        Assertions.assertEquals(6, bst.height());
+        Assertions.assertEquals(6, bst.depth());
     }
 
     @Test
@@ -98,5 +98,58 @@ public class BinaryTreeTest {
         bst.insert(19);
 
         Assertions.assertEquals(bst.levelOrderTraversal(), UtilityClass.binaryTreeLevelOrderList());
+    }
+
+    @Test
+    public void correctIterativeHeightTest() {
+        BinarySearchTree<Integer> bst = new BinarySearchTree<>(50);
+        bst.insert(45);
+        bst.insert(67);
+        bst.insert(40);
+        bst.insert(65);
+        bst.insert(79);
+        bst.insert(36);
+        bst.insert(41);
+        bst.insert(61);
+        bst.insert(66);
+        bst.insert(68);
+        bst.insert(69);
+
+        Assertions.assertEquals(5, bst.height());
+    }
+
+    @Test
+    public void zeroIterativeHeightTest() {
+        BinarySearchTree<Integer> bst = new BinarySearchTree<>();
+
+        Assertions.assertEquals(0, bst.height());
+    }
+
+    @Test
+    public void oneLevelIterativeHeightTest() {
+        BinarySearchTree<Integer> bst = new BinarySearchTree<>(12);
+
+        Assertions.assertEquals(1, bst.height());
+    }
+
+    @Test
+    public void eightLevelHeightTest() {
+        BinarySearchTree<Integer> bst = new BinarySearchTree<>(50);
+        bst.insert(45);
+        bst.insert(67);
+        bst.insert(40);
+        bst.insert(65);
+        bst.insert(79);
+        bst.insert(36);
+        bst.insert(41);
+        bst.insert(61);
+        bst.insert(66);
+        bst.insert(68);
+        bst.insert(69);
+        bst.insert(70);
+        bst.insert(71);
+        bst.insert(72);
+
+        Assertions.assertEquals(8, bst.height());
     }
 }
