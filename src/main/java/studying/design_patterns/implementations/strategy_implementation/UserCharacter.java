@@ -16,20 +16,20 @@ public class UserCharacter {
 
     /**
      * This method actually calls the method injected from the strategy pattern
+     *
+     * @return String
      */
-    public void autoAttack() {
-        this.autoAttack.autoAttack();
+    public String autoAttack() {
+        return this.autoAttack.autoAttack();
     }
 
     /**
      * Here we can dynamically change the UserChar auto attack style.
      * We can even perform some further controls before setting it if necessary.
      *
-     * @param autoAttackStrategy
-     * @return boolean
+     * @param autoAttackStrategy AutoAttackStrategy
      */
-    public boolean setAutoAttackStrategy(AutoAttackStrategy autoAttackStrategy) {
-            this.autoAttack = autoAttackStrategy;
-            return true;
+    public void setAutoAttackStrategy(AutoAttackStrategy autoAttackStrategy) {
+        this.autoAttack = autoAttackStrategy;
     }
 }

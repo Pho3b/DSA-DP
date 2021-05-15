@@ -11,9 +11,6 @@ import studying.design_patterns.decorator.salad_decorators.Oil;
 import studying.design_patterns.implementations.observer_implementation.Foul;
 import studying.design_patterns.implementations.observer_implementation.Goal;
 import studying.design_patterns.implementations.observer_implementation.MatchScores;
-import studying.design_patterns.implementations.strategy_implementation.UserCharacter;
-import studying.design_patterns.strategy.auto_attack_concrete_implementations.MeleeAutoAttack;
-import studying.design_patterns.strategy.auto_attack_concrete_implementations.RangedAutoAttack;
 
 
 public class App {
@@ -57,22 +54,6 @@ public class App {
         bst.delete(12);
         bst.print();
     }
-
-    public void testStrategyPattern() {
-        UserCharacter userCharacter = new UserCharacter();
-
-        // The user auto attacks as a magician by default.
-        userCharacter.autoAttack();
-
-        // Changing his auto attack style to ranged.
-        userCharacter.setAutoAttackStrategy(new RangedAutoAttack());
-        userCharacter.autoAttack();
-
-        // For the sake of completeness we set his auto attack style as melee too.
-        userCharacter.setAutoAttackStrategy(new MeleeAutoAttack());
-        userCharacter.autoAttack();
-    }
-
 
     public void testDecoratorPattern() {
         Salad hawaiianSalad = new HawaiianSalad();

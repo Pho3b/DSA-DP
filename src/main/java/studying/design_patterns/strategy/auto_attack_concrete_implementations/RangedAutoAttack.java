@@ -4,7 +4,10 @@ import studying.design_patterns.strategy.AutoAttackStrategy;
 
 public class RangedAutoAttack implements AutoAttackStrategy {
     @Override
-    public void autoAttack() {
-        System.out.println("Attacking from the distance, they'll never get me");
+    public String autoAttack() {
+        String attack = "Attacking from the distance, they'll never get me";
+        System.out.println(attack);
+
+        return attack;
     }
 }

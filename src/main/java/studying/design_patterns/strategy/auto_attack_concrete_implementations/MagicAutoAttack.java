@@ -4,7 +4,10 @@ import studying.design_patterns.strategy.AutoAttackStrategy;
 
 public class MagicAutoAttack implements AutoAttackStrategy {
     @Override
-    public void autoAttack() {
-        System.out.println("Take this Fireball ! I'm a top notch magician!");
+    public String autoAttack() {
+        String attack = "Take this Fireball ! I'm a top notch magician!";
+        System.out.println(attack);
+
+        return attack;
     }
 }
