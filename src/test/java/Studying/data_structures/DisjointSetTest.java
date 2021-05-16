@@ -47,4 +47,20 @@ public class DisjointSetTest {
         Assertions.assertEquals(disjointSet.find(btPeople.get("Matteo")), disjointSet.find(btPeople.get("Giovanni")));
         Assertions.assertNotEquals(disjointSet.find(btPeople.get("Alessandra")), disjointSet.find(btPeople.get("Marco")));
     }
+
+    @Test
+    public void areUnifiedMethodTest() {
+        DisjointSet disjointSet = new DisjointSet(7);
+        disjointSet.union(btPeople.get("Simona"), btPeople.get("Federica"));
+        disjointSet.union(btPeople.get("Alessandra"), btPeople.get("Simona"));
+        disjointSet.union(btPeople.get("Marco"), btPeople.get("Matteo"));
+        disjointSet.union(btPeople.get("Matteo"), btPeople.get("Andrea"));
+        disjointSet.union(btPeople.get("Matteo"), btPeople.get("Giovanni"));
+
+        Assertions.assertFalse(disjointSet.areUnified(btPeople.get("Simona"), btPeople.get("Andrea")));
+        Assertions.assertTrue(disjointSet.areUnified(btPeople.get("Andrea"), btPeople.get("Marco")));
+        Assertions.assertTrue(disjointSet.areUnified(btPeople.get("Giovanni"), btPeople.get("Marco")));
+        Assertions.assertTrue(disjointSet.areUnified(btPeople.get("Matteo"), btPeople.get("Giovanni")));
+        Assertions.assertFalse(disjointSet.areUnified(btPeople.get("Alessandra"), btPeople.get("Marco")));
+    }
 }

@@ -35,7 +35,7 @@ public class DisjointSet {
             root = parent[root];
         }
 
-        // Here we perform the "Path compression", this is what gives us "Amortized constant time"
+        // Here we perform the "Path compression", this is what gives us the "Amortized constant time"
         while (i != root) {
             int next = parent[i];
             parent[i] = root;
@@ -68,6 +68,15 @@ public class DisjointSet {
             parent[iParent] = jParent;
             componentsSize[jParent] += componentsSize[iParent];
         }
+    }
+
+    /**
+     * Returns whether the two given element's (index) are already unified or not
+     *
+     * @return boolean
+     */
+    public boolean areUnified(int i, int j) {
+        return (this.find(i) == this.find(j));
     }
 
     /**

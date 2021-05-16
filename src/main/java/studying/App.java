@@ -19,10 +19,10 @@ public class App {
         String osName = System.getProperty("os.name").toLowerCase();
         System.out.println("This is your current operating system: " + osName);
 
-        genericTest();
+        currentWorkingOnIssueTest();
     }
 
-    public static void genericTest() {
+    public static void currentWorkingOnIssueTest() {
         BinarySearchTree<Integer> bst = new BinarySearchTree<>(20);
         bst.insert(10);
         bst.insert(31);
