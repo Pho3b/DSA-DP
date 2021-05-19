@@ -34,8 +34,8 @@ public class UtilityClass {
         ArrayList<Integer> res = new ArrayList<>();
         int[] intArr = new int[]{11, 6, 15, 3, 8, 13, 17, 1, 5, 12, 14, 19};
 
-        for (int i = 0; i < intArr.length; i++) {
-            res.add(intArr[i]);
+        for (int j : intArr) {
+            res.add(j);
         }
 
         return res;
