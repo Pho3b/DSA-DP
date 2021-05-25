@@ -8,7 +8,7 @@ import java.util.LinkedList;
 public class HashTableSeparateChaining<K, V> implements Iterable<Entry<K, V>> {
     private static final int DEFAULT_CAPACITY = 11;
     private static final float DEFAULT_LOAD_FACTOR = 0.75f;
-    private int size, capacity, threshold = 0;
+    private int size, capacity, threshold;
     private float loadFactor;
     private ArrayList<LinkedList<Entry<K, V>>> table;
 
@@ -52,11 +52,12 @@ public class HashTableSeparateChaining<K, V> implements Iterable<Entry<K, V>> {
     public void put(K key, V value) {
         int hash = getCleanHash(key);
         LinkedList<Entry<K, V>> bucket = this.table.get(hash);
+        Entry<K, V> newEntry = new Entry<>(key, value);
 
         // Iterating through the bucket's entries
         for (Entry<K, V> entry : bucket) {
             // Duplicate entry case, we return
-            if (entry.equals(key)) {
+            if (entry.equals(newEntry)) {
                 return;
             }
         }
@@ -67,10 +68,27 @@ public class HashTableSeparateChaining<K, V> implements Iterable<Entry<K, V>> {
 
         // Checking if we need to resize the table or not
         if (this.size > this.threshold) {
-            // Duplicate table size, re hash values inside it and recalculate the threshold
-            // this.threshold = (int) (this.capacity * this.loadFactor);
+            resizeTable();
         }
 
+    }
+
+    /**
+     * Returns the current number of elements inside the table
+     *
+     * @return int
+     */
+    public int size() {
+        return this.size;
+    }
+
+    /**
+     * Returns the current internal table size (capacity)
+     *
+     * @return int
+     */
+    public int capacity() {
+        return this.capacity;
     }
 
     /**
@@ -124,8 +142,13 @@ public class HashTableSeparateChaining<K, V> implements Iterable<Entry<K, V>> {
         return hash > 0 ? hash : hash * -1;
     }
 
+    /**
+     * Doubles the size of the internal table and repopulates it with all of the previous values
+     * recalculating the threshold afterwards
+     */
     private void resizeTable() {
-        ArrayList<LinkedList<Entry<K, V>>> newTable = this.initNewTable(this.capacity * 2);
+        this.capacity *= 2;
+        ArrayList<LinkedList<Entry<K, V>>> newTable = this.initNewTable(this.capacity);
         int hash;
 
         for (Entry<K, V> entry : this) {
@@ -133,7 +156,7 @@ public class HashTableSeparateChaining<K, V> implements Iterable<Entry<K, V>> {
             newTable.get(hash).add(entry);
         }
 
-        // Let's change the threshold
+        this.threshold = (int) (this.capacity * this.loadFactor);
         this.table = newTable;
     }
 
@@ -146,5 +169,4 @@ public class HashTableSeparateChaining<K, V> implements Iterable<Entry<K, V>> {
     public Iterator<Entry<K, V>> iterator() {
         return new HashTableSeparateChainingIterator<>(this.table);
     }
-
 }

@@ -6,6 +6,12 @@ public class Entry<K, V> {
     public int hash;
 
 
+    /**
+     * Default constructor
+     *
+     * @param key   K
+     * @param value V
+     */
     public Entry(K key, V value) {
         this.key = key;
         this.value = value;
