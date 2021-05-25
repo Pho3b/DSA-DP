@@ -1,5 +1,6 @@
 package studying;
 
+import studying.data_structures.hash_table.Entry;
 import studying.data_structures.hash_table.HashTableSeparateChaining;
 import studying.design_patterns.implementations.decorator_implementation.HawaiianSalad;
 import studying.design_patterns.implementations.decorator_implementation.RomanianSalad;
@@ -11,6 +12,8 @@ import studying.design_patterns.decorator.salad_decorators.Oil;
 import studying.design_patterns.implementations.observer_implementation.Foul;
 import studying.design_patterns.implementations.observer_implementation.Goal;
 import studying.design_patterns.implementations.observer_implementation.MatchScores;
+
+import java.util.Iterator;
 
 
 public class App {
@@ -24,6 +27,13 @@ public class App {
 
     public static void currentWorkingOnIssueTest() {
         HashTableSeparateChaining<String, Integer> hashTableSeparateChaining = new HashTableSeparateChaining<>();
+        hashTableSeparateChaining.put("andrea", 29);
+        hashTableSeparateChaining.put("federica", 30);
+        hashTableSeparateChaining.put("luigi", 29);
+        hashTableSeparateChaining.put("riccardo", 29);
+        hashTableSeparateChaining.put("giacomo", 29);
+
+        hashTableSeparateChaining.print();
     }
 
     public void testDecoratorPattern() {

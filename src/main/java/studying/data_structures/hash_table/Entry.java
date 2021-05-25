@@ -12,6 +12,20 @@ public class Entry<K, V> {
         this.hash = key.hashCode();
     }
 
+    /**
+     * Returns whether an entry is equal to another or not
+     * It first compares the two entry hashes and then they're keys
+     *
+     * @param entry Entry
+     * @return boolean
+     */
+    public boolean equals(Entry<K, V> entry) {
+        if (this.hash != entry.hash)
+            return false;
+
+        return this.key.equals(entry.key);
+    }
+
     @Override
     public String toString() {
         return "{" +
