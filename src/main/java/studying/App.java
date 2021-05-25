@@ -24,15 +24,16 @@ public class App {
 
     public static void currentWorkingOnIssueTest() {
         HashTableSeparateChaining<String, Integer> hashTableSeparateChaining = new HashTableSeparateChaining<>(3);
-        hashTableSeparateChaining.put("andrea", 29);
-        hashTableSeparateChaining.put("federica", 30);
-        hashTableSeparateChaining.put("luigi", 36);
-        hashTableSeparateChaining.put("riccardo", 12);
-        hashTableSeparateChaining.put("giacomo", 29);
-        hashTableSeparateChaining.put("laura", 15);
-        hashTableSeparateChaining.put("giacomo", 29);
-        hashTableSeparateChaining.put("laura", 15);
+        hashTableSeparateChaining.add("andrea", 29);
+        hashTableSeparateChaining.add("federica", 30);
+        hashTableSeparateChaining.add("luigi", 36);
+        hashTableSeparateChaining.add("riccardo", 12);
+        hashTableSeparateChaining.add("giacomo", 29);
+        hashTableSeparateChaining.add("laura", 15);
 
+        hashTableSeparateChaining.print();
+
+        hashTableSeparateChaining.remove("riccardo");
         hashTableSeparateChaining.print();
     }
 

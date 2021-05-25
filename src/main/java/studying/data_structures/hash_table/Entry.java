@@ -25,7 +25,7 @@ public class Entry<K, V> {
      * @param entry Entry
      * @return boolean
      */
-    public boolean equals(Entry<K, V> entry) {
+    public boolean isEqual(Entry<K, V> entry) {
         if (this.hash != entry.hash)
             return false;
 

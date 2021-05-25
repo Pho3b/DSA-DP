@@ -44,12 +44,31 @@ public class HashTableSeparateChaining<K, V> implements Iterable<Entry<K, V>> {
     }
 
     /**
-     * Inserts a new Entry(key value pair object) into the table
+     * Returns the value to which the given key is mapped, or null if this map contains no mapping for the key
+     *
+     * @return boolean
+     */
+    public V get(K key) {
+        int hash = getCleanHash(key);
+        LinkedList<Entry<K, V>> bucket = this.table.get(hash);
+        Entry<K, V> entryToRetrieve = new Entry<>(key, null);
+
+        for (Entry<K, V> entry : bucket) {
+            if (entry.isEqual(entryToRetrieve)) {
+                return entry.value;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Inserts a new Entry(key value pair object) into the table, it doesn't allow duplicates
      *
      * @param key   K
      * @param value V
      */
-    public void put(K key, V value) {
+    public void add(K key, V value) {
         int hash = getCleanHash(key);
         LinkedList<Entry<K, V>> bucket = this.table.get(hash);
         Entry<K, V> newEntry = new Entry<>(key, value);
@@ -57,7 +76,7 @@ public class HashTableSeparateChaining<K, V> implements Iterable<Entry<K, V>> {
         // Iterating through the bucket's entries
         for (Entry<K, V> entry : bucket) {
             // Duplicate entry case, we return
-            if (entry.equals(newEntry)) {
+            if (entry.isEqual(newEntry)) {
                 return;
             }
         }
@@ -71,6 +90,51 @@ public class HashTableSeparateChaining<K, V> implements Iterable<Entry<K, V>> {
             resizeTable();
         }
 
+    }
+
+    /**
+     * Updates the value of the given key if it find it inside the table,
+     * it returns false if no key value is updated
+     *
+     * @return boolean
+     */
+    public boolean put(K key, V value) {
+        int hash = getCleanHash(key);
+        LinkedList<Entry<K, V>> bucket = this.table.get(hash);
+        Entry<K, V> newEntry = new Entry<>(key, value);
+
+        for (Entry<K, V> entry : bucket) {
+            if (entry.isEqual(newEntry)) {
+                entry.value = newEntry.value;
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Updates the value of the given key if it find it inside the table,
+     * it returns false if no key value is updated
+     *
+     * @return boolean
+     */
+    public boolean remove(K key) {
+        int hash = getCleanHash(key);
+        LinkedList<Entry<K, V>> bucket = this.table.get(hash);
+        Entry<K, V> entryToRemove = new Entry<>(key, null);
+
+        for (Entry<K, V> entry : bucket) {
+            if (entry.isEqual(entryToRemove)) {
+                bucket.remove(entry);
+                this.size--;
+
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -100,6 +164,16 @@ public class HashTableSeparateChaining<K, V> implements Iterable<Entry<K, V>> {
         for (int i = 0; i < this.capacity; i++) {
             System.out.println(i + " : " + this.table.get(i));
         }
+    }
+
+    /**
+     * Returns a new iterator for this hashTableSeparateChaining instance
+     *
+     * @return Iterator<Entry < K, V>>
+     */
+    @Override
+    public Iterator<Entry<K, V>> iterator() {
+        return new HashTableSeparateChainingIterator<>(this.table);
     }
 
     /**
@@ -158,15 +232,5 @@ public class HashTableSeparateChaining<K, V> implements Iterable<Entry<K, V>> {
 
         this.threshold = (int) (this.capacity * this.loadFactor);
         this.table = newTable;
-    }
-
-    /**
-     * Returns a new iterator for this hashTableSeparateChaining instance
-     *
-     * @return Iterator<Entry < K, V>>
-     */
-    @Override
-    public Iterator<Entry<K, V>> iterator() {
-        return new HashTableSeparateChainingIterator<>(this.table);
     }
 }
