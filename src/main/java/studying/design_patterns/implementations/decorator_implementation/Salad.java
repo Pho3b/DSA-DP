@@ -12,7 +12,10 @@ public abstract class Salad {
         return cost;
     }
 
-    public void printDetails() {
-        System.out.println(getDescription() + "  :   " + (double) Math.round(getCost() * 100) / 100);
+    public String printDetails() {
+        String res = getDescription() + "  :   " + (double) Math.round(getCost() * 100) / 100;
+        System.out.println(res);
+
+        return res;
     }
 }
