@@ -14,15 +14,17 @@ public class Goal implements Observer {
     }
 
     @Override
-    public void update(Observable observable, Object obj) {
+    public String update(Observable observable, Object obj) {
         if (obj instanceof MatchScoresObservablePayload) {
             MatchScoresObservablePayload payload = (MatchScoresObservablePayload) obj;
             this.currentGoalsNumber = payload.goals;
-            this.displayData();
+            return displayData();
         }
+
+        return "";
     }
 
-    private void displayData() {
-        System.out.println(this.getClass().getSimpleName() + " : " + this.currentGoalsNumber);
+    private String displayData() {
+        return this.getClass().getSimpleName() + " : " + this.currentGoalsNumber;
     }
 }

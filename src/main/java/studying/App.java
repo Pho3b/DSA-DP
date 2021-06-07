@@ -1,10 +1,6 @@
 package studying;
 
 import studying.data_structures.hash_table.HashTableSeparateChaining;
-import studying.design_patterns.implementations.observer_implementation.Foul;
-import studying.design_patterns.implementations.observer_implementation.Goal;
-import studying.design_patterns.implementations.observer_implementation.MatchScores;
-
 
 public class App {
 
@@ -28,24 +24,5 @@ public class App {
 
         hashTableSeparateChaining.remove("riccardo");
         hashTableSeparateChaining.print();
-    }
-
-    /**
-     * Observer design pattern demonstration
-     */
-    public void testObserverDesignPatter() {
-        MatchScores matchScores = new MatchScores();
-        Goal goal = new Goal(matchScores);
-        Foul foul = new Foul(matchScores);
-
-        matchScores.payload.goals = 3;
-        matchScores.payload.fouls = 12;
-        matchScores.notifyObservers();
-
-        matchScores.unregisterObserver(goal);
-        matchScores.notifyObservers();
-
-        matchScores.unregisterObserver(foul);
-        matchScores.notifyObservers();
     }
 }

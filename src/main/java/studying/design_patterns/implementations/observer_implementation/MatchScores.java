@@ -9,6 +9,7 @@ public class MatchScores implements Observable {
     public ArrayList<Observer> observers;
     public MatchScoresObservablePayload payload;
 
+
     public MatchScores() {
         payload = new MatchScoresObservablePayload();
         observers = new ArrayList<>();
@@ -36,9 +37,13 @@ public class MatchScores implements Observable {
      * it will be the Observer responsibility to select which data to grab from the object
      */
     @Override
-    public void notifyObservers() {
+    public ArrayList<String> notifyObservers() {
+        ArrayList<String> res = new ArrayList<>(observers.size());
+
         for (Observer observer: observers) {
-            observer.update(this, payload);
+            res.add(observer.update(this, payload));
         }
+
+        return res;
     }
 }
