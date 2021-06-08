@@ -5,11 +5,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-public class HashTableSeparateChaining<K, V> implements Iterable<Entry<K, V>> {
+public class HashTableSeparateChaining<K, V> extends HashTable<K, V> implements Iterable<Entry<K, V>> {
     private static final int DEFAULT_CAPACITY = 11;
     private static final float DEFAULT_LOAD_FACTOR = 0.75f;
-    private int size, capacity, threshold;
-    private float loadFactor;
     private ArrayList<LinkedList<Entry<K, V>>> table;
 
 
@@ -44,7 +42,7 @@ public class HashTableSeparateChaining<K, V> implements Iterable<Entry<K, V>> {
     }
 
     /**
-     * Returns the value to which the given key is mapped, or null if this map contains no mapping for the key
+     * Returns the value to which the given key is mapped, or null if this table contains no mapping for the key
      *
      * @return boolean
      */
@@ -75,7 +73,7 @@ public class HashTableSeparateChaining<K, V> implements Iterable<Entry<K, V>> {
 
         // Iterating through the bucket's entries
         for (Entry<K, V> entry : bucket) {
-            // Duplicate entry case, we return
+            // Duplicate entry case, let's return
             if (entry.isEqual(newEntry)) {
                 return;
             }
@@ -93,7 +91,7 @@ public class HashTableSeparateChaining<K, V> implements Iterable<Entry<K, V>> {
     }
 
     /**
-     * Updates the value of the given key if it find it inside the table,
+     * Updates the value of the given key if it finds it inside the table,
      * it returns false if no key value is updated
      *
      * @return boolean
@@ -115,8 +113,8 @@ public class HashTableSeparateChaining<K, V> implements Iterable<Entry<K, V>> {
     }
 
     /**
-     * Updates the value of the given key if it find it inside the table,
-     * it returns false if no key value is updated
+     * Removes the value mapped to the given key from the table and returns true.
+     * If not key is found, it returns false.
      *
      * @return boolean
      */
@@ -135,24 +133,6 @@ public class HashTableSeparateChaining<K, V> implements Iterable<Entry<K, V>> {
         }
 
         return false;
-    }
-
-    /**
-     * Returns the current number of elements inside the table
-     *
-     * @return int
-     */
-    public int size() {
-        return this.size;
-    }
-
-    /**
-     * Returns the current internal table size (capacity)
-     *
-     * @return int
-     */
-    public int capacity() {
-        return this.capacity;
     }
 
     /**
@@ -190,19 +170,6 @@ public class HashTableSeparateChaining<K, V> implements Iterable<Entry<K, V>> {
         }
 
         return res;
-    }
-
-    /**
-     * Setter for the loadFactor property.
-     * Must be a value between 0.0 and 1.0, otherwise an exception is thrown
-     *
-     * @param loadFactor float
-     */
-    private void setLoadFactor(float loadFactor) {
-        if (loadFactor < 0 && loadFactor > 1)
-            throw new IndexOutOfBoundsException("loadFactor value must lie between 0.0 and 1.0");
-
-        this.loadFactor = loadFactor;
     }
 
     /**
