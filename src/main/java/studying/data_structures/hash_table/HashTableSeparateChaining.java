@@ -87,7 +87,6 @@ public class HashTableSeparateChaining<K, V> extends HashTable<K, V> implements 
         if (this.size > this.threshold) {
             resizeTable();
         }
-
     }
 
     /**
@@ -170,17 +169,6 @@ public class HashTableSeparateChaining<K, V> extends HashTable<K, V> implements 
         }
 
         return res;
-    }
-
-    /**
-     * Returns a positive hash value clamped between zero and the current table capacity
-     * (0 <= hash <= this.capacity)
-     *
-     * @param key K
-     */
-    private int getCleanHash(K key) {
-        int hash = key.hashCode() % this.capacity;
-        return hash > 0 ? hash : hash * -1;
     }
 
     /**

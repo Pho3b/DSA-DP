@@ -1,6 +1,6 @@
 package studying;
 
-import studying.data_structures.hash_table.HashTableSeparateChaining;
+import studying.data_structures.hash_table.HashTableOpenAddressing;
 
 public class App {
 
@@ -12,17 +12,21 @@ public class App {
     }
 
     public static void currentWorkingOnIssueTest() {
-        HashTableSeparateChaining<String, Integer> hashTableSeparateChaining = new HashTableSeparateChaining<>(3);
-        hashTableSeparateChaining.add("andrea", 29);
-        hashTableSeparateChaining.add("federica", 30);
-        hashTableSeparateChaining.add("luigi", 36);
-        hashTableSeparateChaining.add("riccardo", 12);
-        hashTableSeparateChaining.add("giacomo", 29);
-        hashTableSeparateChaining.add("laura", 15);
+        HashTableOpenAddressing<String, Integer> htOpenAddressing = new HashTableOpenAddressing<>();
+        htOpenAddressing.add("andrea", 29);
+        htOpenAddressing.add("andrea", 29);
+        htOpenAddressing.add("andrea", 29);
+        htOpenAddressing.add("andrea", 29);
+        htOpenAddressing.add("federica", 30);
+        htOpenAddressing.add("luigi", 36);
+        htOpenAddressing.add("luigi", 36);
+        htOpenAddressing.add("luigi", 36);
+        htOpenAddressing.add("andrea", 29);
+        htOpenAddressing.add("andrea", 29);
+        htOpenAddressing.add("andrea", 29);
+        htOpenAddressing.add("andrea", 29);
+        htOpenAddressing.add("federica", 30);
 
-        hashTableSeparateChaining.print();
-
-        hashTableSeparateChaining.remove("riccardo");
-        hashTableSeparateChaining.print();
+        htOpenAddressing.print();
     }
 }
