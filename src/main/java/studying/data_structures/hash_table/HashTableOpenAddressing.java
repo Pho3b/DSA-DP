@@ -61,25 +61,17 @@ public class HashTableOpenAddressing<K, V> extends HashTable<K, V> {
      * Note: The NOT FOUND case cannot occur because the size of the table and the probe X number
      * are kept always relatively prime to each other
      *
-     * @param hash int
+     * @param hash          int
+     * @param table         ArrayList<Entry<K, V>>
+     * @param valueToSearch K
      * @return int
      */
-    private int probeForASlot(int hash) {
-        return this.probeForASlot(hash, null);
-    }
-
-    /**
-     *
-     * @param hash
-     * @param valueToSearch
-     * @return
-     */
-    private int probeForASlot(int hash, K valueToSearch) {
+    private int probeForASlot(int hash, K valueToSearch, ArrayList<Entry<K, V>> table) {
         int index = hash;
         int x = 0;
 
         // We keep probing until we find an empty slot in the table
-        while (this.table.get(index) != valueToSearch) {
+        while (table.get(index) != valueToSearch && table.get(index) != null) {
             index = (hash + Probe.linearProbing(x)) % this.capacity;
             x++;
         }
@@ -87,12 +79,33 @@ public class HashTableOpenAddressing<K, V> extends HashTable<K, V> {
         return index;
     }
 
-    // TODO: fix this method
+    /**
+     * Overload with the parameter 'valueToSearch' set to NULL by default
+     *
+     * @param hash int
+     * @return int
+     */
+    private int probeForASlot(int hash) {
+        return this.probeForASlot(hash, null, this.table);
+    }
+
+    /**
+     * Overload with the parameter 'valueToSearch' set to NULL by default
+     *
+     * @param hash int
+     * @return int
+     */
+    private int probeForASlot(int hash, K valueToSearch) {
+        return this.probeForASlot(hash, valueToSearch, this.table);
+    }
+
+    /**
+     * @param key K
+     * @return V
+     */
     @Override
     public V get(K key) {
         int hash = getCleanHash(key);
-        int index = this.probeForASlot(hash, key);
-
         return this.table.get(this.probeForASlot(hash, key)).value;
     }
 
@@ -142,7 +155,7 @@ public class HashTableOpenAddressing<K, V> extends HashTable<K, V> {
 
         for (Entry<K, V> entry : this.table) {
             if (entry != null) {
-                int index = this.probeForASlot(entry.hash);
+                int index = this.probeForASlot(getCleanHash(entry.key), null, newTable);
                 newTable.set(index, entry);
             }
         }
