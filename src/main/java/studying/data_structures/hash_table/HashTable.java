@@ -12,7 +12,7 @@ public abstract class HashTable<K, V> {
      * @param loadFactor float
      */
     protected void setLoadFactor(float loadFactor) {
-        if (loadFactor < 0 && loadFactor > 1)
+        if (loadFactor < 0 || loadFactor > 1)
             throw new IndexOutOfBoundsException("loadFactor value must lie between 0.0 and 1.0");
 
         this.loadFactor = loadFactor;

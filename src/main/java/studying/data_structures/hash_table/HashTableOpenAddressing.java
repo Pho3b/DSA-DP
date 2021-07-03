@@ -20,7 +20,7 @@ public class HashTableOpenAddressing<K, V> extends HashTable<K, V> {
      *
      * @param loadFactor float
      */
-    HashTableOpenAddressing(float loadFactor) {
+    public HashTableOpenAddressing(float loadFactor) {
         this(DEFAULT_CAPACITY, loadFactor);
     }
 
@@ -44,8 +44,7 @@ public class HashTableOpenAddressing<K, V> extends HashTable<K, V> {
     @Override
     public void add(K key, V value) {
         Entry<K, V> entry = new Entry<>(key, value);
-        int hash = getCleanHash(key);
-        int index = probeForASlot(hash);
+        int index = probeForEmptySlot(key, null);
 
         this.table.set(index, entry);
         this.size++;
@@ -57,21 +56,38 @@ public class HashTableOpenAddressing<K, V> extends HashTable<K, V> {
     }
 
     /**
-     * Probes for a given slot until it finds it
+     * Returns the value to which the given key is mapped
+     * returns null if this table does not contain a mapping for the given key
+     *
+     * @param key K
+     * @return V | null
+     */
+    @Override
+    public V get(K key) {
+        try {
+            return this.table.get(this.probeForASlot(key)).value;
+        } catch (Exception e) {
+            return null;
+        }
+
+    }
+
+    /**
+     * Probes for a given key's slot until it finds it
      * Note: The NOT FOUND case cannot occur because the size of the table and the probe X number
      * are kept always relatively prime to each other
      *
-     * @param hash          int
-     * @param table         ArrayList<Entry<K, V>>
-     * @param valueToSearch K
+     * @param key K
      * @return int
      */
-    private int probeForASlot(int hash, K valueToSearch, ArrayList<Entry<K, V>> table) {
+    private int probeForASlot(K key) {
+        Entry<K, V> entryToRetrieve = new Entry<>(key, null);
+        int hash = getCleanHash(key);
         int index = hash;
         int x = 0;
 
         // We keep probing until we find an empty slot in the table
-        while (table.get(index) != valueToSearch && table.get(index) != null) {
+        while (table.get(index) != null && !table.get(index).isEqual(entryToRetrieve)) {
             index = (hash + Probe.linearProbing(x)) % this.capacity;
             x++;
         }
@@ -80,33 +96,25 @@ public class HashTableOpenAddressing<K, V> extends HashTable<K, V> {
     }
 
     /**
-     * Overload with the parameter 'valueToSearch' set to NULL by default
+     * Probes for an empty slot 'Null slot' until it finds it.
+     * If the table parameter will be given as Null, the current instance table will be used instead
      *
-     * @param hash int
+     * @param key   K
+     * @param table ArrayList<Entry<K, V>>
      * @return int
      */
-    private int probeForASlot(int hash) {
-        return this.probeForASlot(hash, null, this.table);
-    }
-
-    /**
-     * Overload with the parameter 'valueToSearch' set to NULL by default
-     *
-     * @param hash int
-     * @return int
-     */
-    private int probeForASlot(int hash, K valueToSearch) {
-        return this.probeForASlot(hash, valueToSearch, this.table);
-    }
-
-    /**
-     * @param key K
-     * @return V
-     */
-    @Override
-    public V get(K key) {
+    private int probeForEmptySlot(K key, ArrayList<Entry<K, V>> table) {
+        table = table == null ? this.table : table;
         int hash = getCleanHash(key);
-        return this.table.get(this.probeForASlot(hash, key)).value;
+        int index = hash;
+        int x = 0;
+
+        while (table.get(index) != null) {
+            index = (hash + Probe.linearProbing(x)) % this.capacity;
+            x++;
+        }
+
+        return index;
     }
 
     @Override
@@ -155,7 +163,7 @@ public class HashTableOpenAddressing<K, V> extends HashTable<K, V> {
 
         for (Entry<K, V> entry : this.table) {
             if (entry != null) {
-                int index = this.probeForASlot(getCleanHash(entry.key), null, newTable);
+                int index = this.probeForEmptySlot(entry.key, newTable);
                 newTable.set(index, entry);
             }
         }
