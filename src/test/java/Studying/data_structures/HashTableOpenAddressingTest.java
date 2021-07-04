@@ -7,7 +7,7 @@ import studying.data_structures.hash_table.HashTableOpenAddressing;
 public class HashTableOpenAddressingTest {
 
     @Test
-    public void correctAddNoResizeTest() {
+    public void correctAddNoTableResizeTest() {
         HashTableOpenAddressing<String, Integer> htOpenAddressing = new HashTableOpenAddressing<>();
         htOpenAddressing.add("andrea", 29);
         htOpenAddressing.add("federica", 30);
@@ -29,7 +29,7 @@ public class HashTableOpenAddressingTest {
     }
 
     @Test
-    public void tableResizeTest() {
+    public void correctAddWithTableResizeTest() {
         HashTableOpenAddressing<String, Integer> htOpenAddressing = new HashTableOpenAddressing<>(0.4f);
         htOpenAddressing.add("andreanb", 29);
         htOpenAddressing.add("gdgfdg", 29);
@@ -79,9 +79,61 @@ public class HashTableOpenAddressingTest {
         Assertions.assertEquals(8656, htOpenAddressing.get('>'));
 
         htOpenAddressing.put('a', 23);
-        htOpenAddressing.put('>', 12);
+        Assertions.assertTrue(htOpenAddressing.put('>', 12));
         Assertions.assertNotEquals(8656, htOpenAddressing.get('>'));
         Assertions.assertEquals(23, htOpenAddressing.get('a'));
         Assertions.assertEquals(12, htOpenAddressing.get('>'));
+
+        Assertions.assertFalse(htOpenAddressing.put('B', 43));
+    }
+
+    @Test
+    public void correctRemoveTest() {
+        HashTableOpenAddressing<String, Integer> htOpenAddressing = new HashTableOpenAddressing<>(0.4f);
+        htOpenAddressing.add("andreanb", 29);
+        htOpenAddressing.add("gdgfdg", 29);
+        htOpenAddressing.add("jhjh", 29);
+        htOpenAddressing.add("ahjfgdf", 29);
+        htOpenAddressing.add("federica", 30);
+        htOpenAddressing.add("luigi", 36);
+        htOpenAddressing.add("luigi", 36);
+        htOpenAddressing.add("luigi", 36);
+        htOpenAddressing.add("andrear", 29);
+
+        Assertions.assertEquals(9, htOpenAddressing.size());
+        Assertions.assertTrue(htOpenAddressing.remove("federica"));
+        Assertions.assertFalse(htOpenAddressing.remove("federica"));
+        Assertions.assertEquals(8, htOpenAddressing.size());
+
+        Assertions.assertFalse(htOpenAddressing.put("federica", 30));
+        Assertions.assertEquals(8, htOpenAddressing.size());
+    }
+
+    @Test
+    public void correctInsertWithTombstonesOptimization() {
+//        HashTableOpenAddressing<String, Integer> htOpenAddressing = new HashTableOpenAddressing<>(0.4f);
+//        htOpenAddressing.add("andreanb", 29);
+//        htOpenAddressing.add("gdgfdg", 29);
+//        htOpenAddressing.add("jhjh", 29);
+//        htOpenAddressing.add("ahjfgdf", 29);
+//        htOpenAddressing.add("federica", 30);
+//        htOpenAddressing.print();
+//
+//        htOpenAddressing.add("luigi1", 36);
+//        htOpenAddressing.add("luigi2", 36);
+//        htOpenAddressing.add("luigi3", 36);
+//        htOpenAddressing.add("andrear", 29);
+//        htOpenAddressing.print();
+//
+//        htOpenAddressing.remove("andreanb");
+//        htOpenAddressing.remove("gdgfdg");
+//        htOpenAddressing.remove("jhjh");
+//        htOpenAddressing.remove("ahjfgdf");
+//        System.out.println(htOpenAddressing.remove("federica"));
+//        //htOpenAddressing.print();
+//        Assertions.assertEquals(8, htOpenAddressing.size());
+//
+//        Assertions.assertFalse(htOpenAddressing.put("federica", 30));
+//        Assertions.assertEquals(8, htOpenAddressing.size());
     }
 }

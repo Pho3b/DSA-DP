@@ -5,6 +5,8 @@ import java.util.ArrayList;
 public class HashTableOpenAddressing<K, V> extends HashTable<K, V> {
     private static final int DEFAULT_CAPACITY = 24;
     private static final float DEFAULT_LOAD_FACTOR = 0.6f;
+    // Used to place markers for removed elements, and optimize later insertions
+    private final K TOMBSTONE = (K) new Object();
     private ArrayList<Entry<K, V>> table;
 
 
@@ -38,6 +40,8 @@ public class HashTableOpenAddressing<K, V> extends HashTable<K, V> {
     }
 
     /**
+     * Inserts a new Entry(key value pair object) into the table
+     *
      * @param key   K
      * @param value V
      */
@@ -69,7 +73,6 @@ public class HashTableOpenAddressing<K, V> extends HashTable<K, V> {
         } catch (Exception e) {
             return null;
         }
-
     }
 
     /**
@@ -82,7 +85,7 @@ public class HashTableOpenAddressing<K, V> extends HashTable<K, V> {
     public boolean put(K key, V value) {
         int index = this.probeForASlot(key);
 
-        if (this.table.get(index) != null) {
+        if (index != -1 && this.table.get(index) != null) {
             this.table.set(index, new Entry<>(key, value));
             return true;
         }
@@ -90,8 +93,24 @@ public class HashTableOpenAddressing<K, V> extends HashTable<K, V> {
         return false;
     }
 
+    /**
+     * Returns true if it correctly removes an element from the table, false instead.
+     * It also replace the removed element with a tombstone object for later use (Correct search and optimization)
+     *
+     * @param key K
+     * @return boolean
+     */
     @Override
     public boolean remove(K key) {
+        int index = this.probeForASlot(key);
+
+        if (index != -1 && this.table.get(index) != null) {
+            this.table.set(index, new Entry<>(TOMBSTONE, null));
+            this.size--;
+
+            return true;
+        }
+
         return false;
     }
 
@@ -108,9 +127,8 @@ public class HashTableOpenAddressing<K, V> extends HashTable<K, V> {
     }
 
     /**
-     * Probes for a given key's slot until it finds it
-     * Note: The NOT FOUND case cannot occur because the size of the table and the probe X number
-     * are kept always relatively prime to each other
+     * Probes for a given key's slot(index) until it finds it, if the given key's slot is not found -1 is returned
+     * The method also implements the Lazy Deletion/Relocation optimization
      *
      * @param key K
      * @return int
@@ -120,19 +138,34 @@ public class HashTableOpenAddressing<K, V> extends HashTable<K, V> {
         int hash = getCleanHash(key);
         int index = hash;
         int x = 0;
+        int firstTombstoneIndex = -1;
+        Entry<K, V> tempEntry = this.table.get(index);
 
         // We keep probing until we find an empty slot in the table
-        while (table.get(index) != null && !table.get(index).isEqual(entryToRetrieve)) {
+        while (tempEntry != null && !tempEntry.isEqual(entryToRetrieve)) {
+            if (tempEntry.value == TOMBSTONE && firstTombstoneIndex == -1) {
+                firstTombstoneIndex = index;
+            }
+
             index = (hash + Probe.linearProbing(x)) % this.capacity;
             x++;
         }
 
-        return index;
+        // Lazy deletion that replaces the first found tombstone's index with the searched Entry (If found)
+        if (tempEntry != null && firstTombstoneIndex != -1) {
+            this.table.set(index, null);
+            this.table.set(firstTombstoneIndex, tempEntry);
+            index = firstTombstoneIndex;
+        }
+
+        return tempEntry == null ? -1 : index;
     }
 
     /**
      * Probes for an empty slot 'Null slot' until it finds it.
      * If the table parameter will be given as Null, the current instance table will be used instead
+     * Note: The NOT FOUND case cannot occur because the size of the table and the probe X number
+     * are kept always relatively prime to each other
      *
      * @param key   K
      * @param table ArrayList<Entry<K, V>>
@@ -143,8 +176,10 @@ public class HashTableOpenAddressing<K, V> extends HashTable<K, V> {
         int hash = getCleanHash(key);
         int index = hash;
         int x = 0;
+        Entry<K, V> tempEntry = table.get(index);
 
-        while (table.get(index) != null) {
+        while (tempEntry != null && tempEntry.value != TOMBSTONE) {
+            tempEntry = table.get(index);
             index = (hash + Probe.linearProbing(x)) % this.capacity;
             x++;
         }
