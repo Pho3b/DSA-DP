@@ -68,4 +68,20 @@ public class HashTableOpenAddressingTest {
         Assertions.assertEquals(2, htOpenAddressing.get('b'));
         Assertions.assertNull(htOpenAddressing.get('B'));
     }
+
+    @Test
+    public void correctPutTest() {
+        HashTableOpenAddressing<Character, Integer> htOpenAddressing = new HashTableOpenAddressing<>(0.4f);
+        htOpenAddressing.add('a', 22);
+        htOpenAddressing.add('>', 8656);
+
+        Assertions.assertEquals(22, htOpenAddressing.get('a'));
+        Assertions.assertEquals(8656, htOpenAddressing.get('>'));
+
+        htOpenAddressing.put('a', 23);
+        htOpenAddressing.put('>', 12);
+        Assertions.assertNotEquals(8656, htOpenAddressing.get('>'));
+        Assertions.assertEquals(23, htOpenAddressing.get('a'));
+        Assertions.assertEquals(12, htOpenAddressing.get('>'));
+    }
 }

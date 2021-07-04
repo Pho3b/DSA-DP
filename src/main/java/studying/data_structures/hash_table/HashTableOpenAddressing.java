@@ -44,7 +44,7 @@ public class HashTableOpenAddressing<K, V> extends HashTable<K, V> {
     @Override
     public void add(K key, V value) {
         Entry<K, V> entry = new Entry<>(key, value);
-        int index = probeForEmptySlot(key, null);
+        int index = probeForAnEmptySlot(key, null);
 
         this.table.set(index, entry);
         this.size++;
@@ -70,6 +70,41 @@ public class HashTableOpenAddressing<K, V> extends HashTable<K, V> {
             return null;
         }
 
+    }
+
+    /**
+     * Updates the value of the given key if it finds it inside the table,
+     * it returns false if no key value is updated
+     *
+     * @return boolean
+     */
+    @Override
+    public boolean put(K key, V value) {
+        int index = this.probeForASlot(key);
+
+        if (this.table.get(index) != null) {
+            this.table.set(index, new Entry<>(key, value));
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    public boolean remove(K key) {
+        return false;
+    }
+
+    /**
+     * Prints the HashTable in a suitable format
+     */
+    @Override
+    public void print() {
+        System.out.println("HASH TABLE START:");
+
+        for (int i = 0; i < this.capacity; i++) {
+            System.out.println(i + " : " + this.table.get(i));
+        }
     }
 
     /**
@@ -103,7 +138,7 @@ public class HashTableOpenAddressing<K, V> extends HashTable<K, V> {
      * @param table ArrayList<Entry<K, V>>
      * @return int
      */
-    private int probeForEmptySlot(K key, ArrayList<Entry<K, V>> table) {
+    private int probeForAnEmptySlot(K key, ArrayList<Entry<K, V>> table) {
         table = table == null ? this.table : table;
         int hash = getCleanHash(key);
         int index = hash;
@@ -115,28 +150,6 @@ public class HashTableOpenAddressing<K, V> extends HashTable<K, V> {
         }
 
         return index;
-    }
-
-    @Override
-    public boolean put(K key, V value) {
-        return false;
-    }
-
-    @Override
-    public boolean remove(K key) {
-        return false;
-    }
-
-    /**
-     * Prints the HashTable in a suitable format
-     */
-    @Override
-    public void print() {
-        System.out.println("HASH TABLE START:");
-
-        for (int i = 0; i < this.capacity; i++) {
-            System.out.println(i + " : " + this.table.get(i));
-        }
     }
 
     /**
@@ -163,7 +176,7 @@ public class HashTableOpenAddressing<K, V> extends HashTable<K, V> {
 
         for (Entry<K, V> entry : this.table) {
             if (entry != null) {
-                int index = this.probeForEmptySlot(entry.key, newTable);
+                int index = this.probeForAnEmptySlot(entry.key, newTable);
                 newTable.set(index, entry);
             }
         }
