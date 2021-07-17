@@ -148,6 +148,7 @@ public class HashTableOpenAddressing<K, V> extends HashTable<K, V> {
             }
 
             index = (hash + Probe.linearProbing(x)) % this.capacity;
+            tempEntry = this.table.get(index);
             x++;
         }
 
@@ -179,8 +180,8 @@ public class HashTableOpenAddressing<K, V> extends HashTable<K, V> {
         Entry<K, V> tempEntry = table.get(index);
 
         while (tempEntry != null && tempEntry.value != TOMBSTONE) {
-            tempEntry = table.get(index);
             index = (hash + Probe.linearProbing(x)) % this.capacity;
+            tempEntry = table.get(index);
             x++;
         }
 

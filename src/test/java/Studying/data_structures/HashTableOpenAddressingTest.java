@@ -111,29 +111,24 @@ public class HashTableOpenAddressingTest {
 
     @Test
     public void correctInsertWithTombstonesOptimization() {
-//        HashTableOpenAddressing<String, Integer> htOpenAddressing = new HashTableOpenAddressing<>(0.4f);
-//        htOpenAddressing.add("andreanb", 29);
-//        htOpenAddressing.add("gdgfdg", 29);
-//        htOpenAddressing.add("jhjh", 29);
-//        htOpenAddressing.add("ahjfgdf", 29);
-//        htOpenAddressing.add("federica", 30);
-//        htOpenAddressing.print();
-//
-//        htOpenAddressing.add("luigi1", 36);
-//        htOpenAddressing.add("luigi2", 36);
-//        htOpenAddressing.add("luigi3", 36);
-//        htOpenAddressing.add("andrear", 29);
-//        htOpenAddressing.print();
-//
-//        htOpenAddressing.remove("andreanb");
-//        htOpenAddressing.remove("gdgfdg");
-//        htOpenAddressing.remove("jhjh");
-//        htOpenAddressing.remove("ahjfgdf");
-//        System.out.println(htOpenAddressing.remove("federica"));
-//        //htOpenAddressing.print();
-//        Assertions.assertEquals(8, htOpenAddressing.size());
-//
-//        Assertions.assertFalse(htOpenAddressing.put("federica", 30));
-//        Assertions.assertEquals(8, htOpenAddressing.size());
+        HashTableOpenAddressing<String, Integer> htOpenAddressing = new HashTableOpenAddressing<>(0.4f);
+        htOpenAddressing.add("primo", 29);
+        htOpenAddressing.add("secondo", 29);
+        htOpenAddressing.add("terzo", 29);
+        htOpenAddressing.add("quarto", 29);
+        htOpenAddressing.add("quinto", 30);
+        htOpenAddressing.add("sesto", 36);
+        htOpenAddressing.add("settimo", 36);
+        htOpenAddressing.add("ottavo", 36);
+        htOpenAddressing.add("nono", 29);
+
+        htOpenAddressing.remove("primo");
+        htOpenAddressing.remove("quarto");
+        htOpenAddressing.remove("non esiste");
+        htOpenAddressing.remove("nono");
+        htOpenAddressing.remove("nono");
+        Assertions.assertEquals(6, htOpenAddressing.size());
+        Assertions.assertFalse(htOpenAddressing.put("federica", 30));
+        Assertions.assertEquals(6, htOpenAddressing.size());
     }
 }
