@@ -1,6 +1,6 @@
 package studying;
 
-import studying.data_structures.hash_table.HashTableOpenAddressing;
+import studying.data_structures.tree.FenwickTree;
 
 public class App {
 
@@ -12,22 +12,8 @@ public class App {
     }
 
     public static void currentWorkingOnIssueTest() {
-        HashTableOpenAddressing<String, Integer> htOpenAddressing = new HashTableOpenAddressing<>(0.4f);
-        htOpenAddressing.add("andreanb", 29);
-        htOpenAddressing.add("gdgfdg", 29);
-        htOpenAddressing.add("jhjh", 29);
-        htOpenAddressing.add("ahjfgdf", 29);
-        htOpenAddressing.add("federica", 30);
-        htOpenAddressing.add("luigi", 36);
-        htOpenAddressing.add("luigi", 36);
-        htOpenAddressing.add("luigi", 36);
-        htOpenAddressing.add("andrear", 29);
-        htOpenAddressing.print();
-
-        htOpenAddressing.remove("federica");
-        htOpenAddressing.add("federica", 30);
-        htOpenAddressing.put("federica", 123789);
-        htOpenAddressing.size();
-        htOpenAddressing.print();
+        int res = FenwickTree.lsb(108);
+        System.out.println("result: " + res);
+        System.out.println("binary result: " + Integer.toBinaryString(res));
     }
 }

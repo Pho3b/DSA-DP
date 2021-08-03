@@ -42,7 +42,7 @@ public class HashTableSeparateChainingIterator<E> implements Iterator<E> {
     }
 
     /**
-     * Returns true if the current HashTable still have non null elements left
+     * Returns true if the current HashTable still have not null elements left
      *
      * @return boolean
      */
