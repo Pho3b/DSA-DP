@@ -12,8 +12,9 @@ public class App {
     }
 
     public static void currentWorkingOnIssueTest() {
-        int res = FenwickTree.lsb(108);
-        System.out.println("result: " + res);
-        System.out.println("binary result: " + Integer.toBinaryString(res));
+        int[] testArr = {0, 3, 4, -2, 7, 3, 11, 5, -8, -9, 2, 4, -8};
+        FenwickTree fenwickTree = new FenwickTree(testArr);
+        fenwickTree.print();
+        System.out.println(fenwickTree.rangeQuery(5,7)); // 26
     }
 }
