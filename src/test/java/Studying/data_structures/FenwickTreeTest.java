@@ -28,5 +28,29 @@ public class FenwickTreeTest {
         Assertions.assertEquals(IntStream.of(testArr).sum(), fenwickTree.prefixSum(testArr.length - 1));
     }
 
-    //TODO: Implements test for the add method
+    @Test
+    public void simplePositiveAddTest() {
+        FenwickTree fenwickTree = new FenwickTree(testArr);
+
+        Assertions.assertEquals(12, fenwickTree.rangeQuery(1, 4));
+        fenwickTree.add(1, 3);
+        Assertions.assertEquals(15, fenwickTree.rangeQuery(1, 4));
+    }
+
+    @Test
+    public void simpleNegativeNumberUpdateTest() {
+        FenwickTree fenwickTree = new FenwickTree(testArr);
+
+        Assertions.assertEquals(12, fenwickTree.rangeQuery(1, 4));
+        fenwickTree.add(1, -5);
+        Assertions.assertEquals(7, fenwickTree.rangeQuery(1, 4));
+        Assertions.assertEquals(-11, fenwickTree.rangeQuery(8, 11));
+        fenwickTree.update(8, 8);
+        fenwickTree.update(9, 9);
+        Assertions.assertEquals(6, fenwickTree.rangeQuery(8, 11));
+        fenwickTree.update(1, 7);
+        fenwickTree.update(3, 2);
+        fenwickTree.update(12, 8);
+        Assertions.assertEquals(41, fenwickTree.rangeQuery(1, 12));
+    }
 }

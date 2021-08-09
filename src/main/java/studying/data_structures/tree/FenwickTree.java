@@ -57,7 +57,7 @@ public class FenwickTree {
      * It (Under the hood) also updates all the chosen index related values, in order
      * to keep the FenwickTree rule
      *
-     * @param i index
+     * @param i     index
      * @param toAdd int to add
      */
     public void add(int i, int toAdd) {
@@ -69,6 +69,17 @@ public class FenwickTree {
     }
 
     /**
+     * Just a name variation of the 'add()' method.
+     * Refer to the 'add' method doc.
+     *
+     * @param i     index
+     * @param toAdd int to add
+     */
+    public void update(int i, int toAdd) {
+        this.add(i, toAdd);
+    }
+
+    /**
      * Prints the data structure in a suitable format
      */
     public void print() {
@@ -77,7 +88,7 @@ public class FenwickTree {
 
     /**
      * Returns the value of the "least significant bit" of the given integer
-     * It basically works because of how the "Two’s Complement" method (That is used to store binaries in memory) works.
+     * It basically works because of how the "Two’s Complement" method works.
      *
      * @return int
      */

@@ -12,9 +12,12 @@ public class App {
     }
 
     public static void currentWorkingOnIssueTest() {
-        int[] testArr = {0, 3, 4, -2, 7, 3, 11, 5, -8, -9, 2, 4, -8};
+        int[] testArr = {0, -2, 4, -2, 7, 3, 11, 5, -8, -9, 2, 4, -8};
         FenwickTree fenwickTree = new FenwickTree(testArr);
         fenwickTree.print();
-        System.out.println(fenwickTree.rangeQuery(5,7)); // 26
+        System.out.println(fenwickTree.rangeQuery(1,4)); // 12
+        fenwickTree.add(1, 3);
+        fenwickTree.print();
+        System.out.println(fenwickTree.rangeQuery(1,4)); // 15
     }
 }
