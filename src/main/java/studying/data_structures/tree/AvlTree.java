@@ -2,6 +2,10 @@ package studying.data_structures.tree;
 
 public class AvlTree<T extends Comparable<T>> extends AbstractBst<T> {
     private BinarySearchTree<T> bst;
+    /**
+     * balanceFactor = The difference between the right subtree's height and the left subtree's height.
+     * Height of X is calculated as the number of edges between x and the furthest leaf.
+     */
     short balanceFactor = 0;
 
 
@@ -18,6 +22,7 @@ public class AvlTree<T extends Comparable<T>> extends AbstractBst<T> {
      */
     public AvlTree(T rootValue) {
         this.root = new AvlNode<>(rootValue);
+        this.nodesCount++;
     }
 
     /**
@@ -33,10 +38,16 @@ public class AvlTree<T extends Comparable<T>> extends AbstractBst<T> {
         } else if (this.root == null) {
             // Empty root case
             this.root = new AvlNode<>(value);
+            this.nodesCount++;
             return true;
         }
 
-        return this.insert(new AvlNode<>(value), this.root);
+        if (this.insert(new AvlNode<>(value), this.root)) {
+            this.nodesCount++;
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -68,11 +79,6 @@ public class AvlTree<T extends Comparable<T>> extends AbstractBst<T> {
         }
 
         return this.insert(toInsert, nextNode);
-    }
-
-    public boolean contains(T value) {
-
-        return false;
     }
 
     /**

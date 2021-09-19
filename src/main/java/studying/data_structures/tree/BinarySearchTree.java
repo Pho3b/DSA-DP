@@ -9,8 +9,6 @@ import java.util.Iterator;
 import java.util.List;
 
 public class BinarySearchTree<T extends Comparable<T>> extends AbstractBst<T> {
-    private int nodesNumber = 0;
-
 
     /**
      * Default constructor that generates an empty BST
@@ -25,7 +23,7 @@ public class BinarySearchTree<T extends Comparable<T>> extends AbstractBst<T> {
      */
     public BinarySearchTree(T rootVal) {
         this.root = new Node<>(rootVal);
-        this.nodesNumber++;
+        this.nodesCount++;
     }
 
     /**
@@ -39,7 +37,7 @@ public class BinarySearchTree<T extends Comparable<T>> extends AbstractBst<T> {
     public boolean insert(T value) {
         if (this.root == null) {
             this.root = new Node<>(value);
-            this.nodesNumber++;
+            this.nodesCount++;
             return true;
         }
 
@@ -51,7 +49,7 @@ public class BinarySearchTree<T extends Comparable<T>> extends AbstractBst<T> {
             if (comparison > 0) {
                 if (currentNode.leftChild == null) {
                     currentNode.leftChild = new Node<>(value);
-                    this.nodesNumber++;
+                    this.nodesCount++;
                     return true;
                 }
 
@@ -59,7 +57,7 @@ public class BinarySearchTree<T extends Comparable<T>> extends AbstractBst<T> {
             } else if (comparison < 0) {
                 if (currentNode.rightChild == null) {
                     currentNode.rightChild = new Node<>(value);
-                    this.nodesNumber++;
+                    this.nodesCount++;
                     return true;
                 }
 
@@ -78,7 +76,7 @@ public class BinarySearchTree<T extends Comparable<T>> extends AbstractBst<T> {
     public boolean delete(T value) {
         if (this.contains(value)) {
             root = this.delete(root, value);
-            this.nodesNumber--;
+            this.nodesCount--;
             return true;
         }
 
@@ -86,38 +84,14 @@ public class BinarySearchTree<T extends Comparable<T>> extends AbstractBst<T> {
     }
 
     /**
-     * Returns whether the binary search tree contains the given value or not
-     *
-     * @param value T
-     * @return boolean
-     */
-    public boolean contains(T value) {
-        Node<T> currentNode = this.root;
-
-        while (currentNode != null) {
-            int comparison = value.compareTo(currentNode.value);
-
-            if (comparison > 0) {
-                currentNode = currentNode.rightChild;
-            } else if (comparison < 0) {
-                currentNode = currentNode.leftChild;
-            } else {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    /**
      * Breadth First Search
-     * (We avoid keeping track of the already checked nodes here because BST cannot contain loops)
+     * (We avoid keeping track of the already checked nodes here because BSTs don't contain loops)
      *
      * @return List
      */
     public List<T> levelOrderTraversal() {
-        ArrayList<T> res = new ArrayList<>(this.nodesNumber);
-        Queue<Node<T>> queue = new Queue<>(this.nodesNumber);
+        ArrayList<T> res = new ArrayList<>(this.nodesCount);
+        Queue<Node<T>> queue = new Queue<>(this.nodesCount);
         queue.enqueue(this.root);
 
         while (!queue.isEmpty()) {
@@ -192,7 +166,7 @@ public class BinarySearchTree<T extends Comparable<T>> extends AbstractBst<T> {
     public int height() {
         if (this.root == null) return 0;
 
-        Queue<Node<T>> queue = new Queue<>(this.nodesNumber);
+        Queue<Node<T>> queue = new Queue<>(this.nodesCount);
         queue.enqueue(this.root);
         int height = 0;
         int levelSize;
@@ -242,15 +216,6 @@ public class BinarySearchTree<T extends Comparable<T>> extends AbstractBst<T> {
         int right = depth(root.rightChild);
 
         return Math.max(left, right) + 1;
-    }
-
-    /**
-     * Returns the current number of nodes in the BST
-     *
-     * @return int
-     */
-    public int size() {
-        return this.nodesNumber;
     }
 
     /**
