@@ -8,8 +8,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class BinarySearchTree<T extends Comparable<T>> {
-    private Node<T> root = null;
+public class BinarySearchTree<T extends Comparable<T>> extends AbstractBst<T> {
     private int nodesNumber = 0;
 
 
@@ -31,7 +30,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
     /**
      * Inserts a new node in the BST keeping the elements ordered, this method is iterative.
-     * Duplicates are not allowed allowed, if the tree already contains a value
+     * Duplicates are not allowed, if the tree already contains a value
      * the method will return false and the value won't be inserted
      *
      * @param value T
@@ -71,6 +70,11 @@ public class BinarySearchTree<T extends Comparable<T>> {
         }
     }
 
+    /**
+     *
+     * @param value T
+     * @return boolean
+     */
     public boolean delete(T value) {
         if (this.contains(value)) {
             root = this.delete(root, value);
@@ -83,7 +87,6 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
     /**
      * Returns whether the binary search tree contains the given value or not
-     * returns true, if it contains it.
      *
      * @param value T
      * @return boolean
@@ -104,14 +107,6 @@ public class BinarySearchTree<T extends Comparable<T>> {
         }
 
         return false;
-    }
-
-    /**
-     * Public print method that can be called by the user
-     */
-    public void print() {
-        this.inorderTraversal(this.root);
-        System.out.println();
     }
 
     /**
@@ -139,42 +134,6 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
         System.out.println();
         return res;
-    }
-
-    /**
-     * Traverse and prints the nodes of the current BST in "PRE_ORDER"
-     * Depth First Search
-     */
-    private void preorderTraversal(Node<T> node) {
-        if (node == null) return;
-
-        System.out.print(node.value + " - ");
-        inorderTraversal(node.leftChild);
-        inorderTraversal(node.rightChild);
-    }
-
-    /**
-     * Traverse and prints the nodes of the current BST in "IN_ORDER"
-     * Depth First Search
-     */
-    private void inorderTraversal(Node<T> node) {
-        if (node == null) return;
-
-        inorderTraversal(node.leftChild);
-        System.out.print(node.value + " ");
-        inorderTraversal(node.rightChild);
-    }
-
-    /**
-     * Traverse and prints the nodes of the current BST in "POST_ORDER"
-     * Depth First Search
-     */
-    private void postOrderTraversal(Node<T> node) {
-        if (node == null) return;
-
-        inorderTraversal(node.leftChild);
-        inorderTraversal(node.rightChild);
-        System.out.print(node.value + " - ");
     }
 
     /**

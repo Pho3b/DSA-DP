@@ -1,6 +1,6 @@
 package studying;
 
-import studying.data_structures.tree.FenwickTree;
+import studying.data_structures.tree.AvlTree;
 
 public class App {
 
@@ -12,12 +12,13 @@ public class App {
     }
 
     public static void currentWorkingOnIssueTest() {
-        int[] testArr = {0, -2, 4, -2, 7, 3, 11, 5, -8, -9, 2, 4, -8};
-        FenwickTree fenwickTree = new FenwickTree(testArr);
-        fenwickTree.print();
-        System.out.println(fenwickTree.rangeQuery(1,4)); // 12
-        fenwickTree.add(1, 3);
-        fenwickTree.print();
-        System.out.println(fenwickTree.rangeQuery(1,4)); // 15
+        AvlTree<Integer> avlTree = new AvlTree<>();
+        System.out.println(avlTree.insert(4));
+        System.out.println(avlTree.insert(12));
+        System.out.println(avlTree.insert(32));
+        System.out.println(avlTree.insert(32));
+        System.out.println(avlTree.insert(2));
+        System.out.println(avlTree.insert(1));
+        avlTree.print();
     }
 }
