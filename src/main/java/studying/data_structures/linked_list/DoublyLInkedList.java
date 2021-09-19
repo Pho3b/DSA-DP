@@ -1,10 +1,9 @@
 package studying.data_structures.linked_list;
 
 public class DoublyLInkedList<T> {
-    Node head = null;
-    // For the doublyLinkedList we will keep a pointer to the tail of the list
+    // For the doublyLinkedList we will also keep a pointer to the tail of the list
     // in order to increase the performance for some tasks, starting from the get() action
-    Node tail = null;
+    Node head, tail = null;
     int size = 0;
 
 
