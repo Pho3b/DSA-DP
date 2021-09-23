@@ -57,7 +57,13 @@ public class AvlTree<T extends Comparable<T>> extends AbstractBst<T> {
             node.leftChild = insert(node.leftChild, newValue);
         }
 
+        // updateHeight((AvlNode<T>)node);
+
         return node;
+    }
+
+    private void updateHeight(AvlNode<T> node) {
+        node.height = 1 + Math.max(node.leftChild.height, node.rightChild.height);
     }
 
     /**
