@@ -33,52 +33,31 @@ public class AvlTree<T extends Comparable<T>> extends AbstractBst<T> {
      * @return boolean
      */
     public boolean insert(T value) {
-        if (value == null) {
-            return false;
-        } else if (this.root == null) {
-            // Empty root case
-            this.root = new AvlNode<>(value);
-            this.nodesCount++;
-            return true;
-        }
+        int currentNodesCount = nodesCount;
+        this.root = this.insert(this.root, value);
 
-        if (this.insert(new AvlNode<>(value), this.root)) {
-            this.nodesCount++;
-            return true;
-        } else {
-            return false;
-        }
+        return currentNodesCount < nodesCount;
     }
 
     /**
      * Private recursive method that actually inserts a new node inside the tree
      *
-     * @param toInsert Node
+     * @param node Node
      * @return boolean
      */
-    private boolean insert(Node<T> toInsert, Node<T> currentNode) {
-        int comparison = toInsert.value.compareTo(currentNode.value);
-        Node<T> nextNode;
-
-        if (comparison == 0) {
-            return false;
-        } else if (comparison > 0) {
-            nextNode = currentNode.rightChild;
-
-            if (nextNode == null) {
-                currentNode.rightChild = toInsert;
-                return true;
-            }
-        } else {
-            nextNode = currentNode.leftChild;
-
-            if (nextNode == null) {
-                currentNode.leftChild = toInsert;
-                return true;
-            }
+    private Node<T> insert(Node<T> node, T newValue) {
+        if (node == null) {
+            nodesCount++;
+            return new AvlNode<>(newValue);
         }
 
-        return this.insert(toInsert, nextNode);
+        if (newValue.compareTo(node.value) > 0) {
+            node.rightChild = insert(node.rightChild, newValue);
+        } else if (newValue.compareTo(node.value) < 0) {
+            node.leftChild = insert(node.leftChild, newValue);
+        }
+
+        return node;
     }
 
     /**
