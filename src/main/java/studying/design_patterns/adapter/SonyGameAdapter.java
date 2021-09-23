@@ -2,7 +2,7 @@ package studying.design_patterns.adapter;
 
 /**
  * 'ADAPTER'
- * Here i want to make it possible to run a sony game on a NintendoConsoleEmulator.
+ * Here I want to make it possible to run a sony game on a NintendoConsoleEmulator.
  * 'Adapting' all the needed SonyGame methods to make it possible
  */
 public class SonyGameAdapter extends NintendoGame {

@@ -4,9 +4,9 @@ public class AvlTree<T extends Comparable<T>> extends AbstractBst<T> {
     private BinarySearchTree<T> bst;
     /**
      * balanceFactor = The difference between the right subtree's height and the left subtree's height.
-     * Height of X is calculated as the number of edges between x and the furthest leaf.
+     * Height of X is calculated as the number of edges between X and the furthest Leaf Node.
      */
-    short balanceFactor = 0;
+    int balanceFactor = 0;
 
 
     /**
