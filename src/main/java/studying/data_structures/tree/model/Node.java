@@ -1,4 +1,4 @@
-package studying.data_structures.tree;
+package studying.data_structures.tree.model;
 
 public class Node<T extends Comparable<T>> {
     public Node<T> leftChild, rightChild = null;

@@ -19,6 +19,7 @@ public class App {
         System.out.println(avlTree.insert(32));
         System.out.println(avlTree.insert(2));
         System.out.println(avlTree.insert(1));
+        System.out.println(avlTree.traverse());
         avlTree.print();
     }
 }

@@ -3,12 +3,15 @@ package studying.data_structures.tree;
 import studying.data_structures.queue.Queue;
 import studying.data_structures.tree.iterators.InOrderIterator;
 import studying.data_structures.tree.iterators.IterationType;
+import studying.data_structures.tree.model.Node;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class BinarySearchTree<T extends Comparable<T>> extends AbstractBst<T> {
+public class BinarySearchTree<T extends Comparable<T>> {
+    private Node<T> root;
+    private int nodesCount = 0;
 
     /**
      * Default constructor that generates an empty BST
@@ -230,6 +233,83 @@ public class BinarySearchTree<T extends Comparable<T>> extends AbstractBst<T> {
         }
 
         return currentRoot;
+    }
+
+    /**
+     * Public print method that can be called by the user
+     */
+    public void print() {
+        this.inorderTraversal(this.root);
+        System.out.println();
+    }
+
+    /**
+     * Traverse and prints the nodes of the current BST in "PRE_ORDER"
+     * Depth First Search
+     */
+    private void preorderTraversal(Node<T> node) {
+        if (node == null) return;
+
+        System.out.print(node.value + " - ");
+        inorderTraversal(node.leftChild);
+        inorderTraversal(node.rightChild);
+    }
+
+    /**
+     * Traverse and prints the nodes of the current BST in "IN_ORDER"
+     * Depth First Search
+     */
+    private void inorderTraversal(Node<T> node) {
+        if (node == null) return;
+
+        inorderTraversal(node.leftChild);
+        System.out.print(node.value + " ");
+        inorderTraversal(node.rightChild);
+    }
+
+    /**
+     * Traverse and prints the nodes of the current BST in "POST_ORDER"
+     * Depth First Search
+     */
+    private void postOrderTraversal(Node<T> node) {
+        if (node == null) return;
+
+        inorderTraversal(node.leftChild);
+        inorderTraversal(node.rightChild);
+        System.out.print(node.value + " - ");
+    }
+
+    /**
+     * Returns whether the binary search tree contains the given value or not
+     *
+     * @param value T
+     * @return boolean
+     */
+    public boolean contains(T value) {
+        Node<T> currentNode = this.root;
+
+        while (currentNode != null) {
+            int comparison = value.compareTo(currentNode.value);
+
+            if (comparison > 0) {
+                currentNode = currentNode.rightChild;
+            } else if (comparison < 0) {
+                currentNode = currentNode.leftChild;
+            } else {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Returns the current number of nodes in the BST
+     *
+     * @return int
+     */
+    public int size() {
+        return this.nodesCount;
     }
 
     //TODO: Implement the four types of traversal iteratively
