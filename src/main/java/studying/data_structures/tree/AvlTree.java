@@ -2,13 +2,11 @@ package studying.data_structures.tree;
 
 import studying.data_structures.queue.Queue;
 import studying.data_structures.tree.model.AvlNode;
-import studying.data_structures.tree.model.Node;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class AvlTree<T extends Comparable<T>> {
-    private BinarySearchTree<T> bst;
     private int nodesCount, balanceFactor = 0; // The difference between the right subtree and the left subtree's height.
     private AvlNode<T> root;
 
@@ -45,11 +43,10 @@ public class AvlTree<T extends Comparable<T>> {
 
     /**
      * Breadth First Search
-     * (We avoid keeping track of the already checked nodes here because BSTs don't contain loops)
      *
      * @return List
      */
-    public List<T> traverse() {
+    public List<T> levelTraversal() {
         ArrayList<T> res = new ArrayList<>(this.nodesCount);
         Queue<AvlNode<T>> queue = new Queue<>(this.nodesCount);
         queue.enqueue(this.root);
@@ -57,8 +54,6 @@ public class AvlTree<T extends Comparable<T>> {
         while (!queue.isEmpty()) {
             AvlNode<T> currentNode = queue.dequeue();
             res.add(currentNode.value);
-            System.out.print(currentNode.value + " ");
-            System.out.print("fds child value " + currentNode.rightChild);
 
             if (currentNode.leftChild != null)
                 queue.enqueue(currentNode.leftChild);
@@ -89,7 +84,7 @@ public class AvlTree<T extends Comparable<T>> {
             node.leftChild = insert(node.leftChild, newValue);
         }
 
-        updateHeight((AvlNode<T>)node);
+        updateHeight(node);
 
         return node;
     }
@@ -101,6 +96,7 @@ public class AvlTree<T extends Comparable<T>> {
      */
     private void updateHeight(AvlNode<T> node) {
         node.height = 1 + Math.max(height(node.leftChild), height(node.rightChild));
+        System.out.println("Node value " + node.value + " Height: " +  node.height);
     }
 
     /**
@@ -145,7 +141,7 @@ public class AvlTree<T extends Comparable<T>> {
     private void preorderTraversal(AvlNode<T> node) {
         if (node == null) return;
 
-        System.out.print(node.value + " - ");
+        System.out.print(node.value + ":" + node.height + " ");
         inorderTraversal(node.leftChild);
         inorderTraversal(node.rightChild);
     }
@@ -158,7 +154,7 @@ public class AvlTree<T extends Comparable<T>> {
         if (node == null) return;
 
         inorderTraversal(node.leftChild);
-        System.out.print(node.value + " ");
+        System.out.print(node.value + ":" + node.height + " ");
         inorderTraversal(node.rightChild);
     }
 
@@ -171,7 +167,7 @@ public class AvlTree<T extends Comparable<T>> {
 
         inorderTraversal(node.leftChild);
         inorderTraversal(node.rightChild);
-        System.out.print(node.value + " - ");
+        System.out.print(node.value + ":" + node.height + " ");
     }
 
     /**

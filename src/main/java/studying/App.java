@@ -13,13 +13,14 @@ public class App {
 
     public static void currentWorkingOnIssueTest() {
         AvlTree<Integer> avlTree = new AvlTree<>();
-        System.out.println(avlTree.insert(4));
-        System.out.println(avlTree.insert(12));
-        System.out.println(avlTree.insert(32));
-        System.out.println(avlTree.insert(32));
-        System.out.println(avlTree.insert(2));
-        System.out.println(avlTree.insert(1));
-        System.out.println(avlTree.traverse());
+        avlTree.insert(4);
+        avlTree.insert(12);
+        avlTree.insert(32);
+        avlTree.insert(32);
+        avlTree.insert(2);
+        avlTree.insert(1);
+
+        avlTree.levelTraversal();
         avlTree.print();
     }
 }
