@@ -20,7 +20,8 @@ public class App {
         avlTree.insert(8);
         avlTree.insert(18);
         avlTree.insert(38);
-        avlTree.insert(13);
+        avlTree.insert(20);
+        avlTree.insert(19);
 
         avlTree.levelTraversal();
         avlTree.print();

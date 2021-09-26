@@ -204,7 +204,7 @@ public class HashTableOpenAddressing<K, V> extends HashTable<K, V> {
     }
 
     /**
-     * Doubles the size of the current table and re hashes all of the previous elements inside it
+     * Doubles the size of the current table and re hashes all the previous elements inside it
      */
     private void resizeTable() {
         this.capacity *= 2;

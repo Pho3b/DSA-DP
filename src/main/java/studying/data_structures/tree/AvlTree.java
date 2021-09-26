@@ -43,6 +43,20 @@ public class AvlTree<T extends Comparable<T>> {
     }
 
     /**
+     * Exposed delete method, it calls the internal recursive one to actually
+     * remove the given node
+     *
+     * @param value T
+     * @return boolean
+     */
+    public boolean delete(T value) {
+        int currentNodesCount = nodesCount;
+        this.root = this.delete(root, value);
+
+        return (nodesCount < currentNodesCount);
+    }
+
+    /**
      * Breadth First Search
      *
      * @return List
@@ -109,7 +123,8 @@ public class AvlTree<T extends Comparable<T>> {
     }
 
     /**
-     * Private recursive method that actually inserts a new node inside the tree
+     * Private recursive method that actually inserts a new node inside the tree,
+     * it also updates the height of the current node and calls the tree balance method if needed.
      *
      * @param node Node
      * @return boolean
@@ -135,6 +150,42 @@ public class AvlTree<T extends Comparable<T>> {
     }
 
     /**
+     * Private recursive method that removes a node from the BST structure,
+     * it starts to search for the node to delete from the given 'currentNode'
+     *
+     * @param currentNode AvlNode
+     * @param value       T
+     * @return Node
+     */
+    private AvlNode<T> delete(AvlNode<T> currentNode, T value) {
+        if (currentNode == null) return null;
+
+        if (value.compareTo(currentNode.value) > 0) {
+            currentNode.rightChild = delete(currentNode.rightChild, value);
+        } else if (value.compareTo(currentNode.value) < 0) {
+            currentNode.leftChild = delete(currentNode.leftChild, value);
+        } else {
+            nodesCount--;
+
+            if (currentNode.leftChild == null) {
+                AvlNode<T> temp = currentNode.rightChild;
+                currentNode.rightChild = null;
+                return temp;
+            } else if (currentNode.rightChild == null) {
+                AvlNode<T> temp = currentNode.leftChild;
+                currentNode.leftChild = null;
+                return temp;
+            } else {
+                AvlNode<T> temp = findMin(currentNode.rightChild);
+                currentNode.value = temp.value;
+                this.delete(currentNode.rightChild, temp.value);
+            }
+        }
+
+        return currentNode;
+    }
+
+    /**
      * Update the height property of the given Node
      *
      * @param node AvlNode
@@ -150,17 +201,19 @@ public class AvlTree<T extends Comparable<T>> {
      * @param node AvlNode
      */
     private AvlNode<T> updateBalance(AvlNode<T> node) {
-        node.balanceFactor = (height(node.rightChild) - height(node.leftChild));
+        int balanceFactor = (height(node.rightChild) - height(node.leftChild));
 
-        switch (this.checkBalanceState(node, node.balanceFactor)) {
+        switch (this.checkBalanceState(node, balanceFactor)) {
             case LEFT_LEFT_CASE:
                 return rightRotate(node);
-            case LEFT_RIGHT_CASE:
-                break;
             case RIGHT_RIGHT_CASE:
                 return leftRotate(node);
+            case LEFT_RIGHT_CASE:
+                node.leftChild = leftRotate(node.leftChild);
+                return rightRotate(node);
             case RIGHT_LEFT_CASE:
-                break;
+                node.rightChild = rightRotate(node.rightChild);
+                return leftRotate(node);
         }
 
         return node;
@@ -205,7 +258,7 @@ public class AvlTree<T extends Comparable<T>> {
      */
     private int height(AvlNode<T> node) {
         if (node == null)
-            return 0;
+            return -1;
 
         return node.height;
     }
@@ -246,13 +299,27 @@ public class AvlTree<T extends Comparable<T>> {
     }
 
     /**
+     * Given a root node it finds it's child with the minimum value and returns it
+     *
+     * @param currentRoot Node
+     * @return AvlNode<T>
+     */
+    private AvlNode<T> findMin(AvlNode<T> currentRoot) {
+        while (currentRoot.leftChild != null) {
+            currentRoot = currentRoot.leftChild;
+        }
+
+        return currentRoot;
+    }
+
+    /**
      * Traverse and prints the nodes of the current BST in "PRE_ORDER"
      * Depth First Search
      */
     private void preorderTraversal(AvlNode<T> node) {
         if (node == null) return;
 
-        System.out.print(node.value + ":" + node.height + ":" + node.balanceFactor + " ");
+        System.out.print(node.value + ":" + node.height + " ");
         inorderTraversal(node.leftChild);
         inorderTraversal(node.rightChild);
     }
@@ -265,7 +332,7 @@ public class AvlTree<T extends Comparable<T>> {
         if (node == null) return;
 
         inorderTraversal(node.leftChild);
-        System.out.print(node.value + ":" + node.height + ":" + node.balanceFactor + " ");
+        System.out.print(node.value + ":" + node.height + " ");
         inorderTraversal(node.rightChild);
     }
 
@@ -278,7 +345,7 @@ public class AvlTree<T extends Comparable<T>> {
 
         inorderTraversal(node.leftChild);
         inorderTraversal(node.rightChild);
-        System.out.print(node.value + ":" + node.height + ":" + node.balanceFactor + " ");
+        System.out.print(node.value + ":" + node.height + " ");
     }
 
 }

@@ -72,6 +72,8 @@ public class BinarySearchTree<T extends Comparable<T>> {
     }
 
     /**
+     * Exposed delete method, it calls the internal recursive one to actually
+     * remove the given node
      *
      * @param value T
      * @return boolean
