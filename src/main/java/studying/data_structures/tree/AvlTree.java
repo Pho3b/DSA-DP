@@ -2,6 +2,7 @@ package studying.data_structures.tree;
 
 import studying.data_structures.queue.Queue;
 import studying.data_structures.tree.model.AvlNode;
+import studying.data_structures.tree.model.BalanceState;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,6 +63,7 @@ public class AvlTree<T extends Comparable<T>> {
                 queue.enqueue(currentNode.rightChild);
         }
 
+        System.out.println(res);
         return res;
     }
 
@@ -129,9 +131,7 @@ public class AvlTree<T extends Comparable<T>> {
         }
 
         updateHeight(node);
-        updateBalance(node);
-
-        return node;
+        return updateBalance(node);
     }
 
     /**
@@ -149,11 +149,52 @@ public class AvlTree<T extends Comparable<T>> {
      *
      * @param node AvlNode
      */
-    private void updateBalance(AvlNode<T> node) {
-        node.balanceFactor = height(node.rightChild) - height(node.leftChild);
+    private AvlNode<T> updateBalance(AvlNode<T> node) {
+        node.balanceFactor = (height(node.rightChild) - height(node.leftChild));
 
-        // Controllo se il balance factor è 2 o -2, in uno di questi due casi controllo quale dei quattro casi
-        // possibili di sbilanciamento è presente nell'albero al momento
+        switch (this.checkBalanceState(node, node.balanceFactor)) {
+            case LEFT_LEFT_CASE:
+                return rightRotate(node);
+            case LEFT_RIGHT_CASE:
+                break;
+            case RIGHT_RIGHT_CASE:
+                return leftRotate(node);
+            case RIGHT_LEFT_CASE:
+                break;
+        }
+
+        return node;
+    }
+
+    /**
+     * Returns the current 'BalanceState' of the given node.
+     * If the node is not unbalanced it returns the default 'BALANCED_CASE'
+     *
+     * @param node          AvlNode<T>
+     * @param balanceFactor int
+     * @return BalanceState
+     */
+    private BalanceState checkBalanceState(AvlNode<T> node, int balanceFactor) {
+        switch (balanceFactor) {
+            case 2:
+                if (node.rightChild.leftChild == null) {
+                    System.out.println("RIGHT_RIGHT_CASE");
+                    return BalanceState.RIGHT_RIGHT_CASE;
+                }
+
+                System.out.println("RIGHT_LEFT_CASE");
+                return BalanceState.RIGHT_LEFT_CASE;
+            case -2:
+                if (node.leftChild.rightChild == null) {
+                    System.out.println("LEFT_LEFT_CASE");
+                    return BalanceState.LEFT_LEFT_CASE;
+                }
+
+                System.out.println("LEFT_RIGHT_CASE");
+                return BalanceState.LEFT_RIGHT_CASE;
+            default:
+                return BalanceState.BALANCED_CASE;
+        }
     }
 
     /**
@@ -170,17 +211,38 @@ public class AvlTree<T extends Comparable<T>> {
     }
 
     /**
-     * Performed in the 'left heavy' case
+     * Performs a right rotation on the given node, returning the new
+     * root node of the subtree after the rotation.
+     *
+     * @return AvlNode<T>
      */
-    private void rightRotation(AvlNode<T> node) {
+    private AvlNode<T> rightRotate(AvlNode<T> node) {
+        AvlNode<T> leftChild = node.leftChild;
+        node.leftChild = leftChild.rightChild;
+        leftChild.rightChild = node;
 
+        updateHeight(node);
+        updateHeight(leftChild);
+
+        return leftChild;
     }
 
-    /**
-     * Performed in the 'right heavy' case
-     */
-    private void leftRotation() {
 
+    /**
+     * Performs a left rotation on the given node, returning the new
+     * root node of the subtree after the rotation.
+     *
+     * @return AvlNode<T>
+     */
+    private AvlNode<T> leftRotate(AvlNode<T> node) {
+        AvlNode<T> rightChild = node.rightChild;
+        node.rightChild = rightChild.leftChild;
+        rightChild.leftChild = node;
+
+        updateHeight(node);
+        updateHeight(rightChild);
+
+        return rightChild;
     }
 
     /**
