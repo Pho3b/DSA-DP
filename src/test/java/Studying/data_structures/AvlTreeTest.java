@@ -82,7 +82,6 @@ public class AvlTreeTest {
         avlTree.insert(18);
         avlTree.insert(38);
         avlTree.insert(37);
-
         Assertions.assertEquals("[12, 2, 32, 1, 4, 18, 37, 8, 36, 38]", avlTree.levelTraversal().toString());
     }
 
@@ -100,7 +99,36 @@ public class AvlTreeTest {
         avlTree.insert(38);
         avlTree.insert(20);
         avlTree.insert(19);
+        Assertions.assertEquals("[12, 2, 32, 1, 4, 19, 36, 8, 18, 20, 38]",
+                avlTree.levelTraversal().toString());
+    }
 
-        Assertions.assertEquals("[12, 2, 32, 1, 4, 19, 36, 8, 18, 20, 38]", avlTree.levelTraversal().toString());
+    @Test
+    public void removeAndSizeTest() {
+        AvlTree<Integer> avlTree = new AvlTree<>(12);
+        avlTree.insert(4);
+        avlTree.insert(12);
+        avlTree.insert(32);
+        Assertions.assertEquals(3, avlTree.size());
+
+        // avlTree.levelTraversal();
+        avlTree.delete(12);
+        avlTree.levelTraversal();
+        Assertions.assertEquals(2, avlTree.size());
+    }
+
+    @Test
+    public void removeAndRotations() {
+        AvlTree<Integer> avlTree = new AvlTree<>();
+        avlTree.insert(4);
+        avlTree.insert(12);
+        avlTree.insert(32);
+        avlTree.insert(76);
+        avlTree.insert(15);
+        avlTree.delete(4);
+        Assertions.assertEquals("[32, 12, 76, 15]", avlTree.levelTraversal().toString());
+
+        avlTree.delete(76);
+        Assertions.assertEquals("[15, 12, 32]", avlTree.levelTraversal().toString());
     }
 }

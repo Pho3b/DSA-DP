@@ -62,6 +62,8 @@ public class AvlTree<T extends Comparable<T>> {
      * @return List
      */
     public List<T> levelTraversal() {
+        if (root == null) return new ArrayList<>(0);
+
         ArrayList<T> res = new ArrayList<>(this.nodesCount);
         Queue<AvlNode<T>> queue = new Queue<>(this.nodesCount);
         queue.enqueue(this.root);
@@ -153,36 +155,41 @@ public class AvlTree<T extends Comparable<T>> {
      * Private recursive method that removes a node from the BST structure,
      * it starts to search for the node to delete from the given 'currentNode'
      *
-     * @param currentNode AvlNode
-     * @param value       T
+     * @param node  AvlNode
+     * @param value T
      * @return Node
      */
-    private AvlNode<T> delete(AvlNode<T> currentNode, T value) {
-        if (currentNode == null) return null;
+    private AvlNode<T> delete(AvlNode<T> node, T value) {
+        if (node == null) return null;
 
-        if (value.compareTo(currentNode.value) > 0) {
-            currentNode.rightChild = delete(currentNode.rightChild, value);
-        } else if (value.compareTo(currentNode.value) < 0) {
-            currentNode.leftChild = delete(currentNode.leftChild, value);
+        if (value.compareTo(node.value) > 0) {
+            node.rightChild = delete(node.rightChild, value);
+        } else if (value.compareTo(node.value) < 0) {
+            node.leftChild = delete(node.leftChild, value);
         } else {
-            nodesCount--;
+            if (node.leftChild == null) {
+                AvlNode<T> temp = node.rightChild;
+                node.rightChild = null;
+                nodesCount--;
 
-            if (currentNode.leftChild == null) {
-                AvlNode<T> temp = currentNode.rightChild;
-                currentNode.rightChild = null;
-                return temp;
-            } else if (currentNode.rightChild == null) {
-                AvlNode<T> temp = currentNode.leftChild;
-                currentNode.leftChild = null;
-                return temp;
+                updateHeight(temp);
+                return updateBalance(temp);
+            } else if (node.rightChild == null) {
+                AvlNode<T> temp = node.leftChild;
+                node.leftChild = null;
+                nodesCount--;
+
+                updateHeight(temp);
+                return updateBalance(temp);
             } else {
-                AvlNode<T> temp = findMin(currentNode.rightChild);
-                currentNode.value = temp.value;
-                this.delete(currentNode.rightChild, temp.value);
+                AvlNode<T> tempMinNode = findMin(node.rightChild);
+                node.value = tempMinNode.value;
+                delete(node.rightChild, tempMinNode.value);
             }
         }
 
-        return currentNode;
+        updateHeight(node);
+        return updateBalance(node);
     }
 
     /**
@@ -191,7 +198,9 @@ public class AvlTree<T extends Comparable<T>> {
      * @param node AvlNode
      */
     private void updateHeight(AvlNode<T> node) {
-        node.height = 1 + Math.max(height(node.leftChild), height(node.rightChild));
+        if (node != null) {
+            node.height = 1 + Math.max(height(node.leftChild), height(node.rightChild));
+        }
     }
 
     /**
@@ -201,6 +210,7 @@ public class AvlTree<T extends Comparable<T>> {
      * @param node AvlNode
      */
     private AvlNode<T> updateBalance(AvlNode<T> node) {
+        if (node == null) return null;
         int balanceFactor = (height(node.rightChild) - height(node.leftChild));
 
         switch (this.checkBalanceState(node, balanceFactor)) {
@@ -230,20 +240,16 @@ public class AvlTree<T extends Comparable<T>> {
     private BalanceState checkBalanceState(AvlNode<T> node, int balanceFactor) {
         switch (balanceFactor) {
             case 2:
-                if (node.rightChild.leftChild == null) {
-                    System.out.println("RIGHT_RIGHT_CASE");
+                if (node.rightChild.rightChild != null) {
                     return BalanceState.RIGHT_RIGHT_CASE;
                 }
 
-                System.out.println("RIGHT_LEFT_CASE");
                 return BalanceState.RIGHT_LEFT_CASE;
             case -2:
-                if (node.leftChild.rightChild == null) {
-                    System.out.println("LEFT_LEFT_CASE");
+                if (node.leftChild.leftChild != null) {
                     return BalanceState.LEFT_LEFT_CASE;
                 }
 
-                System.out.println("LEFT_RIGHT_CASE");
                 return BalanceState.LEFT_RIGHT_CASE;
             default:
                 return BalanceState.BALANCED_CASE;

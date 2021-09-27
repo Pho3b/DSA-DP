@@ -47,6 +47,10 @@ public class BinaryTreeTest {
         Assertions.assertEquals(6, bst.size());
         Assertions.assertTrue(bst.delete(3));
         Assertions.assertEquals(5, bst.size());
+        Assertions.assertFalse(bst.contains(3));
+
+        bst.delete(897);
+        Assertions.assertFalse(bst.contains(897));
     }
 
     @Test

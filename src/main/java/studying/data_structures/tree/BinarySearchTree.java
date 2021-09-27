@@ -95,6 +95,8 @@ public class BinarySearchTree<T extends Comparable<T>> {
      * @return List
      */
     public List<T> levelOrderTraversal() {
+        if (root == null) return new ArrayList<>(0);
+
         ArrayList<T> res = new ArrayList<>(this.nodesCount);
         Queue<Node<T>> queue = new Queue<>(this.nodesCount);
         queue.enqueue(this.root);
