@@ -3,7 +3,7 @@ package studying.data_structures.heap;
 import java.util.*;
 
 /**
- * Min Binary Heap Implementation
+ * MIN Binary Heap
  *
  * @param <T>
  */
@@ -14,7 +14,7 @@ public class BinaryHeap<T extends Comparable<T>> {
 
 
     /**
-     * Basic Constructor
+     * Default Constructor
      */
     public BinaryHeap() {
         this(DEFAULT_SIZE);
