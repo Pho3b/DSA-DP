@@ -1,17 +1,13 @@
 package studying.data_structures.heap;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * MAX Indexed Binary Heap
  *
  * @param <T>
  */
-public class IndexedBinaryHeap<T extends Comparable<T>> {
-    private static final int DEFAULT_SIZE = 10;
-    private final List<T> heap;
-
+public class IndexedBinaryHeap<T extends Comparable<T>> extends AbstractBinaryHeap<T> {
 
     /**
      * Default constructor
@@ -38,7 +34,6 @@ public class IndexedBinaryHeap<T extends Comparable<T>> {
     public void insert(T data) {
         heap.add(data);
 
-
         if (heap.size() > 1) {
             swim(heap.size() - 1);
         }
@@ -48,25 +43,31 @@ public class IndexedBinaryHeap<T extends Comparable<T>> {
      * Moves 'up' the given node until it satisfy the MAX Heap invariant
      * If the given value is greater than the parent let's swap
      *
-     * @param index int
+     * @param i int
      */
-    private void swim(int index) {
-        while (heap.get(index).compareTo(heap.get((index - 1) / 2)) > 0) {
-            swap(index, (index - 1) / 2);
-            index = (index - 1) / 2;
+    private void swim(int i) {
+        while (heap.get(i).compareTo(heap.get((i - 1) / 2)) > 0) {
+            swap(i, (i - 1) / 2);
+            i = (i - 1) / 2;
         }
     }
 
     /**
      * Moves 'down' the given node until it satisfy the MAX Heap invariant
-     * If the given value is less than one of its children let's swap with the child having the lowest value
+     * If the given value is less than one of its children let's swap with the child having the highest value
      *
-     * @param index int
+     * @param i int
      */
-    private void sink(int index) {
-        while (heap.get(index).compareTo(heap.get((index - 1) / 2)) > 0) {
-            swap(index, (index - 1) / 2);
-            index = (index - 1) / 2;
+    private void sink(int i) {
+        int higherValueIndex = getHigherValueChildIndex(i);
+        if (higherValueIndex == -1) return; // No children scenario
+
+        while (heap.get(i).compareTo(heap.get(higherValueIndex)) < 0) {
+            swap(i, higherValueIndex);
+            i = higherValueIndex;
+            higherValueIndex = getHigherValueChildIndex(i);
+
+            if (higherValueIndex == -1) break;
         }
     }
 

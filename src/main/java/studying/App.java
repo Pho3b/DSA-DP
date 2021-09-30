@@ -1,6 +1,7 @@
 package studying;
 
-import studying.data_structures.tree.AvlTree;
+
+import studying.data_structures.heap.IndexedBinaryHeap;
 
 public class App {
 
@@ -9,5 +10,15 @@ public class App {
         currentWorkingOnIssueTest();
     }
 
-    public static void currentWorkingOnIssueTest() {}
+    public static void currentWorkingOnIssueTest() {
+        IndexedBinaryHeap<Integer> indexedBinaryHeap = new IndexedBinaryHeap<>();
+        indexedBinaryHeap.insert(20);
+        indexedBinaryHeap.insert(61);
+        indexedBinaryHeap.insert(58);
+        indexedBinaryHeap.insert(47);
+        indexedBinaryHeap.insert(76);
+        indexedBinaryHeap.insert(98);
+
+        indexedBinaryHeap.print();
+    }
 }
