@@ -79,9 +79,9 @@ public class IndexedPriorityQueue<K, V extends Comparable<V>> {
         pm[im[p]] = i;
         pm[im[i]] = p;
 
-        int iPos = im[i];
+        int temp = im[i];
         im[i] = im[p];
-        im[p] = iPos;
+        im[p] = temp;
     }
 
     /**
