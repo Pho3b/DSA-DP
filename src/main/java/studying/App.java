@@ -1,7 +1,7 @@
 package studying;
 
 
-import studying.data_structures.heap.IndexedBinaryHeap;
+import studying.data_structures.queue.IndexedPriorityQueue;
 
 public class App {
 
@@ -11,14 +11,17 @@ public class App {
     }
 
     public static void currentWorkingOnIssueTest() {
-        IndexedBinaryHeap<Integer> indexedBinaryHeap = new IndexedBinaryHeap<>();
-        indexedBinaryHeap.insert(20);
-        indexedBinaryHeap.insert(61);
-        indexedBinaryHeap.insert(58);
-        indexedBinaryHeap.insert(47);
-        indexedBinaryHeap.insert(76);
-        indexedBinaryHeap.insert(98);
+        IndexedPriorityQueue<String, Integer> indexedPriorityQueue = new IndexedPriorityQueue<>();
+        indexedPriorityQueue.insert("Porta", 98);
+        indexedPriorityQueue.insert("Comodino", 58);
+        indexedPriorityQueue.insert("Sedia", 20);
+        indexedPriorityQueue.insert("Portone", 47);
+        indexedPriorityQueue.insert("Carrello", 64);
+        indexedPriorityQueue.insert("Vaso", 76);
+        indexedPriorityQueue.insert("Tappeto", 61);
+        indexedPriorityQueue.insert("Tavolo", 13);
+        // indexedBinaryHeap.delete(64); // La chiave deve essere la stringa in questo caso
 
-        indexedBinaryHeap.print();
+        indexedPriorityQueue.print();
     }
 }

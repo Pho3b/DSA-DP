@@ -8,7 +8,7 @@ import java.util.*;
  * @param <T>
  */
 public class BinaryHeap<T extends Comparable<T>> extends AbstractBinaryHeap<T> {
-    public final Hashtable<T, Set<Integer>> trackingTable;
+    public final HashMap<T, Set<Integer>> trackingTable;
 
 
     /**
@@ -25,7 +25,7 @@ public class BinaryHeap<T extends Comparable<T>> extends AbstractBinaryHeap<T> {
      */
     public BinaryHeap(int size) {
         heap = new ArrayList<>(size);
-        trackingTable = new Hashtable<>(size);
+        trackingTable = new HashMap<>(size);
     }
 
     /**
@@ -136,7 +136,8 @@ public class BinaryHeap<T extends Comparable<T>> extends AbstractBinaryHeap<T> {
      */
     private void bubbleDown(int index) {
         int lowerIndex = getLowerValueChildIndex(index);
-        if (lowerIndex == -1) return; // Early return if there are problems retrieving children indexes
+        if (lowerIndex == -1)
+            return;
 
         // Checking if the current index node actually has children or not
         while (heap.get(lowerIndex).compareTo(heap.get(index)) < 0) {
@@ -152,21 +153,21 @@ public class BinaryHeap<T extends Comparable<T>> extends AbstractBinaryHeap<T> {
     /**
      * Utility method to swap values inside the instance 'heap'
      *
-     * @param index1 int
-     * @param index2 int
+     * @param i int
+     * @param j int
      */
-    private void swap(int index1, int index2) {
-        T tempValue1 = heap.get(index1);
-        T tempValue2 = heap.get(index2);
-        heap.set(index1, tempValue2);
-        heap.set(index2, tempValue1);
+    private void swap(int i, int j) {
+        T tempValue1 = heap.get(i);
+        T tempValue2 = heap.get(j);
+        heap.set(i, tempValue2);
+        heap.set(j, tempValue1);
 
         // Switching the indexes in the tracking table accordingly
         Set<Integer> tempSet = trackingTable.get(tempValue1);
-        tempSet.remove(index1);
-        tempSet.add(index2);
+        tempSet.remove(i);
+        tempSet.add(j);
         tempSet = trackingTable.get(tempValue2);
-        tempSet.remove(index2);
-        tempSet.add(index1);
+        tempSet.remove(j);
+        tempSet.add(i);
     }
 }

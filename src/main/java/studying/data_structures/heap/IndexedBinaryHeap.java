@@ -1,13 +1,21 @@
 package studying.data_structures.heap;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
- * MAX Indexed Binary Heap
+ * MAX Indexed Binary Heap implementation
  *
- * @param <T>
+ * @param <V>
  */
-public class IndexedBinaryHeap<T extends Comparable<T>> extends AbstractBinaryHeap<T> {
+public class IndexedBinaryHeap<K, V extends Comparable<V>> extends AbstractBinaryHeap<V> {
+    private static final int DEFAULT_SIZE = 20;
+    HashMap<K, Integer> map;
+    ArrayList<V> values; // Array containing the node values mapped to the Key index of the 'map'
+    ArrayList<Integer> positionMap; // Array containing the nodes index position for every Key Index in the 'map'
+    ArrayList<Integer> inverseMap; // Array containing the Key Index for every node
+
+
 
     /**
      * Default constructor
@@ -22,21 +30,54 @@ public class IndexedBinaryHeap<T extends Comparable<T>> extends AbstractBinaryHe
      * @param size int
      */
     public IndexedBinaryHeap(int size) {
-        this.heap = new ArrayList<>(size);
+        values = new ArrayList<>(size);
+        positionMap = new ArrayList<>(size);
+        inverseMap = new ArrayList<>(size);
+        map = new HashMap<>(size);
     }
 
     /**
      * Inserts a new element into the heap and adjusts the Heap
      * to satisfy the Heap Invariant
      *
-     * @param data T
+     * @param value V
      */
-    public void insert(T data) {
-        heap.add(data);
+    public void insert(K key, V value) {
+        values.add(value);
 
-        if (heap.size() > 1) {
-            swim(heap.size() - 1);
+        int lastIndex = values.size() - 1;
+        map.put(key, lastIndex);
+        positionMap.add(lastIndex);
+        inverseMap.add(lastIndex);
+
+        if (values.size() > 1) {
+            swim(lastIndex);
         }
+    }
+
+    /**
+     * Deletes the given element from the heap if it exists and then heapify the rest of the container.
+     * Returns true or false whether the deletion has correctly occurred or not.
+     *
+     * @param value V
+     */
+    public boolean delete(V value) {
+        for (int i = 0; i < heap.size(); i++) {
+            if (value == heap.get(i)) {
+                swap(i, (heap.size() - 1));
+                heap.remove(heap.size() - 1);
+
+                if (heap.get(i).compareTo(heap.get((i - 1) / 2)) > 0) {
+                    swim(i);
+                } else {
+                    sink(i);
+                }
+
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -74,13 +115,12 @@ public class IndexedBinaryHeap<T extends Comparable<T>> extends AbstractBinaryHe
     /**
      * Utility method to swap the given values inside the heap array
      *
-     * @param index1 int
-     * @param index2 int
+     * @param i int
+     * @param j int
      */
-    private void swap(int index1, int index2) {
-        T tempValue1 = heap.get(index1);
-        T tempValue2 = heap.get(index2);
-        heap.set(index1, tempValue2);
-        heap.set(index2, tempValue1);
+    private void swap(int i, int j) {
+        V val1 = heap.get(i);
+        heap.set(i, heap.get(j));
+        heap.set(j, val1);
     }
 }

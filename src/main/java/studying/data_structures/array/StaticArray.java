@@ -3,8 +3,8 @@ package studying.data_structures.array;
 import java.lang.reflect.Array;
 
 /*
- * For static arrays Insertion, Appending and Deletion doesn't really make sense.
- * To perform such actions we will use Dynamic arrays.
+ * For static arrays, Insertion Appending and Deletion don't really make sense.
+ * To perform these actions the Dynamic Array is the choice
  *
  * Access - O(1)
  * Search - O(n)
