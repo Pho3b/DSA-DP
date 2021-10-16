@@ -12,15 +12,19 @@ public class App {
 
     public static void currentWorkingOnIssueTest() {
         IndexedPriorityQueue<String, Integer> indexedPriorityQueue = new IndexedPriorityQueue<>();
-        indexedPriorityQueue.insert("Porta", 98);
-        indexedPriorityQueue.insert("Comodino", 58);
-        indexedPriorityQueue.insert("Sedia", 20);
-        indexedPriorityQueue.insert("Portone", 47);
-        indexedPriorityQueue.insert("Carrello", 64);
-        indexedPriorityQueue.insert("Vaso", 76);
-        indexedPriorityQueue.insert("Tappeto", 61);
-        indexedPriorityQueue.insert("Tavolo", 13);
-        // indexedBinaryHeap.delete(64); // La chiave deve essere la stringa in questo caso
+        indexedPriorityQueue.insert("Anna", 3);
+        indexedPriorityQueue.insert("Bella", 15);
+        indexedPriorityQueue.insert("Carly", 11);
+        indexedPriorityQueue.insert("Dylan", 17);
+        indexedPriorityQueue.insert("Emily", 7);
+        indexedPriorityQueue.insert("Fred", 9);
+        indexedPriorityQueue.insert("George", 2);
+        indexedPriorityQueue.insert("Henry", 1);
+        indexedPriorityQueue.insert("Isaac", 6);
+        indexedPriorityQueue.insert("James", 5);
+        indexedPriorityQueue.insert("Kelly", 16);
+        indexedPriorityQueue.insert("Laura", 4);
+        indexedPriorityQueue.insert("Mary", 2);
 
         indexedPriorityQueue.print();
     }
