@@ -55,11 +55,18 @@ public abstract class AbstractBinaryHeap<T extends Comparable<T>> {
      * @return int
      */
     protected int getLowerValueChildIndex(int i) {
-        try {
-            return getLeftChild(i).compareTo(getRightChild(i)) <= 0 ? (2 * i) + 1 : (2 * i) + 2;
-        } catch (Exception e) {
-            return -1;
+        T leftChild = getLeftChild(i);
+        T rightChild = getRightChild(i);
+
+        if (leftChild != null && rightChild != null) {
+            return leftChild.compareTo(rightChild) <= 0 ? (2 * i) + 1 : (2 * i) + 2;
+        } else if (leftChild == null && rightChild != null) {
+            return (2 * i) + 2;
+        } else if (leftChild != null) {
+            return (2 * i) + 1;
         }
+
+        return -1;
     }
 
     /**

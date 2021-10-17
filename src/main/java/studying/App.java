@@ -25,6 +25,7 @@ public class App {
         indexedPriorityQueue.insert("Kelly", 16);
         indexedPriorityQueue.insert("Laura", 4);
         indexedPriorityQueue.insert("Mary", 2);
+        indexedPriorityQueue.poll();
 
         indexedPriorityQueue.print();
     }
