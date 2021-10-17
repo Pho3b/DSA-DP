@@ -98,9 +98,7 @@ public class IndexedPriorityQueue<K, V extends Comparable<V>> {
 
         int ki = map.get(key);
         values.set(ki, val);
-        System.out.println(pm[ki]);
         sink(pm[ki]);
-        System.out.println(pm[ki]);
         swim(pm[ki]);
 
         return true;
@@ -156,8 +154,6 @@ public class IndexedPriorityQueue<K, V extends Comparable<V>> {
         if (size < 0 || im[i] == -1 || im[p] == -1)
             return;
 
-        System.out.println("Look at i " + i);
-        System.out.println("Is  " + im[i] + " more that " + im[p]);
         while (values.get(im[i]).compareTo(values.get(im[p])) < 0) {
             swap(i, p);
             i = p;
@@ -175,16 +171,10 @@ public class IndexedPriorityQueue<K, V extends Comparable<V>> {
         int lowerI = getLowerValueChildIndex(i);
         if (lowerI == -1) return; // No children scenario
 
-        System.out.println("Lower Child Index: " + lowerI + " Lower child value: " + values.get(im[lowerI]));
-
         while (values.get(im[i]).compareTo(values.get(im[lowerI])) > 0) {
-            System.out.println("Is  " + values.get(im[i]) + " less that " + values.get(im[lowerI]));
-
             swap(i, lowerI);
             i = lowerI;
             lowerI = getLowerValueChildIndex(i);
-            if (lowerI != -1)
-                System.out.println("Lower Child Index: " + lowerI + " Lower child value: " + values.get(im[lowerI]));
 
             if (lowerI == -1) break;
         }
@@ -243,7 +233,6 @@ public class IndexedPriorityQueue<K, V extends Comparable<V>> {
     private int getLowerValueChildIndex(int i) {
         V leftChild = getLeftChild(i);
         V rightChild = getRightChild(i);
-        System.out.println("Children values " + leftChild + "   " + rightChild);
 
         if (leftChild != null && rightChild != null) {
             return leftChild.compareTo(rightChild) <= 0 ? (2 * i) + 1 : (2 * i) + 2;
