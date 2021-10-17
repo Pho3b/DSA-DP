@@ -72,10 +72,10 @@ public class IndexedPriorityQueue<K, V extends Comparable<V>> {
             values.set(im[size - 1], null);
             pm[im[size - 1]] = -1;
             im[size - 1] = -1;
+            map.remove(key);
 
-            // Heapifying
             sink(keyPos);
-            //swim(keyPos);
+            swim(keyPos);
             size--;
 
             return key;
@@ -85,18 +85,63 @@ public class IndexedPriorityQueue<K, V extends Comparable<V>> {
     }
 
     /**
+     * Updates the value corresponding to the given key and returns true,
+     * false if the update did not succeed
+     *
+     * @param key K
+     * @param val V
+     * @return boolean
+     */
+    public boolean update(K key, V val) {
+        if (val == null)
+            return false;
+
+        int ki = map.get(key);
+        values.set(ki, val);
+        System.out.println(pm[ki]);
+        sink(pm[ki]);
+        System.out.println(pm[ki]);
+        swim(pm[ki]);
+
+        return true;
+    }
+
+    /**
      * Prints the data structure in a debugging friendly format
      */
     public void print() {
         System.out.println("VAL: " + values);
         System.out.println("PM: " + Arrays.toString(pm));
         System.out.println("IM: " + Arrays.toString(im));
+        System.out.print("LVL ORDER: [ ");
 
         for (int i = 0; i < size; i++) {
-            System.out.print(values.get(im[i]) + ",");
+            try {
+                System.out.print(values.get(im[i]) + " ");
+            } catch (Exception e) {
+                System.out.print("null ");
+            }
         }
 
-        System.out.println();
+        System.out.println("]");
+    }
+
+    /**
+     * Returns the current elements number inside the priority queue
+     *
+     * @return int
+     */
+    public int size() {
+        return this.size;
+    }
+
+    /**
+     * Returns the previously set max size of this priority queue
+     *
+     * @return int
+     */
+    public int getMaxSize() {
+        return this.maxSize;
     }
 
     /**
@@ -106,11 +151,13 @@ public class IndexedPriorityQueue<K, V extends Comparable<V>> {
      * @param i int
      */
     private void swim(int i) {
-        if (size < 0)
-            return;
-
         int p = (i - 1) / 2;
 
+        if (size < 0 || im[i] == -1 || im[p] == -1)
+            return;
+
+        System.out.println("Look at i " + i);
+        System.out.println("Is  " + im[i] + " more that " + im[p]);
         while (values.get(im[i]).compareTo(values.get(im[p])) < 0) {
             swap(i, p);
             i = p;
@@ -128,12 +175,16 @@ public class IndexedPriorityQueue<K, V extends Comparable<V>> {
         int lowerI = getLowerValueChildIndex(i);
         if (lowerI == -1) return; // No children scenario
 
-        System.out.println("L Children " + lowerI);
+        System.out.println("Lower Child Index: " + lowerI + " Lower child value: " + values.get(im[lowerI]));
 
-        while (values.get(im[i]).compareTo(values.get(im[lowerI])) < 0) {
+        while (values.get(im[i]).compareTo(values.get(im[lowerI])) > 0) {
+            System.out.println("Is  " + values.get(im[i]) + " less that " + values.get(im[lowerI]));
+
             swap(i, lowerI);
             i = lowerI;
             lowerI = getLowerValueChildIndex(i);
+            if (lowerI != -1)
+                System.out.println("Lower Child Index: " + lowerI + " Lower child value: " + values.get(im[lowerI]));
 
             if (lowerI == -1) break;
         }
@@ -190,18 +241,16 @@ public class IndexedPriorityQueue<K, V extends Comparable<V>> {
      * @return int
      */
     private int getLowerValueChildIndex(int i) {
-        int leftI = (2 * i) + 1;
-        int rightI = (2 * i) + 2;
         V leftChild = getLeftChild(i);
         V rightChild = getRightChild(i);
-        System.out.println("Chidlernds val " + leftChild + "   " + rightChild);
+        System.out.println("Children values " + leftChild + "   " + rightChild);
 
         if (leftChild != null && rightChild != null) {
-            return leftChild.compareTo(rightChild) <= 0 ? leftI : rightI;
+            return leftChild.compareTo(rightChild) <= 0 ? (2 * i) + 1 : (2 * i) + 2;
         } else if (leftChild == null && rightChild != null) {
-            return rightI;
+            return (2 * i) + 2;
         } else if (leftChild != null) {
-            return leftI;
+            return (2 * i) + 1;
         }
 
         return -1;

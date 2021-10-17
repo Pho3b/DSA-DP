@@ -6,7 +6,7 @@ import studying.data_structures.queue.IndexedPriorityQueue;
 public class App {
 
     public static void main(String[] args) {
-        System.out.println("This is your current operating system: " + System.getProperty("os.name") +  "\n");
+        System.out.println("This is your current operating system: " + System.getProperty("os.name") + "\n");
         currentWorkingOnIssueTest();
     }
 
@@ -26,6 +26,8 @@ public class App {
         indexedPriorityQueue.insert("Laura", 4);
         indexedPriorityQueue.insert("Mary", 2);
         indexedPriorityQueue.poll();
+        indexedPriorityQueue.remove("Laura");
+        indexedPriorityQueue.update("Carly", 1);
 
         indexedPriorityQueue.print();
     }
