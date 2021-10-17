@@ -28,10 +28,11 @@ public class IndexedPriorityQueue<K, V extends Comparable<V>> {
     public IndexedPriorityQueue(int maxSize) {
         this.maxSize = maxSize;
 
-        prePopulateValuesArray();
+        values = new ArrayList<>(maxSize);
         map = new HashMap<>(maxSize);
         pm = new int[maxSize];
         im = new int[maxSize];
+        prePopulateArrays();
     }
 
     public boolean insert(K key, V value) {
@@ -100,13 +101,13 @@ public class IndexedPriorityQueue<K, V extends Comparable<V>> {
     }
 
     /**
-     * Populates the instance 'values' array property with null values
+     * Populates the instance arrays with placeholder values
      */
-    private void prePopulateValuesArray() {
-        values = new ArrayList<>(maxSize);
-
+    private void prePopulateArrays() {
         for (int i = 0; i < maxSize; i++) {
             values.add(i, null);
+            im[i] = -1;
+            pm[i] = -1;
         }
     }
 
