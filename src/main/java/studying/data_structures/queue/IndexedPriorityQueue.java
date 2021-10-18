@@ -7,10 +7,11 @@ import java.util.Map;
 
 public class IndexedPriorityQueue<K, V extends Comparable<V>> {
     private static final int DEFAULT_MAX_SIZE = 20;
-    private HashMap<K, Integer> map;
-    private ArrayList<V> values;
-    private int[] pm, im;
-    private int maxSize, size = 0;
+    private final int[] pm, im;
+    private final int maxSize;
+    private final HashMap<K, Integer> map;
+    private final ArrayList<V> values;
+    private int size = 0;
 
 
     /**
