@@ -1,7 +1,8 @@
 package studying;
 
+import studying.data_structures.sparse_table.SparseTable;
 
-import studying.data_structures.queue.IndexedPriorityQueue;
+import java.util.Arrays;
 
 public class App {
 
@@ -11,24 +12,10 @@ public class App {
     }
 
     public static void currentWorkingOnIssueTest() {
-        IndexedPriorityQueue<String, Integer> indexedPriorityQueue = new IndexedPriorityQueue<>();
-        indexedPriorityQueue.insert("Anna", 3);
-        indexedPriorityQueue.insert("Bella", 15);
-        indexedPriorityQueue.insert("Carly", 11);
-        indexedPriorityQueue.insert("Dylan", 17);
-        indexedPriorityQueue.insert("Emily", 7);
-        indexedPriorityQueue.insert("Fred", 9);
-        indexedPriorityQueue.insert("George", 2);
-        indexedPriorityQueue.insert("Henry", 1);
-        indexedPriorityQueue.insert("Isaac", 6);
-        indexedPriorityQueue.insert("James", 5);
-        indexedPriorityQueue.insert("Kelly", 16);
-        indexedPriorityQueue.insert("Laura", 4);
-        indexedPriorityQueue.insert("Mary", 2);
-        indexedPriorityQueue.poll();
-        indexedPriorityQueue.remove("Laura");
-        indexedPriorityQueue.update("Carly", 1);
+        int[] primitiveArr = new int[]{4, 2, 3, 7, 1, 5, 3, 3, 9, 6, 7, -1, 4};
+        Integer[] boxedArray = Arrays.stream(primitiveArr).boxed().toArray(Integer[]::new);
 
-        indexedPriorityQueue.print();
+        SparseTable<Integer> sparseTable = new SparseTable<>(boxedArray);
+        sparseTable.print();
     }
 }
