@@ -1,7 +1,7 @@
 package studying.data_structures.sparse_table;
 
-public enum TableType {
+public enum SparseTableType {
     MIN,
     MAX,
-    MULTIPLICATION,
+    PROD,
 }

@@ -36,6 +36,13 @@ public class IndexedPriorityQueue<K, V extends Comparable<V>> {
         prePopulateArrays();
     }
 
+    /**
+     * Inserts a new element in the IPQ (Duplicates are NOT allowed)
+     *
+     * @param key   K
+     * @param value V
+     * @return boolean
+     */
     public boolean insert(K key, V value) {
         if (map.containsKey(key) || size > maxSize)
             return false;
@@ -209,7 +216,7 @@ public class IndexedPriorityQueue<K, V extends Comparable<V>> {
 
     /**
      * Given an index value it returns a map Key
-     * TODO: Change the O(n) time complexity for this operation, it is extremely bad.
+     * TODO: Improve the O(n) time complexity for this operation
      *
      * @param ki int
      * @return K
