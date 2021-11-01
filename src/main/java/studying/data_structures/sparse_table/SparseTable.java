@@ -6,7 +6,7 @@ import studying.data_structures.sparse_table.range_combination_function_strategy
 import java.util.ArrayList;
 
 public class SparseTable<T extends Comparable<T>> {
-    private CombinationFunctionStrategy<T> combinationFunction;
+    private CombinationFunctionStrategy<T> cf;
     private final T[] inputArr;
     private ArrayList<ArrayList<T>> table;
 
@@ -44,7 +44,7 @@ public class SparseTable<T extends Comparable<T>> {
      * @param function CombinationFunctionStrategy<T>
      */
     public void setCombinationFunction(CombinationFunctionStrategy<T> function) {
-        this.combinationFunction = function;
+        this.cf = function;
     }
 
     /**
@@ -78,8 +78,7 @@ public class SparseTable<T extends Comparable<T>> {
         // Populating the sparse table with the combinationFunction resulting values
         for (int x = 1; x <= p; x++) {
             for (int i = 0; i + (1 << x) <= n; i++) { // The (1 << x) = Bitwise operator, left shift
-                T combinationRes = combinationFunction
-                        .combine(table.get(i).get(x - 1), table.get(i + (1 << (x - 1))).get(x - 1));
+                T combinationRes = cf.combine(table.get(i).get(x - 1), table.get(i + (1 << (x - 1))).get(x - 1));
                 table.get(i).set(x, combinationRes);
             }
         }
