@@ -2,8 +2,8 @@ package Studying.design_patterns;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import studying.design_patterns.flywefight.PikminGroup;
-import studying.design_patterns.flywefight.PikminTypeFactory;
+import studying.design_patterns.flyweight.PikminGroup;
+import studying.design_patterns.flyweight.PikminTypeFactory;
 
 import java.awt.*;
 

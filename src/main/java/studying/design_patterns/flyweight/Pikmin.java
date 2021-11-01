@@ -1,4 +1,4 @@
-package studying.design_patterns.flywefight;
+package studying.design_patterns.flyweight;
 
 /**
  * In the main Pikmin class we initialize all the INTRINSIC properties of the object

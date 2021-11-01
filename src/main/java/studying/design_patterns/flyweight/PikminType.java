@@ -1,4 +1,4 @@
-package studying.design_patterns.flywefight;
+package studying.design_patterns.flyweight;
 
 import java.awt.*;
 
