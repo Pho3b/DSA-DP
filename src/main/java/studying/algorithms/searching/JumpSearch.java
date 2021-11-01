@@ -6,7 +6,7 @@ public class JumpSearch {
 
     public int search(int[] inputArr, int toSearch) {
         Arrays.sort(inputArr);
-        int jumpSpan = (int) Math.sqrt(inputArr.length);    // Best jump size.
+        int jumpSpan = (int) Math.sqrt(inputArr.length);
         int counter = 0;
 
         while (counter < inputArr.length && toSearch >= inputArr[counter]) {
@@ -19,7 +19,6 @@ public class JumpSearch {
 
         // We start the linear search of length (counter - 1)
         for (int i = (counter - (jumpSpan - 1)); i < inputArr.length; i++) {
-            // System.out.println("linear searching: " + inputArr[i]);
             if (toSearch == inputArr[i]) {
                 return i;
             }
