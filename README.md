@@ -10,14 +10,14 @@ the aim of understanding them at a deeper level.
 <h3 align="left"> Project Structure </h3>
 
 ```bash
-.
+src
 ├── main
-│└── java
-│    └── studying
-│       ├── algorithms
-│       ├── App.java
-│       ├── data_structures
-│       └── design_patterns
+│   └── java
+│       └── studying
+│           ├── algorithms
+│           ├── App.java
+│           ├── data_structures
+│           └── design_patterns
 └── test
     └── java
         └── studying
