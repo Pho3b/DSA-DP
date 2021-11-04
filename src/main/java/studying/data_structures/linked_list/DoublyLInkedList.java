@@ -60,22 +60,15 @@ public class DoublyLInkedList<T> {
             return true;
         }
 
-        Node node = this.head;
-
         try {
-            while (node.next != null) {
-                node = node.next;
-            }
-
-            node.next = new Node(data, node);
-            this.tail = node.next;
-            this.size++;
-            return true;
+            this.tail.next = new Node(data, this.tail);
+            this.tail = this.tail.next;
         } catch (Exception e) {
-            e.printStackTrace();
+            return false;
         }
 
-        return false;
+        size++;
+        return true;
     }
 
     /**
