@@ -12,17 +12,153 @@ the aim of understanding them at a deeper level.
 ```bash
 src
 ├── main
-│   └── java
-│       └── studying
-│           ├── algorithms
-│           ├── App.java
-│           ├── data_structures
-│           └── design_patterns
+│   └── java
+│       └── studying
+│           ├── App.java
+│           ├── algorithms
+│           │   ├── searching
+│           │   │   ├── BinarySearch.java
+│           │   │   ├── JumpSearch.java
+│           │   │   └── LinearSearch.java
+│           │   └── sorting
+│           │       ├── BubbleSort.java
+│           │       ├── InsertionSort.java
+│           │       └── SelectionSort.java
+│           ├── data_structures
+│           │   ├── array
+│           │   │   ├── DynamicArray.java
+│           │   │   └── StaticArray.java
+│           │   ├── disjoint_set
+│           │   │   └── DisjointSet.java
+│           │   ├── hash_table
+│           │   │   ├── Entry.java
+│           │   │   ├── HashTable.java
+│           │   │   ├── HashTableOpenAddressing.java
+│           │   │   ├── HashTableSeparateChaining.java
+│           │   │   ├── HashTableSeparateChainingIterator.java
+│           │   │   └── Probe.java
+│           │   ├── heap
+│           │   │   ├── AbstractBinaryHeap.java
+│           │   │   └── BinaryHeap.java
+│           │   ├── linked_list
+│           │   │   ├── DoublyLInkedList.java
+│           │   │   └── SinglyLinkedList.java
+│           │   ├── queue
+│           │   │   ├── IndexedPriorityQueue.java
+│           │   │   ├── PriorityQueue.java
+│           │   │   └── Queue.java
+│           │   ├── sparse_table
+│           │   │   ├── SparseTable.java
+│           │   │   ├── SparseTableType.java
+│           │   │   └── range_combination_function_strategy
+│           │   ├── stack
+│           │   │   ├── IStack.java
+│           │   │   └── Stack.java
+│           │   └── tree
+│           │       ├── AvlTree.java
+│           │       ├── BinarySearchTree.java
+│           │       ├── FenwickTree.java
+│           │       ├── iterators
+│           │       └── model
+│           └── design_patterns
+│               ├── abstract_factory
+│               │   ├── factories
+│               │   ├── slider
+│               │   └── toggle
+│               ├── adapter
+│               │   ├── Emulator.java
+│               │   ├── NintendoConsolesEmulator.java
+│               │   ├── NintendoGame.java
+│               │   ├── SonyGame.java
+│               │   └── SonyGameAdapter.java
+│               ├── command
+│               │   ├── GroundUnit.java
+│               │   ├── MoveToTarget.java
+│               │   ├── SwitchWeapon.java
+│               │   └── UnitCommand.java
+│               ├── composite
+│               │   ├── Client.java
+│               │   ├── SpeakerComponent.java
+│               │   ├── composites
+│               │   └── leaves
+│               ├── decorator
+│               │   └── salad_decorators
+│               ├── facade
+│               │   └── HeatedSwimmingPoolFacade.java
+│               ├── factory
+│               │   ├── FruitFactory.java
+│               │   └── fruits
+│               ├── flyweight
+│               │   ├── Pikmin.java
+│               │   ├── PikminGroup.java
+│               │   ├── PikminType.java
+│               │   └── PikminTypeFactory.java
+│               ├── implementations
+│               │   ├── decorator_implementation
+│               │   ├── facade_implementation
+│               │   ├── observer_implementation
+│               │   ├── singleton_implementation
+│               │   └── strategy_implementation
+│               ├── iterator
+│               │   ├── Client.java
+│               │   ├── collections
+│               │   └── iterators
+│               ├── observer
+│               │   ├── Observable.java
+│               │   └── Observer.java
+│               ├── proxy
+│               │   └── remote_proxy
+│               ├── singleton
+│               │   └── UniqueLogger.java
+│               ├── state
+│               │   ├── EchoStudio.java
+│               │   └── states
+│               ├── strategy
+│               │   ├── AutoAttackStrategy.java
+│               │   └── auto_attack_concrete_implementations
+│               └── template
+│                   ├── Doctor.java
+│                   ├── SoftwareDeveloper.java
+│                   └── Worker.java
 └── test
     └── java
         └── studying
+            ├── Utils.java
             ├── algorithms
+            │   ├── BinarySearchTest.java
+            │   ├── InsertionSortTest.java
+            │   ├── JumpSearchTest.java
+            │   ├── LinearSearchTest.java
+            │   └── SelectionSortTest.java
             ├── data_structures
-            ├── design_patterns
-            └── Utils.java
+            │   ├── AvlTreeTest.java
+            │   ├── BinaryHeapTest.java
+            │   ├── BinaryTreeTest.java
+            │   ├── DisjointSetTest.java
+            │   ├── DoublyLinkedListTest.java
+            │   ├── DynamicArrayTest.java
+            │   ├── FenwickTreeTest.java
+            │   ├── HashTableOpenAddressingTest.java
+            │   ├── HashTableSeparateChainingTest.java
+            │   ├── IndexedPriorityQueueTest.java
+            │   ├── PriorityQueueTest.java
+            │   ├── QueueTest.java
+            │   ├── SinglyLinkedListTest.java
+            │   └── StackTest.java
+            └── design_patterns
+                ├── AbstractFactoryTest.java
+                ├── AdapterTest.java
+                ├── CommandTest.java
+                ├── CompositeTest.java
+                ├── DecoratorTest.java
+                ├── FacadeTest.java
+                ├── FactoryTest.java
+                ├── FlyWeightTest.java
+                ├── IteratorTest.java
+                ├── ObserverTest.java
+                ├── ProxyTest.java
+                ├── SingletonTest.java
+                ├── StateTest.java
+                ├── StrategyTest.java
+                └── TemplateTest.java
 ```
