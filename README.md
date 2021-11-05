@@ -123,42 +123,7 @@ src
 └── test
     └── java
         └── studying
-            ├── Utils.java
             ├── algorithms
-            │   ├── BinarySearchTest.java
-            │   ├── InsertionSortTest.java
-            │   ├── JumpSearchTest.java
-            │   ├── LinearSearchTest.java
-            │   └── SelectionSortTest.java
             ├── data_structures
-            │   ├── AvlTreeTest.java
-            │   ├── BinaryHeapTest.java
-            │   ├── BinaryTreeTest.java
-            │   ├── DisjointSetTest.java
-            │   ├── DoublyLinkedListTest.java
-            │   ├── DynamicArrayTest.java
-            │   ├── FenwickTreeTest.java
-            │   ├── HashTableOpenAddressingTest.java
-            │   ├── HashTableSeparateChainingTest.java
-            │   ├── IndexedPriorityQueueTest.java
-            │   ├── PriorityQueueTest.java
-            │   ├── QueueTest.java
-            │   ├── SinglyLinkedListTest.java
-            │   └── StackTest.java
             └── design_patterns
-                ├── AbstractFactoryTest.java
-                ├── AdapterTest.java
-                ├── CommandTest.java
-                ├── CompositeTest.java
-                ├── DecoratorTest.java
-                ├── FacadeTest.java
-                ├── FactoryTest.java
-                ├── FlyWeightTest.java
-                ├── IteratorTest.java
-                ├── ObserverTest.java
-                ├── ProxyTest.java
-                ├── SingletonTest.java
-                ├── StateTest.java
-                ├── StrategyTest.java
-                └── TemplateTest.java
 ```
