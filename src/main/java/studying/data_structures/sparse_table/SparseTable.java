@@ -64,7 +64,7 @@ public class SparseTable<T extends Comparable<T>> {
         int p = SparseTable.log2(n); // Max power of two that fits into N
         table = new ArrayList<>(n);
 
-        // Constructing the empty table and populating only the first Row
+        // Constructing the empty table and populating the first Row
         for (int i = 0; i < n; i++) {
             ArrayList<T> tempColumn = new ArrayList<>(p + 1);
             tempColumn.add(inputArr[i]);
