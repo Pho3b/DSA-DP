@@ -45,8 +45,7 @@ public class FenwickTree {
 
         while (i >= 1) {
             res += this.tree[i];
-            int lsb = FenwickTree.lsb(i);
-            i -= lsb;
+            i -= FenwickTree.lsb(i);
         }
 
         return res;
@@ -55,7 +54,7 @@ public class FenwickTree {
     /**
      * Updates the value of the given index of the tree.
      * It (Under the hood) also updates all the chosen index related values, in order
-     * to keep the FenwickTree rule
+     * to keep the FenwickTree invariant
      *
      * @param i     index
      * @param toAdd int to add
@@ -63,8 +62,7 @@ public class FenwickTree {
     public void add(int i, int toAdd) {
         while (i <= this.tree.length - 1) {
             this.tree[i] += toAdd;
-            int lsb = FenwickTree.lsb(i);
-            i += lsb;
+            i += FenwickTree.lsb(i);
         }
     }
 
