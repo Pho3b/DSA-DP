@@ -1,6 +1,7 @@
 package studying;
 
 import studying.data_structures.sparse_table.SparseTable;
+import studying.data_structures.sparse_table.SparseTableType;
 
 import java.util.Arrays;
 
@@ -15,7 +16,12 @@ public class App {
         int[] primitiveArr = new int[]{4, 2, 3, 7, 1, 5, 3, 3, 9, 6, 7, -1, 4};
         Integer[] boxedArray = Arrays.stream(primitiveArr).boxed().toArray(Integer[]::new);
 
-        SparseTable<Integer> sparseTable = new SparseTable<>(boxedArray);
+        SparseTable<Integer> sparseTable = new SparseTable<>(boxedArray, SparseTableType.MAX);
         sparseTable.print();
+
+        System.out.println(sparseTable.rangeQuery(0, 12));
+        System.out.println(sparseTable.rangeQuery(0, 2));
+        System.out.println(sparseTable.rangeQuery(0, 10));
+        System.out.println(sparseTable.rangeQuery(2, 7));
     }
 }
