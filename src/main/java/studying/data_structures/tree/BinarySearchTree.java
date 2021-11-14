@@ -1,8 +1,8 @@
 package studying.data_structures.tree;
 
 import studying.data_structures.queue.Queue;
-import studying.data_structures.tree.iterators.InOrderIterator;
-import studying.data_structures.tree.iterators.IterationType;
+import studying.data_structures.tree.iterator.InOrderIterator;
+import studying.data_structures.tree.enumerator.IterationType;
 import studying.data_structures.tree.model.Node;
 
 import java.util.ArrayList;

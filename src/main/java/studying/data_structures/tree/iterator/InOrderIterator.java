@@ -1,4 +1,4 @@
-package studying.data_structures.tree.iterators;
+package studying.data_structures.tree.iterator;
 
 import studying.data_structures.tree.BinarySearchTree;
 

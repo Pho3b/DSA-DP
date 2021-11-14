@@ -2,7 +2,7 @@ package studying.data_structures.tree;
 
 import studying.data_structures.queue.Queue;
 import studying.data_structures.tree.model.AvlNode;
-import studying.data_structures.tree.model.BalanceState;
+import studying.data_structures.tree.enumerator.BalanceState;
 
 import java.util.ArrayList;
 import java.util.List;

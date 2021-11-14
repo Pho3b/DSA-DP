@@ -1,4 +1,4 @@
-package studying.data_structures.tree.model;
+package studying.data_structures.tree.enumerator;
 
 public enum BalanceState {
     BALANCED_CASE,

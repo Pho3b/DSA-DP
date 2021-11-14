@@ -1,4 +1,4 @@
-package studying.data_structures.tree.iterators;
+package studying.data_structures.tree.enumerator;
 
 public enum IterationType {
     PRE_ORDER,
