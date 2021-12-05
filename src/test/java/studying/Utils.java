@@ -2,6 +2,7 @@ package studying;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.Random;
 
 public class Utils {
 
@@ -9,23 +10,19 @@ public class Utils {
 
     public final static int[] unorderedIntegerTestArray = new int[]{100, 13, 4, 12, 7, 6, 21, 900, 14, 76, 42, 90, 1, -10, -2};
 
-    public static ArrayList<Integer> unorderedIntegerTestArrayList() {
-        ArrayList<Integer> res = new ArrayList<>(15);
-        res.add(100);
-        res.add(13);
-        res.add(4);
-        res.add(-2);
-        res.add(12);
-        res.add(7);
-        res.add(6);
-        res.add(21);
-        res.add(900);
-        res.add(14);
-        res.add(76);
-        res.add(42);
-        res.add(90);
-        res.add(1);
-        res.add(-10);
+    /**
+     * Generates an array list containing random integer numbers
+     *
+     * @return A randomly generated Integer arrayList
+     */
+    public static ArrayList<Integer> randomUnorderedIntegerList() {
+        Random rand = new Random();
+        int capacity = 100;
+        ArrayList<Integer> res = new ArrayList<>(capacity);
+
+        for (int i = 0; i < capacity; i++) {
+            res.add(rand.nextInt(101));
+        }
 
         return res;
     }

@@ -11,12 +11,32 @@ public class InsertionSortTest {
     InsertionSort insertionSort = new InsertionSort();
 
     @Test
-    public void correctSortingTest() {
-        ArrayList<Integer> temp = Utils.unorderedIntegerTestArrayList();
+    public void firstSortingTest() {
+        ArrayList<Integer> temp = Utils.randomUnorderedIntegerList();
         insertionSort.sort(temp);
 
         for (int i = 0; i < temp.size() - 1; i++) {
-            Assertions.assertTrue(temp.get(i) < temp.get(i + 1));
+            Assertions.assertTrue(temp.get(i) <= temp.get(i + 1));
+        }
+    }
+
+    @Test
+    public void secondSortingTest() {
+        ArrayList<Integer> temp = Utils.randomUnorderedIntegerList();
+        insertionSort.sort(temp);
+
+        for (int i = 0; i < temp.size() - 1; i++) {
+            Assertions.assertTrue(temp.get(i) <= temp.get(i + 1));
+        }
+    }
+
+    @Test
+    public void thirdSortingTest() {
+        ArrayList<Integer> temp = Utils.randomUnorderedIntegerList();
+        insertionSort.sort(temp);
+
+        for (int i = 0; i < temp.size() - 1; i++) {
+            Assertions.assertTrue(temp.get(i) <= temp.get(i + 1));
         }
     }
 }

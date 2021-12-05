@@ -1,9 +1,9 @@
 package studying;
 
-import studying.data_structures.sparse_table.SparseTable;
-import studying.data_structures.sparse_table.SparseTableType;
+import studying.algorithms.sorting.QuickSort;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class App {
 
@@ -13,15 +13,17 @@ public class App {
     }
 
     public static void currentWorkingOnIssueTest() {
-        int[] primitiveArr = new int[]{4, 2, 3, 7, 1, 5, 3, 3, 9, 6, 7, -1, 4};
-        Integer[] boxedArray = Arrays.stream(primitiveArr).boxed().toArray(Integer[]::new);
+        QuickSort<Integer> qs = new QuickSort<>();
+        int capacity = 10;
+        Random rand = new Random();
+        ArrayList<Integer> temp = new ArrayList<>(capacity);
 
-        SparseTable<Integer> sparseTable = new SparseTable<>(boxedArray, SparseTableType.MAX);
-        sparseTable.print();
+        for (int i = 0; i < capacity; i++) {
+            temp.add(rand.nextInt(101));
+        }
 
-        System.out.println(sparseTable.rangeQuery(0, 12));
-        System.out.println(sparseTable.rangeQuery(0, 2));
-        System.out.println(sparseTable.rangeQuery(0, 10));
-        System.out.println(sparseTable.rangeQuery(2, 7));
+        System.out.println(temp);
+        qs.quicksort(temp);
+        System.out.println(temp);
     }
 }
