@@ -23,6 +23,7 @@ src
 │           │   └── sorting
 │           │       ├── BubbleSort.java
 │           │       ├── InsertionSort.java
+│           │       └── QuickSort.java
 │           │       └── SelectionSort.java
 │           ├── data_structures
 │           │   ├── array
