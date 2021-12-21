@@ -6,7 +6,7 @@ import java.util.Random;
 public class QuickSort<T extends Comparable<T>> {
 
     /**
-     * Sorts the given array using the 'Quicksort' algorithm
+     * Publicly exposed method that sorts the given array using the 'Quicksort' algorithm
      *
      * @param arr The array you want to sort
      */
@@ -15,7 +15,7 @@ public class QuickSort<T extends Comparable<T>> {
     }
 
     /**
-     * Sorts the given array using the 'Quicksort' algorithm
+     * Inner method that sorts the given array using the 'Quicksort' algorithm
      *
      * @param arr  The array you want to sort
      * @param low  lower bound of the array section that we want to partition
@@ -38,8 +38,8 @@ public class QuickSort<T extends Comparable<T>> {
 
     /**
      * Executes the partitioning part of the Quicksort algorithm.
-     * It basically moves all the element minor than the given pivot to the left of it,
-     * and all the elements that are greater to the right.
+     * It basically moves all the element less than the given pivot to the left of it,
+     * and all the elements that are greater to it's right.
      *
      * @param arr   The array that will be partitioned
      * @param low   lower bound of the array section that we want to partition
@@ -71,7 +71,7 @@ public class QuickSort<T extends Comparable<T>> {
     }
 
     /**
-     * Given an arraylist swaps two values at the given indexes
+     * Given an arraylist swaps the values corresponding to the given indexes
      *
      * @param arr array where the swap will happen
      * @param i   the index of the first element to swap
