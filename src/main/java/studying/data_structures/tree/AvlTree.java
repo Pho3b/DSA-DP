@@ -210,7 +210,8 @@ public class AvlTree<T extends Comparable<T>> {
      * @param node AvlNode
      */
     private AvlNode<T> updateBalance(AvlNode<T> node) {
-        if (node == null) return null;
+        if (node == null)
+            return null;
         int balanceFactor = (height(node.rightChild) - height(node.leftChild));
 
         switch (this.checkBalanceState(node, balanceFactor)) {

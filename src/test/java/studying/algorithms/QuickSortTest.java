@@ -14,7 +14,7 @@ public class QuickSortTest {
     @Test
     public void firstSortingTest() {
         ArrayList<Integer> temp = Utils.randomUnorderedIntegerList();
-        qs.quicksort(temp);
+        qs.sort(temp);
 
         for (int i = 0; i < temp.size() - 1; i++) {
             Assertions.assertTrue(temp.get(i) <= temp.get(i + 1));
@@ -24,7 +24,7 @@ public class QuickSortTest {
     @Test
     public void secondSortingTest() {
         ArrayList<Integer> temp = Utils.randomUnorderedIntegerList();
-        qs.quicksort(temp);
+        qs.sort(temp);
 
         for (int i = 0; i < temp.size() - 1; i++) {
             Assertions.assertTrue(temp.get(i) <= temp.get(i + 1));
@@ -34,7 +34,7 @@ public class QuickSortTest {
     @Test
     public void thirdSortingTest() {
         ArrayList<Integer> temp = Utils.randomUnorderedIntegerList();
-        qs.quicksort(temp);
+        qs.sort(temp);
 
         for (int i = 0; i < temp.size() - 1; i++) {
             Assertions.assertTrue(temp.get(i) <= temp.get(i + 1));

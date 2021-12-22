@@ -10,14 +10,14 @@ public class QuickSort<T extends Comparable<T>> {
      *
      * @param arr The array you want to sort
      */
-    public void quicksort(ArrayList<T> arr) {
+    public void sort(ArrayList<T> arr) {
         quicksort(arr, 0, arr.size() - 1);
     }
 
     /**
      * Inner method that sorts the given array using the 'Quicksort' algorithm
      *
-     * @param arr  The array you want to sort
+     * @param arr  the input arrayList that needs to be sorted
      * @param low  lower bound of the array section that we want to partition
      * @param high upper bound of the array section that we want to partition
      */

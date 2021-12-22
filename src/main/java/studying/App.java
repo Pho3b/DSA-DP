@@ -1,6 +1,6 @@
 package studying;
 
-import studying.algorithms.sorting.QuickSort;
+import studying.algorithms.sorting.MergeSort;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -13,7 +13,7 @@ public class App {
     }
 
     public static void currentWorkingOnIssueTest() {
-        QuickSort<Integer> qs = new QuickSort<>();
+        MergeSort<Integer> ms = new MergeSort<>();
         int capacity = 10;
         Random rand = new Random();
         ArrayList<Integer> temp = new ArrayList<>(capacity);
@@ -23,7 +23,7 @@ public class App {
         }
 
         System.out.println(temp);
-        qs.quicksort(temp);
+        ms.sort(temp);
         System.out.println(temp);
     }
 }

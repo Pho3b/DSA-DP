@@ -16,8 +16,8 @@ public class Utils {
      * @return A randomly generated Integer arrayList
      */
     public static ArrayList<Integer> randomUnorderedIntegerList() {
+        final int capacity = 100;
         Random rand = new Random();
-        int capacity = 100;
         ArrayList<Integer> res = new ArrayList<>(capacity);
 
         for (int i = 0; i < capacity; i++) {
