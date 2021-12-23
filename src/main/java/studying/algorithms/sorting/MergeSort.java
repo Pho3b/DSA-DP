@@ -28,8 +28,8 @@ public class MergeSort<T extends Comparable<T>> {
     }
 
     /**
-     * Populates the two given halves array with the correct values
-     * from the first half and second half of the input array
+     * Populates the two given halves array with the
+     * correct values of the input array
      *
      * @param inputArr  reference to the input array
      * @param leftHalf  left half of the input array

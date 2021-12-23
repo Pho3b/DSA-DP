@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 public class InsertionSortTest {
-    InsertionSort insertionSort = new InsertionSort();
+    InsertionSort<Integer> insertionSort = new InsertionSort<>();
 
     @Test
     public void firstSortingTest() {

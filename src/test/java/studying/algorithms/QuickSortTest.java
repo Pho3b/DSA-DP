@@ -7,7 +7,6 @@ import studying.algorithms.sorting.QuickSort;
 
 import java.util.ArrayList;
 
-
 public class QuickSortTest {
     QuickSort<Integer> qs = new QuickSort<>();
 
