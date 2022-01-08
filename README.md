@@ -60,8 +60,10 @@ src
 │           │       ├── AvlTree.java
 │           │       ├── BinarySearchTree.java
 │           │       ├── FenwickTree.java
-│           │       ├── iterators
+│           │       ├── Trie.java
+│           │       ├── iterator
 │           │       └── model
+│           │       └── enumerator
 │           └── design_patterns
 │               ├── abstract_factory
 │               │   ├── factories
