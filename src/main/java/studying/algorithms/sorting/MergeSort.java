@@ -13,7 +13,7 @@ public class MergeSort<T extends Comparable<T>> {
     public void sort(ArrayList<T> arr) {
         int size = arr.size();
 
-        if (arr.size() > 1) {
+        if (size > 1) {
             int halfSize = size / 2;
             ArrayList<T> leftHalf = new ArrayList<>(Collections.nCopies(halfSize, null));
             ArrayList<T> rightHalf = new ArrayList<>(Collections.nCopies(size - halfSize, null));
