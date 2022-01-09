@@ -1,9 +1,6 @@
 package studying;
 
-import studying.algorithms.sorting.MergeSort;
-
-import java.util.ArrayList;
-import java.util.Random;
+import studying.data_structures.tree.Trie;
 
 public class App {
 
@@ -13,17 +10,11 @@ public class App {
     }
 
     public static void currentWorkingOnIssueTest() {
-        MergeSort<Integer> ms = new MergeSort<>();
-        int capacity = 10;
-        Random rand = new Random();
-        ArrayList<Integer> temp = new ArrayList<>(capacity);
+        Trie trie = new Trie("boo");
+        trie.insert("ball");
+        trie.insert("batman");
+        trie.insert("stock");
 
-        for (int i = 0; i < capacity; i++) {
-            temp.add(rand.nextInt(101));
-        }
-
-        System.out.println(temp);
-        ms.sort(temp);
-        System.out.println(temp);
+        System.out.println(trie.print());
     }
 }
