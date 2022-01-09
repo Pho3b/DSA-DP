@@ -4,6 +4,7 @@ import studying.data_structures.tree.model.TrieNode;
 
 import java.util.ArrayList;
 
+// [Prefix Tree]
 public class Trie {
     private int wordsNumber = 0;
     private final TrieNode root = new TrieNode(' ', true);
@@ -58,7 +59,25 @@ public class Trie {
         this.wordsNumber++;
     }
 
-    public boolean search() {
+    /**
+     * Searches if the given prefix string is present into the Trie
+     *
+     * @param prefix The prefix string to search
+     * @return True if it is present, false otherwise
+     */
+    public boolean searchPrefix(String prefix) {
+        TrieNode currentNode = this.root;
+
+        for (int i = 0; i < prefix.length(); i++) {
+            char currentChar = Character.toLowerCase(prefix.charAt(i));
+            int index = currentChar - 'a';
+
+            if (currentNode.children[index] == null)
+                return false;
+
+            currentNode = currentNode.children[index];
+        }
+
         return true;
     }
 
@@ -71,12 +90,14 @@ public class Trie {
 
     /**
      * Prints the data structure to the standard output in a suitable format
+     *
+     * @return The string representation of an array containing the words currently present into the Trie
      */
-    public ArrayList<String> print() {
+    public String print() {
         ArrayList<String> words = new ArrayList<>(wordsNumber);
         internalPrint(this.root, new StringBuffer(), words);
 
-        return words;
+        return words.toString();
     }
 
     /**

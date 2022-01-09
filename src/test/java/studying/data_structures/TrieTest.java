@@ -26,31 +26,47 @@ public class TrieTest {
         Trie trie = new Trie();
         trie.insert("ball");
         trie.insert("batman");
-
-        Assertions.assertEquals(trie.print().toString(), "[ball, batman]");
+        Assertions.assertEquals(trie.print(), "[ball, batman]");
 
         trie.insert("batman");
-        Assertions.assertEquals(trie.print().toString(), "[ball, batman]");
+        Assertions.assertEquals(trie.print(), "[ball, batman]");
 
         trie.insert("chess");
-        Assertions.assertEquals(trie.print().toString(), "[ball, batman, chess]");
+        Assertions.assertEquals(trie.print(), "[ball, batman, chess]");
     }
 
     @Test
     public void insertionUsingWordConstructorTest() {
         Trie trie = new Trie("stairs");
-        Assertions.assertEquals(trie.print().toString(), "[stairs]");
+        Assertions.assertEquals(trie.print(), "[stairs]");
     }
 
     @Test
     public void insertionUsingWordsConstructorTest() {
         Trie trie = new Trie(new String[]{"ball", "batman", "chess", "stock"});
-        Assertions.assertEquals(trie.print().toString(), "[ball, batman, chess, stock]");
+        Assertions.assertEquals(trie.print(), "[ball, batman, chess, stock]");
     }
 
     @Test
     public void insertionWithCapitalLettersTest() {
         Trie trie = new Trie(new String[]{"Ball", "batMAN", "ChEsS", "PlAGUe"});
-        Assertions.assertEquals(trie.print().toString(), "[ball, batman, chess, plague]");
+        Assertions.assertEquals(trie.print(), "[ball, batman, chess, plague]");
+    }
+
+    @Test
+    public void prefixSearchTest() {
+        Trie trie = new Trie(new String[]{"Ball", "batMAN", "ChEsS", "PlAGUe"});
+
+        Assertions.assertTrue(trie.searchPrefix("ba"));
+        Assertions.assertFalse(trie.searchPrefix("cia"));
+        Assertions.assertTrue(trie.searchPrefix("ches"));
+        Assertions.assertFalse(trie.searchPrefix("chesss"));
+        Assertions.assertFalse(trie.searchPrefix("chesss"));
+        Assertions.assertFalse(trie.searchPrefix("sdfas"));
+        Assertions.assertFalse(trie.searchPrefix("gjjhgd"));
+        Assertions.assertTrue(trie.searchPrefix("plague"));
+        Assertions.assertTrue(trie.searchPrefix("p"));
+        Assertions.assertTrue(trie.searchPrefix("pl"));
+        Assertions.assertTrue(trie.searchPrefix("plag"));
     }
 }
