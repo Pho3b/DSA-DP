@@ -45,7 +45,7 @@ public class Trie {
         TrieNode currentNode = this.root;
 
         for (int i = 0; i < word.length(); i++) {
-            // Clamping the index from 0 to 95 because I am using only the ASCII table lower letters section
+            // Clamping the index from 0 to 95 because I am using only lower letters section of the ASCII table
             char currentChar = Character.toLowerCase(word.charAt(i));
             int index = currentChar - 'a';
 
