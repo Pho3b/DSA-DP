@@ -3,12 +3,12 @@ package studying.algorithms;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import studying.Utils;
-import studying.algorithms.tree_traversal.PreOrderTraversal;
+import studying.algorithms.tree_traversal.PreorderTraversal;
 import studying.data_structures.tree.BinarySearchTree;
 
 import java.util.ArrayList;
 
-public class PreOrderTraversalTest {
+public class PreorderTraversalTest {20, 10, 8, 9, 12, 25, 28
 
     @Test
     public void recursivePreOrderCorrectTest() {
@@ -19,7 +19,7 @@ public class PreOrderTraversalTest {
             correctRes.add(j);
 
         BinarySearchTree<Integer> tree = Utils.testBinaryTree1();
-        Assertions.assertEquals(correctRes, PreOrderTraversal.recursiveTraversal(tree.root));
+        Assertions.assertEquals(correctRes, PreorderTraversal.recursiveTraversal(tree.root));
     }
 
     @Test
@@ -31,7 +31,7 @@ public class PreOrderTraversalTest {
             correctRes.add(j);
 
         BinarySearchTree<Integer> tree = Utils.testBinaryTree2();
-        Assertions.assertEquals(correctRes, PreOrderTraversal.recursiveTraversal(tree.root));
+        Assertions.assertEquals(correctRes, PreorderTraversal.recursiveTraversal(tree.root));
     }
 
     @Test
@@ -43,7 +43,7 @@ public class PreOrderTraversalTest {
             correctRes.add(j);
 
         BinarySearchTree<Integer> tree = Utils.testBinaryTree1();
-        Assertions.assertNotEquals(correctRes, PreOrderTraversal.recursiveTraversal(tree.root));
+        Assertions.assertNotEquals(correctRes, PreorderTraversal.recursiveTraversal(tree.root));
     }
 
     @Test
@@ -55,7 +55,7 @@ public class PreOrderTraversalTest {
             correctRes.add(j);
 
         BinarySearchTree<Integer> tree = Utils.testBinaryTree1();
-        Assertions.assertEquals(correctRes, PreOrderTraversal.iterativeTraversal(tree.root));
+        Assertions.assertEquals(correctRes, PreorderTraversal.iterativeTraversal(tree.root));
     }
 
     @Test
@@ -67,7 +67,7 @@ public class PreOrderTraversalTest {
             correctRes.add(j);
 
         BinarySearchTree<Integer> tree = Utils.testBinaryTree2();
-        Assertions.assertEquals(correctRes, PreOrderTraversal.iterativeTraversal(tree.root));
+        Assertions.assertEquals(correctRes, PreorderTraversal.iterativeTraversal(tree.root));
     }
 
     @Test
@@ -79,6 +79,6 @@ public class PreOrderTraversalTest {
             correctRes.add(j);
 
         BinarySearchTree<Integer> tree = Utils.testBinaryTree1();
-        Assertions.assertNotEquals(correctRes, PreOrderTraversal.iterativeTraversal(tree.root));
+        Assertions.assertNotEquals(correctRes, PreorderTraversal.iterativeTraversal(tree.root));
     }
 }

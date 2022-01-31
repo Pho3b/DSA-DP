@@ -6,38 +6,43 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-public class PreOrderTraversal {
+// Inorder (Left, Root, Right)
+public class InorderTraversal {
 
     /**
-     * Recursively traverse a binary tree in 'pre-order'
+     * Recursively traverse a binary tree in 'inorder'
      *
      * @param root input root node
      * @return A list containing the node's values in 'pre-order'
      */
     public static List<Integer> recursiveTraversal(Node<Integer> root) {
         ArrayList<Integer> res = new ArrayList<>();
-        preOrder(root, res);
+        inorder(root, res);
 
         return res;
     }
 
     /**
-     * Iteratively traverse a binary tree in 'pre-order'
+     * Iteratively traverse a binary tree in 'inorder'
      *
-     * @param root input root node
-     * @return A list containing the node's values in 'pre-order'
+     * @param node input root node
+     * @return A list containing the node's values in 'inorder'
      */
-    public static List<Integer> iterativeTraversal(Node<Integer> root) {
+    public static List<Integer> iterativeTraversal(Node<Integer> node) {
         ArrayList<Integer> res = new ArrayList<>();
         Stack<Node<Integer>> stack = new Stack<>();
-        stack.push(root);
+        stack.push(node);
 
         while (!stack.isEmpty()) {
-            Node<Integer> node = stack.pop();
+            while (node.leftChild != null) {
+                stack.push(node.leftChild);
+                node = node.leftChild;
+            }
+
+            node = stack.pop();
             res.add(node.value);
 
             if (node.rightChild != null) stack.push(node.rightChild);
-            if (node.leftChild != null) stack.push(node.leftChild);
         }
 
         return res;
@@ -47,15 +52,14 @@ public class PreOrderTraversal {
      * Internal private recursive call
      *
      * @param node current input node
-     * @param res  array which we want to be populated with the values in the correct 'pre-order'
+     * @param res  array which we want to be populated with the values in the correct 'inorder'
      */
-    private static void preOrder(Node<Integer> node, ArrayList<Integer> res) {
+    private static void inorder(Node<Integer> node, ArrayList<Integer> res) {
         if (node == null)
             return;
 
+        inorder(node.leftChild, res);
         res.add(node.value);
-        preOrder(node.leftChild, res);
-        preOrder(node.rightChild, res);
+        inorder(node.rightChild, res);
     }
-
 }
