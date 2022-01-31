@@ -23,6 +23,14 @@ public class Queue<T> {
     }
 
     /**
+     * Constructor with given max size and first entry
+     */
+    public Queue(int maxSize, T item) {
+        this.enqueue(item);
+        this.maxSize = maxSize;
+    }
+
+    /**
      * Adds a new item to the head of the list
      *
      * @param item T

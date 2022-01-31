@@ -10,8 +10,9 @@ import java.util.Iterator;
 import java.util.List;
 
 public class BinarySearchTree<T extends Comparable<T>> {
-    private Node<T> root;
+    public Node<T> root;
     private int nodesCount = 0;
+
 
     /**
      * Default constructor that generates an empty BST

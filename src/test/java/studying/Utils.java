@@ -1,5 +1,7 @@
 package studying;
 
+import studying.data_structures.tree.BinarySearchTree;
+
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Random;
@@ -60,4 +62,27 @@ public class Utils {
         return bijectionTable;
     }
 
+    public static BinarySearchTree<Integer> testBinaryTree1() {
+        BinarySearchTree<Integer> tree = new BinarySearchTree<>(20);
+        tree.insert(10);
+        tree.insert(25);
+        tree.insert(8);
+        tree.insert(12);
+        tree.insert(9);
+        tree.insert(28);
+
+        return tree;
+    }
+
+    public static BinarySearchTree<Integer> testBinaryTree2() {
+        BinarySearchTree<Integer> tree = new BinarySearchTree<>(50);
+        tree.insert(100);
+        tree.insert(12);
+        tree.insert(2);
+        tree.insert(80);
+        tree.insert(4);
+        tree.insert(6);
+
+        return tree;
+    }
 }
