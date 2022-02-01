@@ -20,12 +20,16 @@ src
 │           │   │   ├── BinarySearch.java
 │           │   │   ├── JumpSearch.java
 │           │   │   └── LinearSearch.java
-│           │   └── sorting
-│           │       ├── BubbleSort.java
-│           │       ├── InsertionSort.java
-│           │       └── MergeSort.java
-│           │       └── QuickSort.java
-│           │       └── SelectionSort.java
+│           │   ├── sorting
+│           │   │   ├── BubbleSort.java
+│           │   │   ├── InsertionSort.java
+│           │   │   ├── MergeSort.java
+│           │   │   ├── QuickSort.java
+│           │   │   └── SelectionSort.java
+│           │   └── tree_traversal
+│           │   │   ├── InorderTraversal.java
+│           │   │   ├── PostorderTraversal.java
+│           │   │   └── PreorderTraversal.java
 │           ├── data_structures
 │           │   ├── array
 │           │   │   ├── DynamicArray.java
