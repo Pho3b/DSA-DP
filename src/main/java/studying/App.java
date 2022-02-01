@@ -1,7 +1,5 @@
 package studying;
 
-import studying.data_structures.tree.Trie;
-
 public class App {
 
     public static void main(String[] args) {
@@ -9,12 +7,5 @@ public class App {
         currentWorkingOnIssueTest();
     }
 
-    public static void currentWorkingOnIssueTest() {
-        Trie trie = new Trie("boo");
-        trie.insert("ball");
-        trie.insert("batman");
-        trie.insert("stock");
-
-        System.out.println(trie.print());
-    }
+    public static void currentWorkingOnIssueTest() {}
 }

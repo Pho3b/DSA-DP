@@ -31,18 +31,16 @@ public class InorderTraversal {
     public static List<Integer> iterativeTraversal(Node<Integer> node) {
         ArrayList<Integer> res = new ArrayList<>();
         Stack<Node<Integer>> stack = new Stack<>();
-        stack.push(node);
 
-        while (!stack.isEmpty()) {
-            while (node.leftChild != null) {
-                stack.push(node.leftChild);
+        while (!stack.isEmpty() || node != null) {
+            while (node != null) {
+                stack.push(node);
                 node = node.leftChild;
             }
 
             node = stack.pop();
             res.add(node.value);
-
-            if (node.rightChild != null) stack.push(node.rightChild);
+            node = node.rightChild;
         }
 
         return res;
