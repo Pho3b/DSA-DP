@@ -30,23 +30,8 @@ public class PostorderTraversal {
      */
     public static List<Integer> iterativeTraversal(Node<Integer> node) {
         ArrayList<Integer> res = new ArrayList<>();
-        Stack<Node<Integer>> stack = new Stack<>();
-
-        while (!stack.isEmpty() || node != null) {
-            while (node.leftChild != null) {
-                stack.push(node);
-                node = node.leftChild;
-            }
-
-            while (node != null) {
-                stack.push(node);
-                node = node.rightChild;
-            }
-
-            node = stack.pop();
-            res.add(node.value);
-            node = node.leftChild;
-        }
+        Stack<Node<Integer>> stack1 = new Stack<>();
+        Stack<Node<Integer>> stack2 = new Stack<>();
 
         return res;
     }

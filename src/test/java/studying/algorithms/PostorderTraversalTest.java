@@ -13,7 +13,7 @@ public class PostorderTraversalTest {
     @Test
     public void recursivePostorderCorrectTest() {
         ArrayList<Integer> correctRes = new ArrayList<>();
-        int[] intArr = new int[]{8, 9, 10, 12, 20, 25, 28};
+        int[] intArr = new int[]{9, 8, 12, 10, 28, 25, 20};
 
         for (int j : intArr)
             correctRes.add(j);
@@ -25,7 +25,7 @@ public class PostorderTraversalTest {
     @Test
     public void recursivePostorderCorrectTest2() {
         ArrayList<Integer> correctRes = new ArrayList<>();
-        int[] res = new int[]{2, 4, 6, 12, 50, 80, 100};
+        int[] res = new int[]{6, 4, 2, 12, 80, 100, 50};
 
         for (int j : res)
             correctRes.add(j);
@@ -37,7 +37,7 @@ public class PostorderTraversalTest {
     @Test
     public void recursivePostorderWrongTest() {
         ArrayList<Integer> correctRes = new ArrayList<>();
-        int[] intArr = new int[]{20, 11, 8, 9, 12, 25, 28};
+        int[] intArr = new int[]{20, 11, 8, 9, 12, 25, 12};
 
         for (int j : intArr)
             correctRes.add(j);
@@ -46,11 +46,10 @@ public class PostorderTraversalTest {
         Assertions.assertNotEquals(correctRes, PostorderTraversal.recursiveTraversal(tree.root));
     }
 
-
     @Test
     public void iterativePostorderCorrectTest() {
         ArrayList<Integer> correctRes = new ArrayList<>();
-        int[] res = new int[]{8, 9, 10, 12, 20, 25, 28};
+        int[] res = new int[]{9, 8, 12, 10, 28, 25, 20};
 
         for (int j : res)
             correctRes.add(j);
@@ -62,7 +61,7 @@ public class PostorderTraversalTest {
     @Test
     public void iterativePostorderCorrectTest2() {
         ArrayList<Integer> correctRes = new ArrayList<>();
-        int[] res = new int[]{2, 4, 6, 12, 50, 80, 100};
+        int[] res = new int[]{6, 4, 2, 12, 80, 100, 50};
 
         for (int j : res)
             correctRes.add(j);
