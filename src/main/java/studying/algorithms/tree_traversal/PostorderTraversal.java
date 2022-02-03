@@ -30,8 +30,26 @@ public class PostorderTraversal {
      */
     public static List<Integer> iterativeTraversal(Node<Integer> node) {
         ArrayList<Integer> res = new ArrayList<>();
+
+        if (node == null) return res;
+
         Stack<Node<Integer>> stack1 = new Stack<>();
         Stack<Node<Integer>> stack2 = new Stack<>();
+        stack1.push(node);
+
+        while (!stack1.isEmpty()) {
+            node = stack1.pop();
+            stack2.push(node);
+
+            if (node.leftChild != null) stack1.push(node.leftChild);
+            if (node.rightChild != null) stack1.push(node.rightChild);
+        }
+
+        // Cycling through the result of a reversed preorder filled stack
+        // will give us the values ordered in postorder style
+        while (!stack2.isEmpty()) {
+            res.add(stack2.pop().value);
+        }
 
         return res;
     }
