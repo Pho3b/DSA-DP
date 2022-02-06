@@ -3,7 +3,7 @@ package studying.algorithms;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import studying.Utils;
-import studying.algorithms.tree_traversal.PreorderTraversal;
+import studying.algorithms.tree.traversal.PreorderTraversal;
 import studying.data_structures.tree.BinarySearchTree;
 
 import java.util.ArrayList;

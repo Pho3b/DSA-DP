@@ -1,4 +1,4 @@
-package studying.algorithms.tree_traversal;
+package studying.algorithms.tree.traversal;
 
 import studying.data_structures.tree.model.Node;
 
