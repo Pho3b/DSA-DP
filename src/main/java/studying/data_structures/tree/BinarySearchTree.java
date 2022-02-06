@@ -172,27 +172,21 @@ public class BinarySearchTree<T extends Comparable<T>> {
      * @return int
      */
     public int height() {
-        if (this.root == null) return 0;
+        if (this.root == null)
+            return 0;
 
-        Queue<Node<T>> queue = new Queue<>(this.nodesCount);
-        queue.enqueue(this.root);
         int height = 0;
-        int levelSize;
+        Queue<Node<T>> queue = new Queue<>();
+        queue.enqueue(this.root);
 
         while (!queue.isEmpty()) {
-            levelSize = queue.size();
+            int levelSize = queue.size();
 
             while (levelSize > 0) {
                 Node<T> currentNode = queue.dequeue();
 
-                if (currentNode.leftChild != null) {
-                    queue.enqueue(currentNode.leftChild);
-                }
-
-                if (currentNode.rightChild != null) {
-                    queue.enqueue(currentNode.rightChild);
-                }
-
+                if (currentNode.leftChild != null) queue.enqueue(currentNode.leftChild);
+                if (currentNode.rightChild != null) queue.enqueue(currentNode.rightChild);
                 levelSize--;
             }
 
