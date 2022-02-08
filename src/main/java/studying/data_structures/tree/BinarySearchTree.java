@@ -208,12 +208,10 @@ public class BinarySearchTree<T extends Comparable<T>> {
      * @return int
      */
     private int depth(Node<T> root) {
-        if (root == null) return 0;
+        if (root == null)
+            return 0;
 
-        int left = depth(root.leftChild);
-        int right = depth(root.rightChild);
-
-        return Math.max(left, right) + 1;
+        return Math.max(depth(root.leftChild), depth(root.rightChild)) + 1;
     }
 
     /**
