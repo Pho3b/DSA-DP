@@ -42,6 +42,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
         if (this.root == null) {
             this.root = new Node<>(value);
             this.nodesCount++;
+
             return true;
         }
 
@@ -54,6 +55,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
                 if (currentNode.leftChild == null) {
                     currentNode.leftChild = new Node<>(value);
                     this.nodesCount++;
+
                     return true;
                 }
 
@@ -62,6 +64,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
                 if (currentNode.rightChild == null) {
                     currentNode.rightChild = new Node<>(value);
                     this.nodesCount++;
+
                     return true;
                 }
 
@@ -83,6 +86,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
         if (this.contains(value)) {
             root = this.delete(root, value);
             this.nodesCount--;
+
             return true;
         }
 
@@ -123,7 +127,8 @@ public class BinarySearchTree<T extends Comparable<T>> {
      * @return Node
      */
     private Node<T> delete(Node<T> currentNode, T value) {
-        if (currentNode == null) return null;
+        if (currentNode == null)
+            return null;
 
         int comparison = value.compareTo(currentNode.value);
 
@@ -161,8 +166,8 @@ public class BinarySearchTree<T extends Comparable<T>> {
     }
 
     /**
-     * Returns the current height(Level of nodes) of the BST, with an iterative calculation.
-     * We calculate it using a levelOrderTraversal style and keeping track of how many nodes we still
+     * Returns the current height(Level of nodes) of the BST calculating it iteratively.
+     * It calculates it using a levelOrderTraversal and keeping track of how many nodes we still
      * need to parse in the current Tree level.
      *
      * @return int
@@ -279,15 +284,15 @@ public class BinarySearchTree<T extends Comparable<T>> {
      * @return boolean
      */
     public boolean contains(T value) {
-        Node<T> currentNode = this.root;
+        Node<T> node = this.root;
 
-        while (currentNode != null) {
-            int comparison = value.compareTo(currentNode.value);
+        while (node != null) {
+            int comparison = value.compareTo(node.value);
 
             if (comparison > 0) {
-                currentNode = currentNode.rightChild;
+                node = node.rightChild;
             } else if (comparison < 0) {
-                currentNode = currentNode.leftChild;
+                node = node.leftChild;
             } else {
                 return true;
             }

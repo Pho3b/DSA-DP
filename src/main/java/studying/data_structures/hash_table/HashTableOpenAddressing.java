@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class HashTableOpenAddressing<K, V> extends HashTable<K, V> {
     private static final int DEFAULT_CAPACITY = 24;
     private static final float DEFAULT_LOAD_FACTOR = 0.6f;
-    // Used to place markers for removed elements, and optimize later insertions
+    // Marker that represents removed elements, useful to optimize later insertions
     private final K TOMBSTONE = (K) new Object();
     private ArrayList<Entry<K, V>> table;
 
