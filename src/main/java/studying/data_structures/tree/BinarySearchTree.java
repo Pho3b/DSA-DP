@@ -52,23 +52,23 @@ public class BinarySearchTree<T extends Comparable<T>> {
             int comparison = currentNode.value.compareTo(value);
 
             if (comparison > 0) {
-                if (currentNode.leftChild == null) {
-                    currentNode.leftChild = new Node<>(value);
+                if (currentNode.left == null) {
+                    currentNode.left = new Node<>(value);
                     this.nodesCount++;
 
                     return true;
                 }
 
-                currentNode = currentNode.leftChild;
+                currentNode = currentNode.left;
             } else if (comparison < 0) {
-                if (currentNode.rightChild == null) {
-                    currentNode.rightChild = new Node<>(value);
+                if (currentNode.right == null) {
+                    currentNode.right = new Node<>(value);
                     this.nodesCount++;
 
                     return true;
                 }
 
-                currentNode = currentNode.rightChild;
+                currentNode = currentNode.right;
             } else {
                 return false;
             }
@@ -111,8 +111,8 @@ public class BinarySearchTree<T extends Comparable<T>> {
             Node<T> currentNode = queue.dequeue();
             res.add(currentNode.value);
 
-            if (currentNode.leftChild != null) queue.enqueue(currentNode.leftChild);
-            if (currentNode.rightChild != null) queue.enqueue(currentNode.rightChild);
+            if (currentNode.left != null) queue.enqueue(currentNode.left);
+            if (currentNode.right != null) queue.enqueue(currentNode.right);
         }
 
         return res;
@@ -134,31 +134,31 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
         if (comparison > 0) {
             // If the value to remove is greater than the current one, we search in the right subtree
-            currentNode.rightChild = delete(currentNode.rightChild, value);
+            currentNode.right = delete(currentNode.right, value);
         } else if (comparison < 0) {
             // If the value to remove is less than the current one, we search in the left subtree
-            currentNode.leftChild = delete(currentNode.leftChild, value);
+            currentNode.left = delete(currentNode.left, value);
         } else {
             // If the value to remove is equal to the current one, we have to manage 3 possible scenarios:
             // 1. Single child scenario
             // 2. No children scenario (Leaf node)
-            if (currentNode.leftChild == null) {
-                Node<T> temp = currentNode.rightChild;
-                currentNode.rightChild = null;
+            if (currentNode.left == null) {
+                Node<T> temp = currentNode.right;
+                currentNode.right = null;
 
                 return temp;
-            } else if (currentNode.rightChild == null) {
-                Node<T> temp = currentNode.leftChild;
-                currentNode.leftChild = null;
+            } else if (currentNode.right == null) {
+                Node<T> temp = currentNode.left;
+                currentNode.left = null;
 
                 return temp;
             } else {
                 // 3. Two children scenario
                 // Here we can decide to search for the minimum value of the right subtree OR the maximum value
                 // of the left subtree and substitute the current node with the result
-                Node<T> temp = findMin(currentNode.rightChild);
+                Node<T> temp = findMin(currentNode.right);
                 currentNode.value = temp.value; // swapping data
-                this.delete(currentNode.rightChild, temp.value);
+                this.delete(currentNode.right, temp.value);
             }
         }
 
@@ -186,8 +186,8 @@ public class BinarySearchTree<T extends Comparable<T>> {
             while (levelSize > 0) {
                 Node<T> currentNode = queue.dequeue();
 
-                if (currentNode.leftChild != null) queue.enqueue(currentNode.leftChild);
-                if (currentNode.rightChild != null) queue.enqueue(currentNode.rightChild);
+                if (currentNode.left != null) queue.enqueue(currentNode.left);
+                if (currentNode.right != null) queue.enqueue(currentNode.right);
                 levelSize--;
             }
 
@@ -216,7 +216,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
         if (root == null)
             return 0;
 
-        return Math.max(depth(root.leftChild), depth(root.rightChild)) + 1;
+        return Math.max(depth(root.left), depth(root.right)) + 1;
     }
 
     /**
@@ -226,8 +226,8 @@ public class BinarySearchTree<T extends Comparable<T>> {
      * @return Node
      */
     private Node<T> findMin(Node<T> currentRoot) {
-        while (currentRoot.leftChild != null) {
-            currentRoot = currentRoot.leftChild;
+        while (currentRoot.left != null) {
+            currentRoot = currentRoot.left;
         }
 
         return currentRoot;
@@ -249,8 +249,8 @@ public class BinarySearchTree<T extends Comparable<T>> {
         if (node == null) return;
 
         System.out.print(node.value + " - ");
-        inorderTraversal(node.leftChild);
-        inorderTraversal(node.rightChild);
+        inorderTraversal(node.left);
+        inorderTraversal(node.right);
     }
 
     /**
@@ -260,9 +260,9 @@ public class BinarySearchTree<T extends Comparable<T>> {
     private void inorderTraversal(Node<T> node) {
         if (node == null) return;
 
-        inorderTraversal(node.leftChild);
+        inorderTraversal(node.left);
         System.out.print(node.value + " ");
-        inorderTraversal(node.rightChild);
+        inorderTraversal(node.right);
     }
 
     /**
@@ -272,8 +272,8 @@ public class BinarySearchTree<T extends Comparable<T>> {
     private void postOrderTraversal(Node<T> node) {
         if (node == null) return;
 
-        inorderTraversal(node.leftChild);
-        inorderTraversal(node.rightChild);
+        inorderTraversal(node.left);
+        inorderTraversal(node.right);
         System.out.print(node.value + " - ");
     }
 
@@ -290,9 +290,9 @@ public class BinarySearchTree<T extends Comparable<T>> {
             int comparison = value.compareTo(node.value);
 
             if (comparison > 0) {
-                node = node.rightChild;
+                node = node.right;
             } else if (comparison < 0) {
-                node = node.leftChild;
+                node = node.left;
             } else {
                 return true;
             }

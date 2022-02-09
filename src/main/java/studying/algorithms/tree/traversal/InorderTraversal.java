@@ -35,12 +35,12 @@ public class InorderTraversal {
         while (!stack.isEmpty() || node != null) {
             while (node != null) {
                 stack.push(node);
-                node = node.leftChild;
+                node = node.left;
             }
 
             node = stack.pop();
             res.add(node.value);
-            node = node.rightChild;
+            node = node.right;
         }
 
         return res;
@@ -56,8 +56,8 @@ public class InorderTraversal {
         if (node == null)
             return;
 
-        inorder(node.leftChild, res);
+        inorder(node.left, res);
         res.add(node.value);
-        inorder(node.rightChild, res);
+        inorder(node.right, res);
     }
 }

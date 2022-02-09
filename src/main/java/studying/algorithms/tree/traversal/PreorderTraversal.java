@@ -37,8 +37,8 @@ public class PreorderTraversal {
             Node<Integer> node = stack.pop();
             res.add(node.value);
 
-            if (node.rightChild != null) stack.push(node.rightChild);
-            if (node.leftChild != null) stack.push(node.leftChild);
+            if (node.right != null) stack.push(node.right);
+            if (node.left != null) stack.push(node.left);
         }
 
         return res;
@@ -55,8 +55,8 @@ public class PreorderTraversal {
             return;
 
         res.add(node.value);
-        preorder(node.leftChild, res);
-        preorder(node.rightChild, res);
+        preorder(node.left, res);
+        preorder(node.right, res);
     }
 
 }

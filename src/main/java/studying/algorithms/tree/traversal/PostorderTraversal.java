@@ -41,8 +41,8 @@ public class PostorderTraversal {
             node = stack1.pop();
             stack2.push(node);
 
-            if (node.leftChild != null) stack1.push(node.leftChild);
-            if (node.rightChild != null) stack1.push(node.rightChild);
+            if (node.left != null) stack1.push(node.left);
+            if (node.right != null) stack1.push(node.right);
         }
 
         // Cycling through the result of a reversed preorder filled stack
@@ -64,8 +64,8 @@ public class PostorderTraversal {
         if (node == null)
             return;
 
-        postorder(node.leftChild, res);
-        postorder(node.rightChild, res);
+        postorder(node.left, res);
+        postorder(node.right, res);
         res.add(node.value);
     }
 }
