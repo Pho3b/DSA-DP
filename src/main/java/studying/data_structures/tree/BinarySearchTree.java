@@ -100,19 +100,19 @@ public class BinarySearchTree<T extends Comparable<T>> {
      * @return List
      */
     public List<T> levelOrderTraversal() {
-        if (root == null)
-            return new ArrayList<>();
-
         ArrayList<T> res = new ArrayList<>(this.nodesCount);
-        Queue<Node<T>> queue = new Queue<>(this.nodesCount);
-        queue.enqueue(this.root);
 
-        while (!queue.isEmpty()) {
-            Node<T> currentNode = queue.dequeue();
-            res.add(currentNode.value);
+        if (root != null) {
+            Queue<Node<T>> queue = new Queue<>(this.nodesCount);
+            queue.enqueue(this.root);
 
-            if (currentNode.left != null) queue.enqueue(currentNode.left);
-            if (currentNode.right != null) queue.enqueue(currentNode.right);
+            while (!queue.isEmpty()) {
+                Node<T> currentNode = queue.dequeue();
+                res.add(currentNode.value);
+
+                if (currentNode.left != null) queue.enqueue(currentNode.left);
+                if (currentNode.right != null) queue.enqueue(currentNode.right);
+            }
         }
 
         return res;
