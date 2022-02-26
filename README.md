@@ -17,6 +17,7 @@ the aim of understanding them at a deeper level.
     │           ├── algorithms
     │           │   ├── searching
     │           │   ├── sorting
+    │           │   ├── string
     │           │   └── tree
     │           │       └── traversal
     │           ├── data_structures
