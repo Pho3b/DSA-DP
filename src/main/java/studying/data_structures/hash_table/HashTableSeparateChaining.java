@@ -156,7 +156,7 @@ public class HashTableSeparateChaining<K, V> extends HashTable<K, V> implements 
     }
 
     /**
-     * Returns a new table with the given capacity, pre populated with empty LinkedLists
+     * Returns a new table with the given capacity, pre-populated with empty LinkedLists
      *
      * @param capacity int
      * @return ArrayList<LinkedList < Entry < K, V>>>
@@ -172,7 +172,7 @@ public class HashTableSeparateChaining<K, V> extends HashTable<K, V> implements 
     }
 
     /**
-     * Doubles the size of the internal table and repopulates it with all of the previous values
+     * Doubles the size of the internal table and repopulates it with all the previous values
      * recalculating the threshold afterwards
      */
     private void resizeTable() {

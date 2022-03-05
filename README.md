@@ -23,6 +23,7 @@ the aim of understanding them at a deeper level.
     │           ├── data_structures
     │           │   ├── array
     │           │   ├── disjoint_set
+    │           │   ├── graph
     │           │   ├── hash_table
     │           │   ├── heap
     │           │   ├── linked_list
