@@ -10,14 +10,13 @@ public class App {
     }
 
     public static void currentWorkingOnIssueTest() {
-        AdjacencyMatrixGraph graph = new AdjacencyMatrixGraph(5);
-        graph.addEdge(0, 1);
-        graph.addEdge(1, 2);
+        AdjacencyMatrixGraph graph = new AdjacencyMatrixGraph(6);
+        graph.addEdge(0, 1, true);
+        graph.addEdge(0, 4);
+        graph.addEdge(0, 2);
         graph.addEdge(2, 3);
-        graph.addEdge(3, 4);
-        graph.addEdge(4, 3);
-        graph.addEdge(4, 1);
+        graph.addEdge(3, 5);
 
-        graph.print();
+        System.out.println(graph.iterativeDfs(0));
     }
 }

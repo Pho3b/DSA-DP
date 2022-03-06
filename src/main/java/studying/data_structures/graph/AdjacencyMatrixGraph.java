@@ -1,8 +1,13 @@
 package studying.data_structures.graph;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Stack;
+
 public class AdjacencyMatrixGraph {
     private final static int VERTICES_NUMBER = 100;
     private final int[][] matrix;
+    public int numberOfEdges = 0;
 
 
     /**
@@ -43,13 +48,19 @@ public class AdjacencyMatrixGraph {
      * @return false if the given vertices outbounds the matrix size, true otherwise
      */
     public boolean addEdge(int from, int to, boolean isUndirected) {
-        if (from > matrix.length || to > matrix.length)
+        if (from > matrix.length || to > matrix.length || from == to)
             return false;
 
-        if (isUndirected)
+        if (isUndirected && matrix[to][from] == 0) {
+            numberOfEdges++;
             matrix[to][from] = 1;
+        }
 
-        matrix[from][to] = 1;
+        if (matrix[from][to] == 0) {
+            numberOfEdges++;
+            matrix[from][to] = 1;
+        }
+
         return true;
     }
 
@@ -62,7 +73,9 @@ public class AdjacencyMatrixGraph {
      */
     public boolean removeEdge(int from, int to) {
         if (matrix[from][to] > 0) {
+            numberOfEdges--;
             matrix[from][to] = 0;
+
             return true;
         }
 
@@ -77,7 +90,7 @@ public class AdjacencyMatrixGraph {
      * @param weight Edge's weight
      * @return false if the given edge does not exist, true otherwise
      */
-    public boolean putWeightedEdge(int from, int to, int weight) {
+    public boolean putEdgeWeight(int from, int to, int weight) {
         if (matrix[from][to] > 0) {
             matrix[from][to] = weight;
             return true;
@@ -87,9 +100,53 @@ public class AdjacencyMatrixGraph {
     }
 
     /**
-     * Prints the graph in a comprehensible format
+     * Performs a depth first search on the graph
+     *
+     * @param v Starting vertex
+     * @return List of connected vertices in order of visit
      */
-    public void print() {
+    public ArrayList<Integer> iterativeDfs(int v) {
+        if (v > matrix.length)
+            throw new IndexOutOfBoundsException();
+
+        ArrayList<Integer> res = new ArrayList<>(matrix.length);
+        boolean[] visited = new boolean[matrix.length];
+        Stack<Integer> stack = new Stack<>();
+        stack.push(v);
+
+        while (!stack.isEmpty()) {
+            v = stack.pop();
+
+            if (!visited[v]) {
+                visited[v] = true;
+                res.add(v);
+
+                for (int i = 0; i < matrix[v].length; i++) {
+                    if (matrix[v][i] > 0) {
+                        stack.add(i);
+                    }
+                }
+            }
+        }
+
+        return res;
+    }
+
+    public ArrayList<Integer> recursiveDfs(int v) {
+        ArrayList<Integer> res = new ArrayList<>(matrix.length);
+        return res;
+    }
+
+    private void dfs() {
+
+    }
+
+    /**
+     * Prints the graph in a visually comprehensible format
+     *
+     * @return The string conversion of the graph
+     */
+    public String print() {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
                 if (matrix[i][j] > 0) {
@@ -97,5 +154,7 @@ public class AdjacencyMatrixGraph {
                 }
             }
         }
+
+        return Arrays.deepToString(matrix);
     }
 }
