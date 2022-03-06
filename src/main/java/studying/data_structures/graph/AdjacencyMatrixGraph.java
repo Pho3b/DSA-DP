@@ -100,7 +100,7 @@ public class AdjacencyMatrixGraph {
     }
 
     /**
-     * Performs a depth first search on the graph
+     * Performs a depth first search on the graph starting from the given vertex
      *
      * @param v Starting vertex
      * @return List of connected vertices in order of visit
@@ -122,9 +122,8 @@ public class AdjacencyMatrixGraph {
                 res.add(v);
 
                 for (int i = 0; i < matrix[v].length; i++) {
-                    if (matrix[v][i] > 0) {
+                    if (matrix[v][i] > 0)
                         stack.add(i);
-                    }
                 }
             }
         }
@@ -132,13 +131,21 @@ public class AdjacencyMatrixGraph {
         return res;
     }
 
+    /**
+     * Performs a depth first search using recursion starting from the given vertex
+     *
+     * @param v Starting vertex
+     * @return List of connected vertices in order of visit
+     */
     public ArrayList<Integer> recursiveDfs(int v) {
+        if (v > matrix.length)
+            throw new IndexOutOfBoundsException();
+
         ArrayList<Integer> res = new ArrayList<>(matrix.length);
+        boolean[] visited = new boolean[matrix.length];
+
+        depthFirstSearch(v, visited, res);
         return res;
-    }
-
-    private void dfs() {
-
     }
 
     /**
@@ -156,5 +163,24 @@ public class AdjacencyMatrixGraph {
         }
 
         return Arrays.deepToString(matrix);
+    }
+
+    /**
+     * Internal method that performs the DFS in a recursive fashion
+     *
+     * @param v       Starting vertex
+     * @param visited Array of booleans needed to check whether a vertex has already been visited or not
+     * @param res     Array containing the resulting visited vertices in order of visit
+     */
+    private void depthFirstSearch(int v, boolean[] visited, ArrayList<Integer> res) {
+        if (!visited[v]) {
+            visited[v] = true;
+            res.add(v);
+
+            for (int i = 0; i < matrix.length; i++) {
+                if (matrix[v][i] > 0)
+                    depthFirstSearch(i, visited, res);
+            }
+        }
     }
 }
