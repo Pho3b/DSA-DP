@@ -26,7 +26,6 @@ public class AdjacencyMatrixGraph {
         matrix = new int[verticesNumber][verticesNumber];
     }
 
-
     /**
      * Adds a new edge from the given 'from' vertex to the 'to' vertex
      *
@@ -51,14 +50,14 @@ public class AdjacencyMatrixGraph {
         if (from > matrix.length || to > matrix.length || from == to)
             return false;
 
-        if (isUndirected && matrix[to][from] == 0) {
-            numberOfEdges++;
-            matrix[to][from] = 1;
-        }
-
         if (matrix[from][to] == 0) {
             numberOfEdges++;
             matrix[from][to] = 1;
+        }
+
+        if (isUndirected && matrix[to][from] == 0) {
+            numberOfEdges++;
+            matrix[to][from] = 1;
         }
 
         return true;
