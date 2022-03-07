@@ -2,9 +2,7 @@ package studying.data_structures.graph;
 
 import studying.data_structures.graph.model.Vertex;
 
-import java.util.HashMap;
-import java.util.LinkedHashSet;
-import java.util.Map;
+import java.util.*;
 
 public class AdjacencyListGraph {
     private final static int VERTICES_NUMBER = 100;
@@ -72,12 +70,14 @@ public class AdjacencyListGraph {
         Vertex vFrom = new Vertex(from);
         Vertex vTo = new Vertex(to);
 
-        if (map.get(vFrom).contains(vTo)) {
+        System.out.println(map.get(vFrom));
+
+        if (!map.get(vFrom).contains(vTo)) {
             numberOfEdges++;
             map.get(vFrom).add(vTo);
         }
 
-        if (isUndirected && map.get(vTo).contains(vFrom)) {
+        if (isUndirected && !map.get(vTo).contains(vFrom)) {
             numberOfEdges++;
             map.get(vTo).add(vFrom);
         }
@@ -106,27 +106,28 @@ public class AdjacencyListGraph {
         return false;
     }
 
-    /**
-     * Updates the weight of an existing edge
-     *
-     * @param from   Starting vertex's edge
-     * @param to     Ending vertex's edge
-     * @param weight Edge's weight
-     * @return false if the given edge does not exist, true otherwise
-     */
-    public boolean putEdgeWeight(int from, int to, int weight) {
-        Vertex vFrom = new Vertex(from);
-        Vertex vTo = new Vertex(to);
+    public ArrayList<Integer> iterativeDfs(int v) {
+        if (v > map.size())
+            throw new IndexOutOfBoundsException();
 
-        if (map.get(vFrom).contains(vTo)) {
-            for (Vertex v : map.get(vFrom)) {
-                if (v.equals(vTo)) {
-                    v.weight = weight;
-                    return true;
+        ArrayList<Integer> res = new ArrayList<>(map.size());
+        boolean[] visited = new boolean[map.size()];
+        Stack<Integer> stack = new Stack<>();
+        stack.push(v);
+
+        while (!stack.isEmpty()) {
+            v = stack.pop();
+
+            if (!visited[v]) {
+                visited[v] = true;
+                res.add(v);
+
+                for (Vertex adj : map.get(new Vertex(v))) {
+                    stack.push(adj.i);
                 }
             }
         }
 
-        return false;
+        return res;
     }
 }

@@ -1,17 +1,23 @@
 package studying.data_structures.graph.model;
 
+import java.util.Objects;
+
 public class Vertex {
-    public int weight;
-    private final int i;
+    public final int i;
 
 
+    /**
+     * Constructor with given index
+     *
+     * @param index The unique identifier of this vertex
+     */
     public Vertex(int index) {
-        this(index, 0);
+        this.i = index;
     }
 
-    public Vertex(int index, int weight) {
-        this.i = index;
-        this.weight = weight;
+    @Override
+    public int hashCode() {
+        return Objects.hash(i);
     }
 
     @Override
