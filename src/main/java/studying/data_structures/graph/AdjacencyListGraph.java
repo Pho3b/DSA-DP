@@ -1,6 +1,7 @@
 package studying.data_structures.graph;
 
 import studying.data_structures.graph.model.Vertex;
+import studying.data_structures.queue.Queue;
 
 import java.util.*;
 
@@ -70,8 +71,6 @@ public class AdjacencyListGraph {
         Vertex vFrom = new Vertex(from);
         Vertex vTo = new Vertex(to);
 
-        System.out.println(map.get(vFrom));
-
         if (!map.get(vFrom).contains(vTo)) {
             numberOfEdges++;
             map.get(vFrom).add(vTo);
@@ -106,6 +105,12 @@ public class AdjacencyListGraph {
         return false;
     }
 
+    /**
+     * Performs a Depth First Search on the graph starting from the given vertex
+     *
+     * @param v Starting vertex
+     * @return List of connected vertices in order of visit
+     */
     public ArrayList<Integer> iterativeDfs(int v) {
         if (v > map.size())
             throw new IndexOutOfBoundsException();
@@ -123,7 +128,40 @@ public class AdjacencyListGraph {
                 res.add(v);
 
                 for (Vertex adj : map.get(new Vertex(v))) {
-                    stack.push(adj.i);
+                    if (!visited[adj.i])
+                        stack.push(adj.i);
+                }
+            }
+        }
+
+        return res;
+    }
+
+    /**
+     * Performs a Breadth First Search on the graph starting from the given vertex
+     *
+     * @param v Starting vertex
+     * @return List of connected vertices in order of visit
+     */
+    public ArrayList<Integer> iterativeBfs(int v) {
+        if (v > map.size())
+            throw new IndexOutOfBoundsException();
+
+        ArrayList<Integer> res = new ArrayList<>(map.size());
+        boolean[] visited = new boolean[map.size()];
+        Queue<Integer> queue = new Queue<>();
+        queue.enqueue(v);
+        visited[v] = true;
+
+        while (!queue.isEmpty()) {
+            v = queue.dequeue();
+            System.out.print(v + " ");
+            res.add(v);
+
+            for (Vertex adj : map.get(new Vertex(v))) {
+                if (!visited[adj.i]) {
+                    queue.enqueue(adj.i);
+                    visited[adj.i] = true;
                 }
             }
         }

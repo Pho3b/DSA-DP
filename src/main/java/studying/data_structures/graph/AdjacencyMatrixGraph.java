@@ -121,7 +121,7 @@ public class AdjacencyMatrixGraph {
                 res.add(v);
 
                 for (int i = 0; i < matrix[v].length; i++) {
-                    if (matrix[v][i] > 0)
+                    if (matrix[v][i] > 0 && !visited[i])
                         stack.add(i);
                 }
             }
@@ -177,7 +177,7 @@ public class AdjacencyMatrixGraph {
             res.add(v);
 
             for (int i = 0; i < matrix.length; i++) {
-                if (matrix[v][i] > 0)
+                if (matrix[v][i] > 0 && !visited[i])
                     depthFirstSearch(i, visited, res);
             }
         }

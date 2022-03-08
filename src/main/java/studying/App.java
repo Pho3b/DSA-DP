@@ -1,6 +1,6 @@
 package studying;
 
-import studying.data_structures.graph.model.Vertex;
+import studying.data_structures.graph.AdjacencyListGraph;
 
 public class App {
 
@@ -10,7 +10,12 @@ public class App {
     }
 
     public static void currentWorkingOnIssueTest() {
-        Vertex v = new Vertex(0);
-        System.out.println(v.getClass().getSimpleName());
+        AdjacencyListGraph graph = new AdjacencyListGraph(5);
+        graph.addEdge(0, 1);
+        graph.addEdge(1, 2);
+        graph.addEdge(2, 3);
+        graph.addEdge(3, 4, true);
+        graph.addEdge(4, 1);
+        graph.iterativeBfs(0);
     }
 }

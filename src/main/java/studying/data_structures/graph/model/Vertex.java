@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Vertex {
     public final int i;
-
+    public int weight;
 
     /**
      * Constructor with given index
@@ -12,12 +12,23 @@ public class Vertex {
      * @param index The unique identifier of this vertex
      */
     public Vertex(int index) {
+        this(index, 0);
+    }
+
+    /**
+     * Constructor with given index and weight
+     *
+     * @param index  The unique identifier of this vertex
+     * @param weight The weight to reach this node when used as the 'ending' vertex of an edge
+     */
+    public Vertex(int index, int weight) {
         this.i = index;
+        this.weight = weight;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(i);
+        return Objects.hash(i, weight);
     }
 
     @Override
