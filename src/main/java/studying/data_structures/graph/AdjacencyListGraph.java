@@ -155,7 +155,6 @@ public class AdjacencyListGraph {
 
         while (!queue.isEmpty()) {
             v = queue.dequeue();
-            System.out.print(v + " ");
             res.add(v);
 
             for (Vertex adj : map.get(new Vertex(v))) {
