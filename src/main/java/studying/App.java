@@ -16,6 +16,8 @@ public class App {
         graph.addEdge(2, 3);
         graph.addEdge(3, 4, true);
         graph.addEdge(4, 1);
-        graph.iterativeBfs(0);
+        graph.addEdge(0, 4);
+
+        System.out.println(graph.shortestPath(0, 4));
     }
 }

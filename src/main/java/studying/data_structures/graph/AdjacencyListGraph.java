@@ -155,9 +155,10 @@ public class AdjacencyListGraph {
 
         while (!queue.isEmpty()) {
             v = queue.dequeue();
+            LinkedHashSet<Vertex> neighbours = map.get(new Vertex(v));
             res.add(v);
 
-            for (Vertex adj : map.get(new Vertex(v))) {
+            for (Vertex adj : neighbours) {
                 if (!visited[adj.i]) {
                     queue.enqueue(adj.i);
                     visited[adj.i] = true;
@@ -167,4 +168,68 @@ public class AdjacencyListGraph {
 
         return res;
     }
+
+    /**
+     * Computes and returns the shortest path between the two given Vertices
+     *
+     * @param s Index of the Starting Vertex
+     * @param e Index of the Ending vertex
+     * @return An array containing the vertices that compose the shortest path from 's' to 'e'
+     */
+    public ArrayList<Integer> shortestPath(int s, int e) {
+        ArrayList<Integer> prev = new ArrayList<>(Collections.nCopies(map.size(), null));
+        ArrayList<Integer> path = new ArrayList<>();
+        boolean[] visited = new boolean[map.size()];
+        Queue<Integer> queue = new Queue<>();
+        queue.enqueue(s);
+
+        // first performing a BFS
+        while (!queue.isEmpty()) {
+            int v = queue.dequeue();
+            LinkedHashSet<Vertex> neighbours = map.get(new Vertex(v));
+
+            for (Vertex adj : neighbours) {
+                if (!visited[adj.i]) {
+                    queue.enqueue(adj.i);
+                    visited[adj.i] = true;
+                    prev.set(adj.i, v);
+                }
+            }
+        }
+
+        // second we reconstruct the shortest path in reverse
+        int at = e;
+
+        while (prev.get(at) != null) {
+            at = prev.get(at);
+            path.add(at);
+        }
+
+        this.reverse(path);
+
+        if (path.size() > 0 && path.get(0) == s)
+            return path;
+
+        return new ArrayList<>();
+    }
+
+    /**
+     * Utility function that simply reverses an ArrayList in place
+     *
+     * @param list The list to reverse
+     */
+    private void reverse(ArrayList<Integer> list) {
+        int left = 0;
+        int right = list.size() - 1;
+
+        while (left < right) {
+            int temp = list.get(left);
+            list.set(left, list.get(right));
+            list.set(right, temp);
+
+            left++;
+            right--;
+        }
+    }
+
 }
