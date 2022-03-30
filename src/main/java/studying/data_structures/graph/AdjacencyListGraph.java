@@ -37,8 +37,7 @@ public class AdjacencyListGraph {
      * @return True if the given index is not already contained in the graph, false otherwise
      */
     public boolean addVertex(int vertexIndex) {
-        if (map.containsKey(new Vertex(vertexIndex)))
-            return false;
+        if (map.containsKey(new Vertex(vertexIndex))) return false;
 
         map.put(new Vertex(vertexIndex), new LinkedHashSet<>());
         return true;
@@ -65,8 +64,7 @@ public class AdjacencyListGraph {
      * @return false if the given vertices outbounds the matrix size, true otherwise
      */
     public boolean addEdge(int from, int to, boolean isUndirected) {
-        if (from > map.size() || to > map.size() || from == to)
-            return false;
+        if (from > map.size() || to > map.size() || from == to) return false;
 
         Vertex vFrom = new Vertex(from);
         Vertex vTo = new Vertex(to);
@@ -112,8 +110,7 @@ public class AdjacencyListGraph {
      * @return List of connected vertices in order of visit
      */
     public ArrayList<Integer> iterativeDfs(int v) {
-        if (v > map.size())
-            throw new IndexOutOfBoundsException();
+        if (v > map.size()) throw new IndexOutOfBoundsException();
 
         ArrayList<Integer> res = new ArrayList<>(map.size());
         boolean[] visited = new boolean[map.size()];
@@ -128,8 +125,7 @@ public class AdjacencyListGraph {
                 res.add(v);
 
                 for (Vertex adj : map.get(new Vertex(v))) {
-                    if (!visited[adj.i])
-                        stack.push(adj.i);
+                    if (!visited[adj.i]) stack.push(adj.i);
                 }
             }
         }
@@ -144,8 +140,7 @@ public class AdjacencyListGraph {
      * @return List of connected vertices in order of visit
      */
     public ArrayList<Integer> iterativeBfs(int v) {
-        if (v > map.size())
-            throw new IndexOutOfBoundsException();
+        if (v > map.size()) throw new IndexOutOfBoundsException();
 
         ArrayList<Integer> res = new ArrayList<>(map.size());
         boolean[] visited = new boolean[map.size()];
@@ -180,25 +175,49 @@ public class AdjacencyListGraph {
         ArrayList<Integer> prev = new ArrayList<>(Collections.nCopies(map.size(), null));
         ArrayList<Integer> path = new ArrayList<>();
         boolean[] visited = new boolean[map.size()];
+        boolean found = false;
         Queue<Integer> queue = new Queue<>();
         queue.enqueue(s);
 
-        // first performing a BFS
+        // Performing a BFS with early return in case the 'ending' vertex is found
         while (!queue.isEmpty()) {
+            if (found) break;
+
             int v = queue.dequeue();
             LinkedHashSet<Vertex> neighbours = map.get(new Vertex(v));
 
-            for (Vertex adj : neighbours) {
-                if (!visited[adj.i]) {
-                    queue.enqueue(adj.i);
-                    visited[adj.i] = true;
-                    prev.set(adj.i, v);
+            for (Vertex neighbour : neighbours) {
+                if (!visited[neighbour.i]) {
+                    queue.enqueue(neighbour.i);
+                    visited[neighbour.i] = true;
+                    prev.set(neighbour.i, v);
+
+                    if (neighbour.i == e) {
+                        found = true;
+                        break;
+                    }
                 }
             }
         }
 
-        // second we reconstruct the shortest path in reverse
-        int at = e;
+        if (found) {
+            this.reconstructPath(e, prev, path);
+            return path;
+        }
+
+        return new ArrayList<>();
+    }
+
+    /**
+     * Populates the given path array with the vertices that compose the path,
+     * it also reverses it to make it more readable
+     *
+     * @param at   The vertex from which it starts to iterate the path in reverse
+     * @param prev The list containing the parent vertices
+     * @param path The list that will contain path vertices
+     */
+    private void reconstructPath(int at, ArrayList<Integer> prev, ArrayList<Integer> path) {
+        path.add(at);
 
         while (prev.get(at) != null) {
             at = prev.get(at);
@@ -206,15 +225,10 @@ public class AdjacencyListGraph {
         }
 
         this.reverse(path);
-
-        if (path.size() > 0 && path.get(0) == s)
-            return path;
-
-        return new ArrayList<>();
     }
 
     /**
-     * Utility function that simply reverses an ArrayList in place
+     * Utility function to reverse an ArrayList in place
      *
      * @param list The list to reverse
      */
