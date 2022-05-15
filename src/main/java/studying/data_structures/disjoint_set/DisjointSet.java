@@ -59,7 +59,8 @@ public class DisjointSet {
         int jParent = find(j);
 
         // If the two elements already belong to the same component we can return
-        if (iParent == jParent) return;
+        if (iParent == jParent)
+            return;
 
         if (componentsSize[iParent] >= componentsSize[jParent]) {
             parent[jParent] = iParent;

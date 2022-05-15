@@ -1,8 +1,10 @@
 package studying.data_structures.graph.model;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 
-public class Vertex {
+public class Vertex implements Comparable<Vertex> {
     public final int i;
     public int weight;
 
@@ -37,5 +39,10 @@ public class Vertex {
             return this.i == ((Vertex) obj).i;
 
         return false;
+    }
+
+    @Override
+    public int compareTo(@NotNull Vertex otherVertex) {
+        return Integer.compare(weight, otherVertex.weight);
     }
 }

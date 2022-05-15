@@ -91,4 +91,15 @@ public class AdjacencyMatrixGraphTest {
         graph.removeEdge(0, 2);
         Assertions.assertEquals("[0, 1, 4]", graph.recursiveDfs(0).toString());
     }
+
+    @Test
+    public void DijkstraAlgorithmTest() {
+        AdjacencyMatrixGraph graph = new AdjacencyMatrixGraph(5);
+        graph.addEdge(0, 1);
+        graph.addEdge(1, 2);
+        graph.addEdge(2, 3);
+        graph.addEdge(3, 4, true);
+        graph.addEdge(4, 1);
+        Assertions.assertEquals("[0, 1, 2, 3, 4]", graph.recursiveDfs(0).toString());
+    }
 }

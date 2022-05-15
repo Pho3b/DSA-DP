@@ -113,6 +113,16 @@ public class IndexedPriorityQueue<K, V extends Comparable<V>> {
     }
 
     /**
+     * Whether the IndexedPriorityQueue already contains the given key or not
+     *
+     * @param key the key to search
+     * @return whether it contains the given key or not
+     */
+    public boolean contains(K key) {
+        return map.containsKey(key);
+    }
+
+    /**
      * Prints the data structure in a debugging friendly format
      */
     public void print() {
@@ -204,7 +214,7 @@ public class IndexedPriorityQueue<K, V extends Comparable<V>> {
     }
 
     /**
-     * Populates the instance arrays with placeholder values
+     * Populates the instance array attributes with placeholder/default values
      */
     private void prePopulateArrays() {
         for (int i = 0; i < maxSize; i++) {
@@ -265,7 +275,6 @@ public class IndexedPriorityQueue<K, V extends Comparable<V>> {
         } catch (Exception e) {
             return null;
         }
-
     }
 
     /**

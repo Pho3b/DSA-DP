@@ -1,13 +1,14 @@
 package studying.data_structures.graph;
 
 import studying.data_structures.graph.model.Vertex;
+import studying.data_structures.queue.IndexedPriorityQueue;
 import studying.data_structures.queue.Queue;
 
 import java.util.*;
 
 public class AdjacencyListGraph {
     private final static int VERTICES_NUMBER = 100;
-    private final Map<Vertex, LinkedHashSet<Vertex>> map;
+    private final Map<Vertex, LinkedHashSet<Vertex>> adjacentMap;
     public int numberOfEdges = 0;
 
 
@@ -24,23 +25,10 @@ public class AdjacencyListGraph {
      * @param verticesNumber The starting vertices number of the Graph
      */
     public AdjacencyListGraph(int verticesNumber) {
-        map = new HashMap<>();
+        adjacentMap = new HashMap<>();
 
         for (int i = 0; i < verticesNumber; i++)
-            map.put(new Vertex(i), new LinkedHashSet<>());
-    }
-
-    /**
-     * Adds a new vertex to the graph, the index of the new graph must be unique
-     *
-     * @param vertexIndex The index that will be applied to the new vertex (Must be unique)
-     * @return True if the given index is not already contained in the graph, false otherwise
-     */
-    public boolean addVertex(int vertexIndex) {
-        if (map.containsKey(new Vertex(vertexIndex))) return false;
-
-        map.put(new Vertex(vertexIndex), new LinkedHashSet<>());
-        return true;
+            adjacentMap.put(new Vertex(i), new LinkedHashSet<>());
     }
 
     /**
@@ -64,19 +52,44 @@ public class AdjacencyListGraph {
      * @return false if the given vertices outbounds the matrix size, true otherwise
      */
     public boolean addEdge(int from, int to, boolean isUndirected) {
-        if (from > map.size() || to > map.size() || from == to) return false;
+        if (from > adjacentMap.size() || to > adjacentMap.size() || from == to)
+            return false;
 
         Vertex vFrom = new Vertex(from);
         Vertex vTo = new Vertex(to);
 
-        if (!map.get(vFrom).contains(vTo)) {
+        if (!adjacentMap.get(vFrom).contains(vTo)) {
             numberOfEdges++;
-            map.get(vFrom).add(vTo);
+            adjacentMap.get(vFrom).add(vTo);
         }
 
-        if (isUndirected && !map.get(vTo).contains(vFrom)) {
+        if (isUndirected && !adjacentMap.get(vTo).contains(vFrom)) {
             numberOfEdges++;
-            map.get(vTo).add(vFrom);
+            adjacentMap.get(vTo).add(vFrom);
+        }
+
+        return true;
+    }
+
+    /**
+     * Adds a new edge from the given 'from' vertex to the 'to' vertex
+     * also assigns the given weight to it
+     *
+     * @param from   Starting vertex's edge
+     * @param to     Ending vertex's edge
+     * @param weight Edge weight
+     * @return false if the given vertices outbounds the matrix size, true otherwise
+     */
+    public boolean addWeightedEdge(int from, int to, int weight) {
+        if (from > adjacentMap.size() || to > adjacentMap.size() || from == to)
+            return false;
+
+        Vertex vFrom = new Vertex(from);
+        Vertex vTo = new Vertex(to, weight);
+
+        if (!adjacentMap.get(vFrom).contains(vTo)) {
+            numberOfEdges++;
+            adjacentMap.get(vFrom).add(vTo);
         }
 
         return true;
@@ -93,9 +106,9 @@ public class AdjacencyListGraph {
         Vertex vFrom = new Vertex(from);
         Vertex vTo = new Vertex(to);
 
-        if (map.get(vFrom).contains(vTo)) {
+        if (adjacentMap.get(vFrom).contains(vTo)) {
             numberOfEdges--;
-            map.get(vFrom).remove(vTo);
+            adjacentMap.get(vFrom).remove(vTo);
 
             return true;
         }
@@ -110,10 +123,10 @@ public class AdjacencyListGraph {
      * @return List of connected vertices in order of visit
      */
     public ArrayList<Integer> iterativeDfs(int v) {
-        if (v > map.size()) throw new IndexOutOfBoundsException();
+        if (v > adjacentMap.size()) throw new IndexOutOfBoundsException();
 
-        ArrayList<Integer> res = new ArrayList<>(map.size());
-        boolean[] visited = new boolean[map.size()];
+        ArrayList<Integer> res = new ArrayList<>(adjacentMap.size());
+        boolean[] visited = new boolean[adjacentMap.size()];
         Stack<Integer> stack = new Stack<>();
         stack.push(v);
 
@@ -124,7 +137,7 @@ public class AdjacencyListGraph {
                 visited[v] = true;
                 res.add(v);
 
-                for (Vertex adj : map.get(new Vertex(v))) {
+                for (Vertex adj : adjacentMap.get(new Vertex(v))) {
                     if (!visited[adj.i]) stack.push(adj.i);
                 }
             }
@@ -140,17 +153,17 @@ public class AdjacencyListGraph {
      * @return List of connected vertices in order of visit
      */
     public ArrayList<Integer> iterativeBfs(int v) {
-        if (v > map.size()) throw new IndexOutOfBoundsException();
+        if (v > adjacentMap.size()) throw new IndexOutOfBoundsException();
 
-        ArrayList<Integer> res = new ArrayList<>(map.size());
-        boolean[] visited = new boolean[map.size()];
+        ArrayList<Integer> res = new ArrayList<>(adjacentMap.size());
+        boolean[] visited = new boolean[adjacentMap.size()];
         Queue<Integer> queue = new Queue<>();
         queue.enqueue(v);
         visited[v] = true;
 
         while (!queue.isEmpty()) {
             v = queue.dequeue();
-            LinkedHashSet<Vertex> neighbours = map.get(new Vertex(v));
+            LinkedHashSet<Vertex> neighbours = adjacentMap.get(new Vertex(v));
             res.add(v);
 
             for (Vertex adj : neighbours) {
@@ -172,9 +185,9 @@ public class AdjacencyListGraph {
      * @return An array containing the vertices that compose the shortest path from 's' to 'e'
      */
     public ArrayList<Integer> shortestPath(int s, int e) {
-        ArrayList<Integer> prev = new ArrayList<>(Collections.nCopies(map.size(), null));
+        ArrayList<Integer> prev = new ArrayList<>(Collections.nCopies(adjacentMap.size(), null));
         ArrayList<Integer> path = new ArrayList<>();
-        boolean[] visited = new boolean[map.size()];
+        boolean[] visited = new boolean[adjacentMap.size()];
         boolean found = false;
         Queue<Integer> queue = new Queue<>();
         queue.enqueue(s);
@@ -184,7 +197,7 @@ public class AdjacencyListGraph {
             if (found) break;
 
             int v = queue.dequeue();
-            LinkedHashSet<Vertex> neighbours = map.get(new Vertex(v));
+            LinkedHashSet<Vertex> neighbours = adjacentMap.get(new Vertex(v));
 
             for (Vertex neighbour : neighbours) {
                 if (!visited[neighbour.i]) {
@@ -206,6 +219,42 @@ public class AdjacencyListGraph {
         }
 
         return new ArrayList<>();
+    }
+
+    /**
+     * TODO: Add doc
+     *
+     * @param from
+     * @return
+     */
+    public int[] djikstra(int from) {
+        boolean[] visited = new boolean[adjacentMap.size()];
+        IndexedPriorityQueue<Integer, Integer> iPriorityQueue = new IndexedPriorityQueue<>();
+        int[] dist = new int[adjacentMap.size()];
+        Arrays.fill(dist, Integer.MAX_VALUE);
+        iPriorityQueue.insert(from, 0);
+        dist[from] = 0;
+
+        while (iPriorityQueue.size() > 0) {
+            Vertex currentV = new Vertex(iPriorityQueue.poll());
+            visited[currentV.i] = true;
+
+            for (Vertex v : adjacentMap.get(currentV)) {
+                if (visited[v.i]) continue;
+                int newDist = dist[currentV.i] + v.weight;
+
+                if (newDist < dist[v.i]) {
+                    dist[v.i] = newDist;
+
+                    if (!iPriorityQueue.contains(v.i))
+                        iPriorityQueue.insert(v.i, newDist);
+                    else
+                        iPriorityQueue.update(v.i, newDist);
+                }
+            }
+        }
+
+        return dist;
     }
 
     /**
