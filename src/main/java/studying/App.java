@@ -2,8 +2,6 @@ package studying;
 
 import studying.data_structures.graph.AdjacencyListGraph;
 
-import java.util.Arrays;
-
 public class App {
 
     public static void main(String[] args) {
@@ -20,6 +18,9 @@ public class App {
         graph.addWeightedEdge(3, 4, 3);
         graph.addWeightedEdge(2, 3, 5);
 
-        System.out.println(Arrays.toString(graph.djikstra(0)));
+        System.out.println(graph.djikstraShortestPath(0, 3));
+        System.out.println(graph.djikstraShortestPath(1, 0));
+        System.out.println(graph.djikstraShortestPath(2, 4));
+        System.out.println(graph.djikstraShortestPath(4, 3));
     }
 }

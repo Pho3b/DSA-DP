@@ -1,5 +1,6 @@
 package studying.data_structures.graph;
 
+import org.checkerframework.checker.units.qual.A;
 import studying.data_structures.graph.model.Vertex;
 import studying.data_structures.queue.IndexedPriorityQueue;
 import studying.data_structures.queue.Queue;
@@ -182,11 +183,11 @@ public class AdjacencyListGraph {
      *
      * @param s Index of the Starting Vertex
      * @param e Index of the Ending vertex
-     * @return An array containing the vertices that compose the shortest path from 's' to 'e'
+     * @return An array containing the vertices that compose the shortest path from 's' to 'e' if the path is found,
+     * an empty array otherwise
      */
     public ArrayList<Integer> shortestPath(int s, int e) {
-        ArrayList<Integer> prev = new ArrayList<>(Collections.nCopies(adjacentMap.size(), null));
-        ArrayList<Integer> path = new ArrayList<>();
+        ArrayList<Integer> parent = new ArrayList<>(Collections.nCopies(adjacentMap.size(), null));
         boolean[] visited = new boolean[adjacentMap.size()];
         boolean found = false;
         Queue<Integer> queue = new Queue<>();
@@ -203,7 +204,7 @@ public class AdjacencyListGraph {
                 if (!visited[neighbour.i]) {
                     queue.enqueue(neighbour.i);
                     visited[neighbour.i] = true;
-                    prev.set(neighbour.i, v);
+                    parent.set(neighbour.i, v);
 
                     if (neighbour.i == e) {
                         found = true;
@@ -214,18 +215,66 @@ public class AdjacencyListGraph {
         }
 
         if (found) {
-            this.reconstructPath(e, prev, path);
-            return path;
+            return this.reconstructPath(e, parent);
         }
 
         return new ArrayList<>();
     }
 
     /**
-     * TODO: Add doc
+     * Computes (if it exists) the shortest path from vertex 'from' to vertex 'to'
      *
-     * @param from
-     * @return
+     * @param from starting vertex
+     * @param to   ending vertex
+     * @return An array containing the vertices that compose the shortest path from 's' to 'e' if the path is found,
+     * an empty array otherwise
+     */
+    public ArrayList<Integer> djikstraShortestPath(int from, int to) {
+        boolean[] visited = new boolean[adjacentMap.size()];
+        IndexedPriorityQueue<Integer, Integer> iPriorityQueue = new IndexedPriorityQueue<>();
+        ArrayList<Integer> parent = new ArrayList<>(Collections.nCopies(adjacentMap.size(), null));
+        int[] dist = new int[adjacentMap.size()];
+        boolean found = false;
+
+        Arrays.fill(dist, Integer.MAX_VALUE);
+        iPriorityQueue.insert(from, 0);
+        dist[from] = 0;
+
+        while (iPriorityQueue.size() > 0) {
+            Vertex currentV = new Vertex(iPriorityQueue.poll());
+            visited[currentV.i] = true;
+
+            for (Vertex v : adjacentMap.get(currentV)) {
+                if (visited[v.i]) continue;
+                int newDist = dist[currentV.i] + v.weight;
+
+                if (newDist < dist[v.i]) {
+                    dist[v.i] = newDist;
+
+                    if (!iPriorityQueue.contains(v.i))
+                        iPriorityQueue.insert(v.i, newDist);
+                    else
+                        iPriorityQueue.update(v.i, newDist);
+
+                    parent.set(v.i, currentV.i);
+
+                    if (v.i == to)
+                        found = true;
+                }
+            }
+        }
+
+        return found
+                ? this.reconstructPath(to, parent)
+                : new ArrayList<>();
+    }
+
+    /**
+     * Eager implementation of the Dijkstra's algorithm
+     *
+     * @param from index of the starting vertex
+     * @return An array of distances from the given vertex to all the other graph vertices,
+     * res[vertexI] = (distance from starting vertex)
      */
     public int[] djikstra(int from) {
         boolean[] visited = new boolean[adjacentMap.size()];
@@ -259,13 +308,14 @@ public class AdjacencyListGraph {
 
     /**
      * Populates the given path array with the vertices that compose the path,
-     * it also reverses it to make it more readable
+     * it also calls a reverse method to make it more readable
      *
      * @param at   The vertex from which it starts to iterate the path in reverse
      * @param prev The list containing the parent vertices
-     * @param path The list that will contain path vertices
+     * @return path The list containing all the path vertices
      */
-    private void reconstructPath(int at, ArrayList<Integer> prev, ArrayList<Integer> path) {
+    private ArrayList<Integer> reconstructPath(int at, ArrayList<Integer> prev) {
+        ArrayList<Integer> path = new ArrayList<>();
         path.add(at);
 
         while (prev.get(at) != null) {
@@ -273,15 +323,16 @@ public class AdjacencyListGraph {
             path.add(at);
         }
 
-        this.reverse(path);
+        return this.reverse(path);
     }
 
     /**
      * Utility function to reverse an ArrayList in place
      *
      * @param list The list to reverse
+     * @return the reversed list
      */
-    private void reverse(ArrayList<Integer> list) {
+    private ArrayList<Integer> reverse(ArrayList<Integer> list) {
         int left = 0;
         int right = list.size() - 1;
 
@@ -293,6 +344,8 @@ public class AdjacencyListGraph {
             left++;
             right--;
         }
+
+        return list;
     }
 
 }
