@@ -21,10 +21,10 @@ public class BubbleSort {
 
             for (int i = 0; i < arr.size(); i++) {
                 if (i != arr.size() - 1 && arr.get(i) > arr.get(i + 1)) {
-                    // Swapping values
-                    int temp = arr.get(i);
+                    int t = arr.get(i);
                     arr.set(i, arr.get(i + 1));
-                    arr.set(i + 1, temp);
+                    arr.set(i + 1, t);
+
                     swapped = true;
                 }
             }
