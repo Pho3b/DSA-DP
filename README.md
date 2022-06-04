@@ -26,6 +26,8 @@ Unit tests for every implementation can be run through the <code>gradle :test</c
     * [Postorder Traversal](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/dsa_dp/algorithms/tree/traversal/PostorderTraversal.java)
     * [Preorder Traversal](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/dsa_dp/algorithms/tree/traversal/PreorderTraversal.java)
 
+<hr>
+
 * ### [Data Structures](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/dsa_dp/data_structures)
   * [Array](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/dsa_dp/algorithms/sorting/BubbleSort.java)
     * [Dynamic Array](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/dsa_dp/data_structures/array/DynamicArray.java)
@@ -53,6 +55,9 @@ Unit tests for every implementation can be run through the <code>gradle :test</c
     * [AVL Tree](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/dsa_dp/data_structures/tree/AvlTree.java)
     * [Prefix Tree(Trie)](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/dsa_dp/data_structures/tree/Trie.java)
     * [Fenwick Tree](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/dsa_dp/data_structures/tree/FenwickTree.java)
+
+<hr>
+
 * ### [Design Patterns](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/dsa_dp/design_patterns)
   * [Abstract Factory](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/dsa_dp/design_patterns/abstract_factory)
   * [Adapter](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/dsa_dp/design_patterns/adapter)
