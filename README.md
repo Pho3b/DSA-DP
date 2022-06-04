@@ -9,9 +9,9 @@ Unit tests for every implementation can be run through the <code>gradle :test</c
 
 ## Content References
 
-* ### [Algorithms](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/dsa_dp/algorithms/searching)
+* ### [Algorithms](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/dsa_dp/algorithms)
 
-  * #### [Searching](https://github.com/Chatrz/DSA/tree/amirhossein/Data%20Structures/Lists)
+  * #### [Searching](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/dsa_dp/algorithms/searching)
       * [Binary Search](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/dsa_dp/algorithms/searching/BinarySearch.java)
       * [Jump Search](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/dsa_dp/algorithms/searching/JumpSearch.java)
       * [Linear Search](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/dsa_dp/algorithms/searching/LinearSearch.java)
@@ -29,7 +29,7 @@ Unit tests for every implementation can be run through the <code>gradle :test</c
 ##
 
 * ### [Data Structures](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/dsa_dp/data_structures)
-  * [Array](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/dsa_dp/algorithms/sorting/BubbleSort.java)
+  * [Array](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/dsa_dp/data_structures/array)
     * [Dynamic Array](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/dsa_dp/data_structures/array/DynamicArray.java)
     * [Static Array](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/dsa_dp/data_structures/array/StaticArray.java)
   * [Disjoint Set](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/dsa_dp/data_structures/disjoint_set/DisjointSet.java)
