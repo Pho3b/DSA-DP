@@ -1,81 +1,72 @@
-<h2 align="center">---- Repository content ----</h2>
+## (DSA-DP) Data Structures, Algorithms & Design patterns
 
-<p align="center">
-A collection of <b>Data Structures</b>, <b>Algorithms</b> and <b>Design Patterns</b> implemented from ground up with
+A collection of <code>Data Structures</code>, <code>Algorithms</code> and <code>Design Patterns</code> implemented from ground up with
 the aim of understanding them at a deeper level.
-</p>
-<br>
+
+Unit tests for every implementation can be run through the <code>gradle :test</code> task. 
 
 
-<h3 align="left"> Project Structure </h3>
 
-```bash
-  src
-    ├── main
-    │   └── java
-    │       └── studying
-    │           ├── algorithms
-    │           │   ├── searching
-    │           │   ├── sorting
-    │           │   ├── string
-    │           │   └── tree
-    │           │       └── traversal
-    │           ├── data_structures
-    │           │   ├── array
-    │           │   ├── disjoint_set
-    │           │   ├── graph
-    │           │   ├── hash_table
-    │           │   ├── heap
-    │           │   ├── linked_list
-    │           │   ├── queue
-    │           │   ├── sparse_table
-    │           │   │   └── range_combination_function_strategy
-    │           │   ├── stack
-    │           │   └── tree
-    │           │       ├── enumerator
-    │           │       ├── iterator
-    │           │       └── model
-    │           └── design_patterns
-    │               ├── abstract_factory
-    │               │   ├── factories
-    │               │   ├── slider
-    │               │   └── toggle
-    │               ├── adapter
-    │               ├── builder
-    │               │   └── enumerator
-    │               ├── command
-    │               ├── composite
-    │               │   ├── composites
-    │               │   └── leaves
-    │               ├── decorator
-    │               │   └── salad_decorators
-    │               ├── facade
-    │               ├── factory
-    │               │   └── fruits
-    │               ├── flyweight
-    │               ├── implementations
-    │               │   ├── decorator_implementation
-    │               │   ├── facade_implementation
-    │               │   ├── observer_implementation
-    │               │   ├── singleton_implementation
-    │               │   └── strategy_implementation
-    │               ├── iterator
-    │               │   ├── collections
-    │               │   └── iterators
-    │               ├── observer
-    │               ├── proxy
-    │               │   └── remote_proxy
-    │               ├── singleton
-    │               ├── state
-    │               │   └── states
-    │               ├── strategy
-    │               │   └── auto_attack_concrete_implementations
-    │               └── template
-    └── test
-        └── java
-            └── studying
-                ├── algorithms
-                ├── data_structures
-                └── design_patterns
+## Content References
 
-```
+* ### [Algorithms](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/studying/algorithms/searching)
+
+  * #### [Searching](https://github.com/Chatrz/DSA/tree/amirhossein/Data%20Structures/Lists)
+      * [Binary Search](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/studying/algorithms/searching/BinarySearch.java)
+      * [Jump Search](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/studying/algorithms/searching/JumpSearch.java)
+      * [Linear Search](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/studying/algorithms/searching/LinearSearch.java)
+  * #### [Sorting](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/studying/algorithms/sorting)
+      * [Bubble Sort](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/studying/algorithms/sorting/BubbleSort.java)
+      * [Insertion Sort](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/studying/algorithms/sorting/InsertionSort.java)
+      * [Merge Sort](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/studying/algorithms/sorting/MergeSort.java)
+      * [Quick Sort](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/studying/algorithms/sorting/QuickSort.java)
+      * [Selection Sort](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/studying/algorithms/sorting/SelectionSort.java)
+  * #### [Tree](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/studying/algorithms/tree/traversal)
+    * [Inorder Traversal](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/studying/algorithms/tree/traversal/InorderTraversal.java)
+    * [Postorder Traversal](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/studying/algorithms/tree/traversal/PostorderTraversal.java)
+    * [Preorder Traversal](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/studying/algorithms/tree/traversal/PreorderTraversal.java)
+
+* ### [Data Structures](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/studying/data_structures)
+  * [Array](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/studying/algorithms/sorting/BubbleSort.java)
+    * [Dynamic Array](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/studying/data_structures/array/DynamicArray.java)
+    * [Static Array](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/studying/data_structures/array/StaticArray.java)
+  * [Disjoint Set](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/studying/data_structures/disjoint_set/DisjointSet.java)
+  * [Graph](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/studying/data_structures/graph)
+    * [Adjacency List Graph](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/studying/data_structures/graph/AdjacencyListGraph.java)
+    * [Adjacency Matrix Graph](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/studying/data_structures/graph/AdjacencyMatrixGraph.java)
+  * [Hash Table](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/studying/data_structures/hash_table)
+    * [Hash Table Open Addressing](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/studying/data_structures/hash_table/HashTableOpenAddressing.java)
+    * [Hash Table Separate Chaining](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/studying/data_structures/hash_table/HashTableSeparateChaining.java)
+  * [Heap](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/studying/data_structures/heap)
+    * [Binary Heap](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/studying/data_structures/heap/BinaryHeap.java)
+  * [Linked List](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/studying/data_structures/linked_list)
+    * [Singly Linked List](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/studying/data_structures/linked_list/SinglyLinkedList.java)
+    * [Doubly Linked List](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/studying/data_structures/linked_list/DoublyLInkedList.java)
+  * [Queue](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/studying/data_structures/queue)
+    * [Queue](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/studying/data_structures/queue/Queue.java)
+    * [Priority Queue](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/studying/data_structures/queue/PriorityQueue.java)
+    * [Indexed Priority Queue](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/studying/data_structures/queue/IndexedPriorityQueue.java)
+  * [Sparse Table](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/studying/data_structures/sparse_table/SparseTable.java)
+  * [Stack](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/studying/data_structures/stack/Stack.java)
+  * [Tree](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/studying/data_structures/tree)
+    * [Binary Search Tree](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/studying/data_structures/tree/BinarySearchTree.java)
+    * [AVL Tree](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/studying/data_structures/tree/AvlTree.java)
+    * [Prefix Tree(Trie)](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/studying/data_structures/tree/Trie.java)
+    * [Fenwick Tree](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/studying/data_structures/tree/FenwickTree.java)
+* ### [Design Patterns](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/studying/design_patterns)
+  * [Abstract Factory](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/studying/design_patterns/abstract_factory)
+  * [Adapter](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/studying/design_patterns/adapter)
+  * [Command](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/studying/design_patterns/command)
+  * [Composite](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/studying/design_patterns/composite)
+  * [Decorator](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/studying/design_patterns/decorator/salad_decorators)
+  * [Facade](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/studying/design_patterns/facade)
+  * [Factory](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/studying/design_patterns/factory)
+  * [Flyweight](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/studying/design_patterns/flyweight)
+  * [Iterator](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/studying/design_patterns/iterator)
+  * [Observer](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/studying/design_patterns/observer)
+  * [Proxy](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/studying/design_patterns/proxy/remote_proxy)
+  * [Singleton](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/studying/design_patterns/singleton)
+  * [State](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/studying/design_patterns/state)
+  * [Strategy](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/studying/design_patterns/strategy)
+  * [Template](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/studying/design_patterns/template)
+  
