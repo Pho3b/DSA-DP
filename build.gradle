@@ -36,5 +36,5 @@ test {
 
 application {
     // Define the main class for the application.
-    mainClassName = 'studying.App'
+    mainClassName = 'dsa_dp.App'
 }
