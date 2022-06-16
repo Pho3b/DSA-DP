@@ -10,18 +10,17 @@ Unit tests for every implementation can be run through the <code>gradle :test</c
 ## Content References
 
 * ### [Algorithms](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/dsa_dp/algorithms)
-
-  * #### [Searching](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/dsa_dp/algorithms/searching)
+  * [Searching](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/dsa_dp/algorithms/searching)
       * [Binary Search](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/dsa_dp/algorithms/searching/BinarySearch.java)
       * [Jump Search](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/dsa_dp/algorithms/searching/JumpSearch.java)
       * [Linear Search](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/dsa_dp/algorithms/searching/LinearSearch.java)
-  * #### [Sorting](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/dsa_dp/algorithms/sorting)
+  * [Sorting](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/dsa_dp/algorithms/sorting)
       * [Bubble Sort](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/dsa_dp/algorithms/sorting/BubbleSort.java)
       * [Insertion Sort](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/dsa_dp/algorithms/sorting/InsertionSort.java)
       * [Merge Sort](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/dsa_dp/algorithms/sorting/MergeSort.java)
       * [Quick Sort](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/dsa_dp/algorithms/sorting/QuickSort.java)
       * [Selection Sort](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/dsa_dp/algorithms/sorting/SelectionSort.java)
-  * #### [Tree](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/dsa_dp/algorithms/tree/traversal)
+  * [Tree](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/dsa_dp/algorithms/tree/traversal)
     * [Inorder Traversal](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/dsa_dp/algorithms/tree/traversal/InorderTraversal.java)
     * [Postorder Traversal](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/dsa_dp/algorithms/tree/traversal/PostorderTraversal.java)
     * [Preorder Traversal](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/dsa_dp/algorithms/tree/traversal/PreorderTraversal.java)
