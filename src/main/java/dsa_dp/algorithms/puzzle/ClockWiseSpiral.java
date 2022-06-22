@@ -41,7 +41,7 @@ public class ClockWiseSpiral {
                 y--;
             }
 
-            // Checking if we completed one clockwise circle
+            // Checking if we completed a clockwise circle
             if (circleCounter == (revOffset - offset) * 4) {
                 offset++;
                 circleCounter = 0;

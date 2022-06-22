@@ -25,7 +25,9 @@ Unit tests for every implementation can be run through the <code>gradle :test</c
     * [Postorder Traversal](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/dsa_dp/algorithms/tree/traversal/PostorderTraversal.java)
     * [Preorder Traversal](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/dsa_dp/algorithms/tree/traversal/PreorderTraversal.java)
   * [String](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/dsa_dp/algorithms/string)
-    * [Permutation In String](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/dsa_dp/algorithms/string/PermutationInString.java)
+    * [Permutation In String](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/dsa_dp/algorithms/string/PermutationInString.java)  
+  * [Puzzle](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/dsa_dp/algorithms/puzzle)
+    * [Clockwise Spiral](https://github.com/Pho3b/DSA-DP/blob/master/src/main/java/dsa_dp/algorithms/puzzle/ClockWiseSpiral.java)
 
 ##
 
