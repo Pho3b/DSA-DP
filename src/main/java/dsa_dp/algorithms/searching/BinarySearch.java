@@ -1,34 +1,29 @@
 package dsa_dp.algorithms.searching;
 
-import java.util.Arrays;
-
 /**
  * TIME COMPLEXITY
  * Best: O(1)
  * Average: O(log n)
  * Worst: O(log n)
- *
+ * <p>
  * SPACE COMPLEXITY:
  * Worst: O(1)
  */
 public class BinarySearch {
 
     public int search(int[] inputArr, int toSearch) {
-        Arrays.sort(inputArr);
-        int top = inputArr.length - 1;
-        int min = 0;
-        int mid = top / 2;
+        int r = inputArr.length - 1;
+        int l = 0;
+        int mid;
 
-        while (min <= top) {
-            if (toSearch == inputArr[mid]) {
+        while (l <= r) {
+            mid = l + (r - l) / 2;
+
+            if (toSearch == inputArr[mid])
                 return mid;
-            } else if (toSearch < inputArr[mid]) {
-                top = mid - 1;
-            } else {
-                min = mid + 1;
-            }
 
-            mid = (min + top) / 2;
+            if (toSearch < inputArr[mid]) r = mid - 1;
+            else l = mid + 1;
         }
 
         return -1;
