@@ -48,18 +48,15 @@ public class HashTableSeparateChainingIterator<E> implements Iterator<E> {
      */
     @Override
     public boolean hasNext() {
-        if (table.size() <= 0) return false;
+        if (table.size() == 0) return false;
         LinkedList<E> bucket = table.get(bucketPointer);
 
         while (bucket.size() <= 0 || entryPointer >= bucket.size()) {
             this.bucketPointer++;
             this.entryPointer = 0;
 
-            if (bucketPointer <= table.size() - 1) {
-                bucket = table.get(bucketPointer);
-            } else {
-                return false;
-            }
+            if (bucketPointer <= table.size() - 1) bucket = table.get(bucketPointer);
+            else return false;
         }
 
         return true;

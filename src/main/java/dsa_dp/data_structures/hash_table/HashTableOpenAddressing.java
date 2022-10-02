@@ -95,7 +95,7 @@ public class HashTableOpenAddressing<K, V> extends HashTable<K, V> {
 
     /**
      * Returns true if it correctly removes an element from the table, false instead.
-     * It also replace the removed element with a tombstone object for later use (Correct search and optimization)
+     * It also replaces the removed element with a tombstone object for later use (Correct search and optimization)
      *
      * @param key K
      * @return boolean

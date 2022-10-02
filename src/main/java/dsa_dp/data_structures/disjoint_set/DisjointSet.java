@@ -15,7 +15,7 @@ public class DisjointSet {
         this.parent = new int[size];
         this.componentsSize = new int[size];
 
-        // At first every element is considered a different component
+        // At first every element belongs to a different component/set
         for (int i = 0; i < size; i++) {
             parent[i] = i;
             componentsSize[i] = 1;

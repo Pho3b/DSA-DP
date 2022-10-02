@@ -104,22 +104,12 @@ public class AdjacencyListGraphTest {
     @Test
     public void djikstraTest() {
         AdjacencyListGraph graph = new AdjacencyListGraph(5);
-        graph.addWeightedEdge(0, 1, 4);
-        graph.addWeightedEdge(0, 2, 1);
-        graph.addWeightedEdge(2, 1, 2);
+        Assertions.assertTrue(graph.addWeightedEdge(0, 1, 4));
+        Assertions.assertTrue(graph.addWeightedEdge(0, 2, 1));
+        Assertions.assertTrue(graph.addWeightedEdge(2, 1, 2));
         graph.addWeightedEdge(1, 3, 1);
         graph.addWeightedEdge(3, 4, 3);
         graph.addWeightedEdge(2, 3, 5);
         Assertions.assertArrayEquals(new int[]{0, 3, 1, 4, 7}, graph.djikstra(0));
-
-//        AdjacencyListGraph graph1 = new AdjacencyListGraph(6);
-//        graph1.addWeightedEdge(0, 2, 1);
-//        graph1.addWeightedEdge(2, 1, 2);
-//        graph1.addWeightedEdge(1, 3, 1);
-//        graph1.addWeightedEdge(3, 4, 3);
-//        graph1.addWeightedEdge(2, 3, 5);
-//        graph1.addWeightedEdge(4, 5, 2);
-//        graph1.addWeightedEdge(1, 5, 10);
-//        Assertions.assertArrayEquals(new int[]{0, 3, 1, 4, 7, 9}, graph1.djikstra(0));
     }
 }

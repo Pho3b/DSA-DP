@@ -72,14 +72,10 @@ public class AvlTree<T extends Comparable<T>> {
             AvlNode<T> currentNode = queue.dequeue();
             res.add(currentNode.value);
 
-            if (currentNode.leftChild != null)
-                queue.enqueue(currentNode.leftChild);
-
-            if (currentNode.rightChild != null)
-                queue.enqueue(currentNode.rightChild);
+            if (currentNode.leftChild != null) queue.enqueue(currentNode.leftChild);
+            if (currentNode.rightChild != null) queue.enqueue(currentNode.rightChild);
         }
 
-        System.out.println(res);
         return res;
     }
 
@@ -137,15 +133,9 @@ public class AvlTree<T extends Comparable<T>> {
             return new AvlNode<>(newValue);
         }
 
-        if (newValue.compareTo(node.value) > 0) {
-            node.rightChild = insert(node.rightChild, newValue);
-        } else if (newValue.compareTo(node.value) < 0) {
-            node.leftChild = insert(node.leftChild, newValue);
-        } else if (newValue.compareTo(node.value) == 0) {
-            // Checking the equal case because we don't want to recalculate
-            // the height or the balance in this occurrence
-            return node;
-        }
+        if (newValue.compareTo(node.value) > 0) node.rightChild = insert(node.rightChild, newValue);
+        else if (newValue.compareTo(node.value) < 0) node.leftChild = insert(node.leftChild, newValue);
+        else if (newValue.compareTo(node.value) == 0) return node; // no height recalculation when equal
 
         updateHeight(node);
         return updateBalance(node);
@@ -241,15 +231,13 @@ public class AvlTree<T extends Comparable<T>> {
     private BalanceState checkBalanceState(AvlNode<T> node, int balanceFactor) {
         switch (balanceFactor) {
             case 2:
-                if (node.rightChild.rightChild != null) {
+                if (node.rightChild.rightChild != null)
                     return BalanceState.RIGHT_RIGHT_CASE;
-                }
 
                 return BalanceState.RIGHT_LEFT_CASE;
             case -2:
-                if (node.leftChild.leftChild != null) {
+                if (node.leftChild.leftChild != null)
                     return BalanceState.LEFT_LEFT_CASE;
-                }
 
                 return BalanceState.LEFT_RIGHT_CASE;
             default:
