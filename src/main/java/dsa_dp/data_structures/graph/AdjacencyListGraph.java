@@ -263,9 +263,7 @@ public class AdjacencyListGraph {
             }
         }
 
-        return found
-                ? this.reconstructPath(to, parent)
-                : new ArrayList<>();
+        return found ? this.reconstructPath(to, parent) : new ArrayList<>();
     }
 
     /**
@@ -276,9 +274,10 @@ public class AdjacencyListGraph {
      * res[vertexI] = (distance from starting vertex)
      */
     public int[] djikstra(int from) {
-        boolean[] visited = new boolean[adjacentMap.size()];
         IndexedPriorityQueue<Integer, Integer> iPriorityQueue = new IndexedPriorityQueue<>();
+        boolean[] visited = new boolean[adjacentMap.size()];
         int[] dist = new int[adjacentMap.size()];
+
         Arrays.fill(dist, Integer.MAX_VALUE);
         iPriorityQueue.insert(from, 0);
         dist[from] = 0;
@@ -294,10 +293,8 @@ public class AdjacencyListGraph {
                 if (newDist < dist[v.i]) {
                     dist[v.i] = newDist;
 
-                    if (!iPriorityQueue.contains(v.i))
-                        iPriorityQueue.insert(v.i, newDist);
-                    else
-                        iPriorityQueue.update(v.i, newDist);
+                    if (!iPriorityQueue.contains(v.i)) iPriorityQueue.insert(v.i, newDist);
+                    else iPriorityQueue.update(v.i, newDist);
                 }
             }
         }
