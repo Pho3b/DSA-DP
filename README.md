@@ -78,4 +78,5 @@ Unit tests for every implementation can be run through the <code>gradle :test</c
   * [State](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/dsa_dp/design_patterns/state)
   * [Strategy](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/dsa_dp/design_patterns/strategy)
   * [Template](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/dsa_dp/design_patterns/template)
+  * [Chain of Responsibility](https://github.com/Pho3b/DSA-DP/tree/master/src/main/java/dsa_dp/design_patterns/chain_of_responsibility)
   
