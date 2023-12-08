@@ -116,7 +116,7 @@ public class BinaryHeap<T extends Comparable<T>> extends AbstractBinaryHeap<T> {
      * @return T
      */
     public T peek() {
-        return heap.size() > 0 ? heap.get(0) : null;
+        return !heap.isEmpty() ? heap.get(0) : null;
     }
 
     /**
