@@ -9,9 +9,6 @@ public class MaxSubArraySum {
      * @return the maximum possible sum or 0 if the input array is empty
      */
     public int sequence(int[] arr) {
-        if (arr.length < 1)
-            return 0;
-
         int sum = 0;
         int maxSum = 0;
 
