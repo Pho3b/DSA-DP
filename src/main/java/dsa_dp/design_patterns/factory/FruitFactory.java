@@ -8,15 +8,11 @@ import dsa_dp.design_patterns.factory.fruits.Fruit;
 public class FruitFactory {
 
     public Fruit generateFruit(String fruitType) {
-        switch(fruitType) {
-            case "Cherry":
-                return new Cherry();
-            case "Apple":
-                return new Apple();
-            case "Ananas":
-                return new Ananas();
-            default:
-                return null;
-        }
+        return switch (fruitType) {
+            case "Cherry" -> new Cherry();
+            case "Apple" -> new Apple();
+            case "Ananas" -> new Ananas();
+            default -> null;
+        };
     }
 }

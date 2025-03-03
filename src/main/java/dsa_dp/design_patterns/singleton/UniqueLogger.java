@@ -4,7 +4,7 @@ public class UniqueLogger {
     /**
      * EAGER INITIALIZATION: We can use this when the program always use the instance of this class
      * or when instantiating it doesn't really take to much time or memory
-     *
+     * <p>
      * Example:  public static UniqueLogger uniqueLoggerInstance = getInstance();
      */
     public volatile static UniqueLogger uniqueLoggerInstance = null;
@@ -17,7 +17,7 @@ public class UniqueLogger {
     private UniqueLogger() {}
 
     /**
-     * DOUBLE CHECKED LOCKING INITIALIZATION: This way we only synchronize the code the first time.
+     * DOUBLE-CHECKED LOCKING INITIALIZATION: This way we only synchronize the code the first time.
      * Reducing a big part of the performance issue of the LAZY INITIALIZATION.
      *
      * @return UniqueLogger
@@ -35,15 +35,14 @@ public class UniqueLogger {
     }
 
     /**
-     * LAZY INITIALIZATION: No waste of resources but can cause problem in multi threaded applications.
-     * 'synchronized' keyword can be a solution but we need to keep in mind that it will slow down the
+     * LAZY INITIALIZATION: No waste of resources but can cause problem in multithreaded applications.
+     * 'synchronized' keyword can be a solution, but we need to keep in mind that it will slow down the
      * application.
-     *
+     * <p>
      *      public static synchronized UniqueLogger getInstance() {
      *         if(uniqueLoggerInstance == null) {
      *             uniqueLoggerInstance = new UniqueLogger();
      *         }
-     *
      *         return uniqueLoggerInstance;
      *     }
      *
